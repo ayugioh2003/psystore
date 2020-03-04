@@ -16,8 +16,31 @@ library.add(faCoffee, faKey, faUser, faGooglePlus); // font awesome
 library.add(faGooglePlus);
 Vue.component('font-awesome-icon', FontAwesomeIcon);
 
-axios.defaults.withCredentials = true;
-Vue.use(VueAxios, axios); // axios
+axios.defaults.withCredentials = true; // axios
+Vue.use(VueAxios, axios);
+
+// router
+router.beforeEach((to, from, next) => {
+  if (to.meta.requiresAuth) {
+    const api = `${process.env.VUE_APP_APIPATH}/api/user/check`;
+    axios
+      .post(api)
+      .then((data) => data.data.success)
+      .then((success) => {
+        if (success) {
+          console.log('signin check success');
+          next();
+        } else {
+          console.log('signin check fail');
+          if (from.name !== 'Login') {
+            router.push('/login');
+          }
+        }
+      });
+  } else {
+    next();
+  }
+});
 
 new Vue({
   router,
