@@ -1,37 +1,49 @@
 <template>
   <div>
-    <div id="nav">
-      <router-link to="/">Home</router-link> | <router-link to="/login">Login</router-link> |
-      <router-link to="/admin/products">BackProducts</router-link>|<button @click="signout">
-        signout
-      </button>
+    <BackNavbar></BackNavbar>
+    <div class="row">
+      <BackSidebar></BackSidebar>
+      <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+        <router-view />
+      </main>
     </div>
-    <div>---</div>
-    <router-view />
-    <div>---</div>
-    <div>footer</div>
   </div>
 </template>
 
 <script>
-export default {
-  methods: {
-    signout() {
-      const vm = this;
-      const api = `${process.env.VUE_APP_APIPATH}/logout`;
+import BackNavbar from '@/components/BackNavbar.vue';
+import BackSidebar from '@/components/BackSidebar.vue';
 
-      this.$http
-        .post(api)
-        .then((data) => data.data.success)
-        .then((success) => {
-          if (success) {
-            console.log('signout success');
-            vm.$router.push('/');
-          } else {
-            console.log('signout fail');
-          }
-        });
-    },
+export default {
+  components: {
+    BackNavbar,
+    BackSidebar,
   },
 };
 </script>
+
+<style lang="scss">
+body {
+  font-size: 0.875rem;
+}
+
+.feather {
+  width: 16px;
+  height: 16px;
+  vertical-align: text-bottom;
+}
+
+/*
+ * Content
+ */
+
+[role='main'] {
+  padding-top: 133px; /* Space for fixed navbar */
+}
+
+@media (min-width: 768px) {
+  [role='main'] {
+    padding-top: 48px; /* Space for fixed navbar */
+  }
+}
+</style>
