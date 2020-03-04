@@ -1,5 +1,5 @@
 <template>
-  <form class="login bg-primary">
+  <form class="login bg-primary" @submit.prevent="signin">
     <div class="login__head py-3">管理員登入</div>
     <div class="container login__body">
       <!-- email -->
@@ -11,10 +11,11 @@
             </label>
           </div>
           <input
-            type="text"
+            type="email"
             class="form-control"
             id="email"
             placeholder="請輸入電子信箱"
+            v-model="user.username"
             required
           />
         </div>
@@ -31,6 +32,7 @@
           class="form-control"
           id="password"
           placeholder="請輸入密碼"
+          v-model="user.password"
           required
         />
       </div>
@@ -50,7 +52,35 @@
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      user: {
+        username: '',
+        password: '',
+      },
+    };
+  },
+  methods: {
+    signin() {
+      const vm = this;
+      const api = `${process.env.VUE_APP_APIPATH}/admin/signin`;
+
+      this.$http
+        .post(api, vm.user)
+        .then((data) => data.data.success)
+        .then((success) => {
+          if (success) {
+            vm.$router.push('/admin/products');
+            console.log('signin success');
+          } else {
+            console.log('signin fail');
+          }
+        });
+    },
+  },
+  created() {},
+};
 </script>
 
 <style scoped lang="scss">
