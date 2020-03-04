@@ -4,31 +4,47 @@
       <!-- 管理 -->
       <h6 class="sidebar-heading  px-3 mt-4 mb-1 text-muted">
         <span>管理工具</span>
-        <a class="d-flex align-items-center text-muted" href="#" aria-label="Add a new report">
+        <a
+          class="d-flex align-items-center text-muted"
+          href="#"
+          aria-label="Add a new report"
+        >
           <span data-feather="plus-circle"></span>
         </a>
       </h6>
       <ul class="nav flex-column">
         <li class="nav-item">
-          <router-link to="/admin/products" class="nav-link">商品列表</router-link>
+          <router-link to="/admin/products" class="nav-link">
+            <font-awesome-icon icon="store" /> 商品列表
+          </router-link>
         </li>
         <li class="nav-item">
-          <router-link to="/admin/orders" class="nav-link">訂單列表</router-link>
+          <router-link to="/admin/orders" class="nav-link"
+            ><font-awesome-icon icon="list-alt" /> 訂單列表</router-link
+          >
         </li>
         <li class="nav-item">
-          <router-link to="/admin/coupons" class="nav-link">酷朋列表</router-link>
+          <router-link to="/admin/coupons" class="nav-link"
+            ><font-awesome-icon icon="ticket-alt" /> 酷朋列表</router-link
+          >
         </li>
       </ul>
       <!-- 模擬 -->
       <h6 class="sidebar-heading  px-3 mt-4 mb-1 text-muted">
         <span>模擬功能</span>
-        <a class="d-flex align-items-center text-muted" href="#" aria-label="Add a new report">
+        <a
+          class="d-flex align-items-center text-muted"
+          href="#"
+          aria-label="Add a new report"
+        >
           <span data-feather="plus-circle"></span>
         </a>
       </h6>
       <ul class="nav flex-column">
         <li class="nav-item">
-          <router-link to="/admin/carts" class="nav-link">購物測試</router-link>
+          <router-link to="/admin/carts" class="nav-link">
+            <font-awesome-icon icon="shopping-cart" /> 購物測試</router-link
+          >
         </li>
       </ul>
     </div>
