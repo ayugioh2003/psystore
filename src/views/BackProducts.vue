@@ -231,16 +231,49 @@ export default {
         .then((data) => data.data.products)
         .then((products) => {
           vm.products = products;
+          console.log(vm);
+          console.log(products);
         });
     },
-    updateProduct() {},
-    uploadFile() {},
+    updateProduct() {
+      const vm = this;
+      const API = `${process.env.VUE_APP_API}/admin/product`;
+
+      this.$http.post(API, { data: vm.tempProduct }).then((data) => {
+        console.log(data);
+        $('#productModal').modal('hide');
+        vm.getProductsA();
+      });
+    },
+    uploadFile() {
+      const vm = this;
+      const uploadedFile = vm.$refs.files.files[0];
+      const API = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMPATH}/admin/upload`;
+      console.log(uploadedFile);
+
+      const formData = new FormData();
+      formData.append('file-to-upload', uploadedFile);
+
+      this.$http
+        .post(API, formData, {
+          headers: {
+            'Content-Type': 'multipart/form-data',
+          },
+        })
+        .then((data) => {
+          console.log(data);
+          vm.$set(vm.tempProduct, 'imageUrl', data.data.imageUrl);
+        });
+    },
     openModal() {
       $('#productModal').modal('show');
     },
   },
   created() {
     console.log('hihi products');
+
+    // const API = `${process.env.VUE_APP_API}/admin/product/-M1ys9UiSPVlRcATxrVt`;
+    // this.$http.delete(API).then((data) => console.log(data));
     this.getProductsA();
   },
 };
