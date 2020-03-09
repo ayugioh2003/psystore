@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="my-3 d-flex">
-      <button class="btn btn-primary ml-auto" @click="openModal">
+      <button class="btn btn-primary ml-auto" @click="openModal(true)">
         新增商品
       </button>
     </div>
@@ -28,7 +28,9 @@
             <span v-else>未啟用</span>
           </td>
           <td>
-            <button class="btn btn-primary">編輯</button>
+            <button class="btn btn-primary" @click="openModal(false, item)">
+              編輯
+            </button>
             <button class="btn btn-danger">刪除</button>
           </td>
         </tr>
@@ -216,6 +218,7 @@ export default {
     return {
       products: [],
       tempProduct: {},
+      isNew: false,
       status: {
         fileUploading: false,
       },
@@ -237,9 +240,18 @@ export default {
     },
     updateProduct() {
       const vm = this;
-      const API = `${process.env.VUE_APP_API}/admin/product`;
+      const getAPI = (isNew) => {
+        if (isNew) {
+          return `${process.env.VUE_APP_API}/admin/product`;
+        }
+        return `${process.env.VUE_APP_API}/admin/product/${vm.tempProduct.id}`;
+      };
+      const getMethod = (isNew) => (isNew ? 'post' : 'put');
 
-      this.$http.post(API, { data: vm.tempProduct }).then((data) => {
+      const API = getAPI(vm.isNew);
+      const method = getMethod(vm.isNew);
+
+      this.$http[method](API, { data: vm.tempProduct }).then((data) => {
         console.log(data);
         $('#productModal').modal('hide');
         vm.getProductsA();
@@ -265,7 +277,17 @@ export default {
           vm.$set(vm.tempProduct, 'imageUrl', data.data.imageUrl);
         });
     },
-    openModal() {
+    openModal(isNew, product) {
+      const vm = this;
+
+      if (isNew) {
+        vm.tempProduct = {};
+        vm.isNew = true;
+      } else {
+        vm.tempProduct = { ...product };
+        vm.isNew = false;
+      }
+
       $('#productModal').modal('show');
     },
   },
