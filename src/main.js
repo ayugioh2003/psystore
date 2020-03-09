@@ -20,8 +20,11 @@ import App from './App.vue';
 import router from './router';
 import store from './store';
 
+import currency from './filters/currency';
+
 Vue.config.productionTip = false;
 
+// font awesome
 library.add(
   faCoffee,
   faKey,
@@ -30,12 +33,22 @@ library.add(
   faListAlt,
   faTicketAlt,
   faShoppingCart,
-); // font awesome
+);
 library.add(faGooglePlus);
 Vue.component('font-awesome-icon', FontAwesomeIcon);
 
 axios.defaults.withCredentials = true; // axios
 Vue.use(VueAxios, axios);
+
+// filter
+Vue.filter('currency', currency);
+
+// NEW VUE INSTANCE
+new Vue({
+  router,
+  store,
+  render: (h) => h(App),
+}).$mount('#app');
 
 // router
 router.beforeEach((to, from, next) => {
@@ -59,9 +72,3 @@ router.beforeEach((to, from, next) => {
     next();
   }
 });
-
-new Vue({
-  router,
-  store,
-  render: (h) => h(App),
-}).$mount('#app');
