@@ -44,7 +44,9 @@
           name="remember"
           id="remember"
         />
-        <label class="custom-control-label text-white" for="remember">記住我</label>
+        <label class="custom-control-label text-white" for="remember"
+          >記住我</label
+        >
       </div>
     </div>
     <button class="btn btn-lg btn-warning w-100 text-primary">登入帳號</button>

@@ -1,5 +1,6 @@
 <template>
   <div>
+    <Loading :active.sync="isLoading"></Loading>
     <div class="my-3 d-flex">
       <button class="btn btn-primary ml-auto" @click="openModal(true)">
         新增商品
@@ -219,6 +220,7 @@ export default {
       products: [],
       tempProduct: {},
       isNew: false,
+      isLoading: false,
       status: {
         fileUploading: false,
       },
@@ -228,12 +230,14 @@ export default {
     getProductsA() {
       const vm = this;
       const API = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMPATH}/admin/products`;
+      vm.isLoading = true;
 
       this.$http
         .get(API)
         .then((data) => data.data.products)
         .then((products) => {
           vm.products = products;
+          vm.isLoading = false;
           console.log(vm);
           console.log(products);
         });

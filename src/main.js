@@ -15,6 +15,8 @@ import { faGooglePlus } from '@fortawesome/free-brands-svg-icons';
 import axios from 'axios';
 import VueAxios from 'vue-axios';
 import 'bootstrap';
+import Loading from 'vue-loading-overlay';
+import 'vue-loading-overlay/dist/vue-loading.css';
 
 import App from './App.vue';
 import router from './router';
@@ -42,6 +44,9 @@ Vue.use(VueAxios, axios);
 
 // filter
 Vue.filter('currency', currency);
+
+// Loading
+Vue.component('Loading', Loading);
 
 // NEW VUE INSTANCE
 new Vue({
