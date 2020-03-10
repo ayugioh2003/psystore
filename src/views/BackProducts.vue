@@ -77,10 +77,11 @@
                 <div class="form-group">
                   <label for="customFile">
                     或 上傳圖片
-                    <i
-                      class="fas fa-spinner fa-spin"
+                    <font-awesome-icon
+                      icon="spinner"
+                      spin
                       v-if="status.fileUploading"
-                    ></i>
+                    />
                   </label>
                   <input
                     type="file"
@@ -266,6 +267,7 @@ export default {
       const uploadedFile = vm.$refs.files.files[0];
       const API = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMPATH}/admin/upload`;
       console.log(uploadedFile);
+      vm.status.fileUploading = true;
 
       const formData = new FormData();
       formData.append('file-to-upload', uploadedFile);
@@ -279,6 +281,7 @@ export default {
         .then((data) => {
           console.log(data);
           vm.$set(vm.tempProduct, 'imageUrl', data.data.imageUrl);
+          vm.status.fileUploading = false;
         });
     },
     openModal(isNew, product) {
