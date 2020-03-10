@@ -39,6 +39,11 @@
         </tr>
       </tbody>
     </table>
+    <!-- 分頁列 -->
+    <Pagination
+      :pagination="pagination"
+      @change-page="getProductsA"
+    ></Pagination>
     <!-- Modal -->
     <div
       class="modal fade"
@@ -260,12 +265,17 @@
 
 <script>
 import $ from 'jquery';
+import Pagination from '@/components/Pagination.vue';
 
 export default {
+  components: {
+    Pagination,
+  },
   data() {
     return {
       products: [],
       tempProduct: {},
+      pagination: {},
       isNew: false,
       isLoading: false,
       status: {
@@ -274,19 +284,17 @@ export default {
     };
   },
   methods: {
-    getProductsA() {
+    getProductsA(page = 1) {
       const vm = this;
-      const API = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMPATH}/admin/products`;
+      const API = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMPATH}/admin/products/?page=${page}`;
       vm.isLoading = true;
 
-      this.$http
-        .get(API)
-        .then((data) => data.data.products)
-        .then((products) => {
-          vm.products = products;
-          vm.isLoading = false;
-          console.log(products);
-        });
+      this.$http.get(API).then((response) => {
+        vm.products = response.data.products;
+        vm.pagination = response.data.pagination;
+        vm.isLoading = false;
+        console.log(vm.products);
+      });
     },
     updateProduct() {
       const vm = this;
