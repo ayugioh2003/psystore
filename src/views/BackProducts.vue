@@ -1,6 +1,5 @@
 <template>
   <div>
-    <Loading :active.sync="isLoading"></Loading>
     <div class="my-3 d-flex">
       <button class="btn btn-primary ml-auto" @click="openModal(true)">
         新增商品
@@ -216,6 +215,7 @@
         </div>
       </div>
     </div>
+    <!-- Del Modal -->
     <DelModal
       itemType="商品"
       :tempItem="tempProduct"
@@ -240,7 +240,6 @@ export default {
       tempProduct: {},
       pagination: {},
       isNew: false,
-      isLoading: false,
       status: {
         fileUploading: false,
       },
@@ -250,12 +249,12 @@ export default {
     getProductsA(page = 1) {
       const vm = this;
       const API = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMPATH}/admin/products/?page=${page}`;
-      vm.isLoading = true;
+      vm.$store.commit('SET_ISLOADING', true);
 
       this.$http.get(API).then((response) => {
         vm.products = response.data.products;
         vm.pagination = response.data.pagination;
-        vm.isLoading = false;
+        vm.$store.commit('SET_ISLOADING', false);
         console.log(vm.products);
       });
     },
@@ -271,11 +270,13 @@ export default {
 
       const API = getAPI(vm.isNew);
       const method = getMethod(vm.isNew);
+      vm.$store.commit('SET_ISLOADING', true);
 
       this.$http[method](API, { data: vm.tempProduct }).then((data) => {
         console.log(data);
         $('#productModal').modal('hide');
         vm.getProductsA();
+        vm.$store.commit('SET_ISLOADING', false);
       });
     },
     uploadFile() {
@@ -321,18 +322,18 @@ export default {
     delProduct() {
       const vm = this;
       const API = `${process.env.VUE_APP_API}/admin/product/${vm.tempProduct.id}`;
-      vm.isLoading = true;
+      vm.$store.commit('SET_ISLOADING', true);
 
       this.$http.delete(API).then((response) => {
         console.log(response);
         $('#delModal').modal('hide');
-        vm.isLoading = false;
+        vm.$store.commit('SET_ISLOADING', false);
         vm.getProductsA();
       });
     },
   },
   created() {
-    console.log('hihi products');
+    console.log('BackProducts page');
 
     // const API = `${process.env.VUE_APP_API}/admin/product/-M1ys9UiSPVlRcATxrVt`;
     // this.$http.delete(API).then((data) => console.log(data));
