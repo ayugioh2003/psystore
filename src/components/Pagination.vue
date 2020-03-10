@@ -1,8 +1,8 @@
 <template>
   <!-- <Pagination
-  :pagination="pagination"
-  @change-page="getProductsA"
-></Pagination> -->
+    :pagination="pagination"
+    @change-page="getProductsA"
+  ></Pagination> -->
   <nav aria-label="Page navigation example">
     <ul class="pagination">
       <li
