@@ -24,6 +24,7 @@ import router from './router';
 import store from './store';
 
 import currency from './filters/currency';
+import date from './filters/date';
 
 Vue.config.productionTip = false;
 
@@ -46,6 +47,7 @@ Vue.use(VueAxios, axios);
 
 // filter
 Vue.filter('currency', currency);
+Vue.filter('date', date);
 
 // Loading
 Vue.component('Loading', Loading);

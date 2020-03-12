@@ -34,6 +34,12 @@ const routes = [
         component: () => import('@/views/BackProducts'),
         meta: { requiresAuth: true },
       },
+      {
+        path: 'orders',
+        name: 'BackOrders',
+        component: () => import('@/views/BackOrders'),
+        meta: { requiresAuth: true },
+      },
     ],
   },
 ];
