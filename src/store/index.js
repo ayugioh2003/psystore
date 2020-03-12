@@ -5,7 +5,7 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    isLoading: true,
+    isLoading: false,
   },
   mutations: {
     SET_ISLOADING(state, status) {

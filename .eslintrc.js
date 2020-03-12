@@ -13,5 +13,6 @@ module.exports = {
     'linebreak-style': 0,
     'allow-named-functions': 0,
     'prefer-arrow-callback': 0,
+    'space-before-function-paren': 0,
   },
 };
