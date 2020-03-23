@@ -48,6 +48,19 @@ const routes = [
       },
     ],
   },
+  {
+    path: '/',
+    // name: 'BackStage',
+    component: () => import('@/components/BackStage'),
+    children: [
+      {
+        path: 'shopping',
+        name: 'BackShopping',
+        component: () => import('@/views/BackShopping'),
+        // meta: { requiresAuth: true },
+      },
+    ],
+  },
 ];
 
 const router = new VueRouter({

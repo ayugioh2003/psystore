@@ -42,7 +42,7 @@
       </h6>
       <ul class="nav flex-column">
         <li class="nav-item">
-          <router-link to="/admin/carts" class="nav-link">
+          <router-link to="/shopping" class="nav-link">
             <font-awesome-icon icon="shopping-cart" /> 購物測試</router-link
           >
         </li>
