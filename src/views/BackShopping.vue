@@ -41,7 +41,12 @@
               </div>
             </div>
             <div class="card-footer d-flex justify-content-between">
-              <button class="btn btn-outline-secondary">查看更多</button>
+              <button
+                class="btn btn-outline-secondary"
+                @click="openProductModal(item)"
+              >
+                查看更多
+              </button>
               <button
                 class="btn btn-outline-danger"
                 @click="addtoCart({ product_id: item.id, qty: 1 })"
@@ -67,10 +72,70 @@
       :pagination="pagination"
       @change-page="getProducts"
     ></Pagination>
+    <!-- 後台測試產品 modal -->
+    <div
+      class="modal fade"
+      id="productModal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-body">
+            <div>
+              <img
+                :src="
+                  product.imageUrl
+                    ? product.imageUrl
+                    : 'https://dummyimage.com/500x300.jpg'
+                "
+                class="img-fluid"
+                alt=""
+              />
+            </div>
+            <div class="mt-3 mb-4">
+              <h5>{{ product.title }}</h5>
+              <div class="text-secondary">{{ product.description }}</div>
+            </div>
+            <div class="d-flex justify-content-between">
+              <div>
+                <del>原價 {{ product.origin_price }}</del>
+              </div>
+              <div class="h5">現在只要 {{ product.price }} 元</div>
+            </div>
+            <div class="form-group">
+              <select class="form-control" v-model="product.qty">
+                <option value="0" disabled selected>請選擇數量</option>
+                <option :value="num" v-for="num in 10" :key="num">
+                  選購 {{ num }} {{ product.unit }}
+                </option>
+              </select>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <span>小計 {{ product.price * product.qty }} 元</span>
+            <button
+              type="button"
+              class="btn btn-primary"
+              @click="addtoCart({ product_id: product.id, qty: product.qty })"
+            >
+              <font-awesome-icon
+                icon="spinner"
+                spin
+                v-if="status.is_cartbtn_adding"
+              />
+              加到購物車
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <!-- 後台測試購物車 -->
     <hr />
-    <h2>測試購物車清單</h2>
+    <h2 class="mb-3">測試購物車清單</h2>
     <table class="table">
       <thead>
         <tr>
@@ -96,6 +161,7 @@
 </template>
 
 <script>
+import $ from 'jquery';
 import { mapGetters, mapActions } from 'vuex';
 import Pagination from '@/components/Pagination.vue';
 
@@ -105,6 +171,7 @@ export default {
   },
   data() {
     return {
+      product: {},
       status: {
         which_cartbtn_adding: NaN,
         is_cartbtn_adding: false,
@@ -130,7 +197,14 @@ export default {
 
       this.$store.dispatch('cart/addtoCart', item).then(() => {
         vm.status.is_cartbtn_adding = false;
+        $('#productModal').modal('hide');
       });
+    },
+    openProductModal(item) {
+      const vm = this;
+      vm.product = { ...item };
+      vm.$set(vm.product, 'qty', 0);
+      $('#productModal').modal('show');
     },
   },
   created() {
