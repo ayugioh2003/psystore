@@ -42,7 +42,12 @@
             </div>
             <div class="card-footer d-flex justify-content-between">
               <button class="btn btn-outline-secondary">查看更多</button>
-              <button class="btn btn-outline-danger">加到購物車</button>
+              <button
+                class="btn btn-outline-danger"
+                @click="addtoCart({ product_id: item.id, qty: 1 })"
+              >
+                加到購物車
+              </button>
             </div>
           </div>
         </div>
@@ -57,6 +62,24 @@
     <!-- 後台測試購物車 -->
     <hr />
     <h2>測試購物車清單</h2>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">品名</th>
+          <th scope="col">數量</th>
+          <th scope="col">單價</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="item in cart.carts" :key="item.id">
+          <th></th>
+          <td>{{ item.product.title }}</td>
+          <td>{{ item.qty }} 個</td>
+          <td>{{ item.total }}</td>
+        </tr>
+      </tbody>
+    </table>
 
     <!-- 後台測試結帳表單 -->
     <h2>測試結帳表單</h2>
@@ -78,15 +101,19 @@ export default {
     ...mapGetters({
       products: 'product/products',
       pagination: 'product/pagination',
+      cart: 'cart/cart',
     }),
   },
   methods: {
     ...mapActions({
       getProducts: 'product/getProducts',
+      getCart: 'cart/getCart',
+      addtoCart: 'cart/addtoCart',
     }),
   },
   created() {
     this.getProducts();
+    this.getCart();
   },
 };
 </script>
