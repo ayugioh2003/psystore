@@ -6,7 +6,7 @@
       <div class="row">
         <div
           class="col-md-6 col-lg-4 mb-3"
-          v-for="item in products"
+          v-for="(item, index) in products"
           :key="item.key"
         >
           <div class="card h-100">
@@ -45,7 +45,16 @@
               <button
                 class="btn btn-outline-danger"
                 @click="addtoCart({ product_id: item.id, qty: 1 })"
+                @click.prevent="status.which_cartbtn_adding = index"
               >
+                <font-awesome-icon
+                  icon="spinner"
+                  spin
+                  v-if="
+                    status.is_cartbtn_adding &&
+                      status.which_cartbtn_adding == index
+                  "
+                />
                 加到購物車
               </button>
             </div>
@@ -95,7 +104,12 @@ export default {
     Pagination,
   },
   data() {
-    return {};
+    return {
+      status: {
+        which_cartbtn_adding: NaN,
+        is_cartbtn_adding: false,
+      },
+    };
   },
   computed: {
     ...mapGetters({
@@ -110,6 +124,14 @@ export default {
       getCart: 'cart/getCart',
       addtoCart: 'cart/addtoCart',
     }),
+    addtoCart(item) {
+      const vm = this;
+      vm.status.is_cartbtn_adding = true;
+
+      this.$store.dispatch('cart/addtoCart', item).then(() => {
+        vm.status.is_cartbtn_adding = false;
+      });
+    },
   },
   created() {
     this.getProducts();
