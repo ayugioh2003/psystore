@@ -1,12 +1,18 @@
 <template>
   <div id="app">
+    <AlertMessage></AlertMessage>
     <Loading :active.sync="isLoading"></Loading>
     <router-view />
   </div>
 </template>
 
 <script>
+import AlertMessage from '@/components/AlertMessage.vue';
+
 export default {
+  components: {
+    AlertMessage,
+  },
   computed: {
     isLoading() {
       return this.$store.state.isLoading;

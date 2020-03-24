@@ -4,6 +4,7 @@ import Vuex from 'vuex';
 
 import product from '@/store/modules/product';
 import cart from '@/store/modules/cart';
+import alertMessage from '@/store/modules/alertMessage';
 
 Vue.use(Vuex);
 
@@ -20,5 +21,6 @@ export default new Vuex.Store({
   modules: {
     product,
     cart,
+    alertMessage,
   },
 });

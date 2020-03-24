@@ -195,9 +195,15 @@ export default {
       const vm = this;
       vm.status.is_cartbtn_adding = true;
 
-      this.$store.dispatch('cart/addtoCart', item).then(() => {
+      this.$store.dispatch('cart/addtoCart', item).then((res) => {
         vm.status.is_cartbtn_adding = false;
         $('#productModal').modal('hide');
+
+        console.log(res.data.message);
+        this.$store.dispatch('alertMessage/updateMessage', {
+          message: `${res.data.message}`,
+          status: res.data.success ? 'success' : 'warning',
+        });
       });
     },
     openProductModal(item) {

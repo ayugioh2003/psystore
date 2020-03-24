@@ -27,8 +27,9 @@ export default {
 
       return axios.post(API, { data: payload }).then((res) => {
         console.log(res);
-        console.log('提示: 已加入購物車');
+
         context.dispatch('getCart');
+        return res;
       });
     },
   },
