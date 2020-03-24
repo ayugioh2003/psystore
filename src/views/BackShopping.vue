@@ -41,17 +41,24 @@
 </template>
 
 <script>
+import { mapGetters, mapActions } from 'vuex';
+
 export default {
-  computed: {
-    products() {
-      return this.$store.state.products;
-    },
+  data() {
+    return {};
   },
-  methods: {},
+  computed: {
+    ...mapGetters({
+      products: 'product/products',
+    }),
+  },
+  methods: {
+    ...mapActions({
+      getProducts: 'product/getProducts',
+    }),
+  },
   created() {
-    this.$store.dispatch('getProducts', 1).then(() => {
-      console.log(this.$store.state.products);
-    });
+    this.getProducts();
   },
 };
 </script>
