@@ -48,6 +48,11 @@
         </div>
       </div>
     </div>
+    <!-- 後台測試產品分頁列 -->
+    <Pagination
+      :pagination="pagination"
+      @change-page="getProducts"
+    ></Pagination>
 
     <!-- 後台測試購物車 -->
     <hr />
@@ -60,14 +65,19 @@
 
 <script>
 import { mapGetters, mapActions } from 'vuex';
+import Pagination from '@/components/Pagination.vue';
 
 export default {
+  components: {
+    Pagination,
+  },
   data() {
     return {};
   },
   computed: {
     ...mapGetters({
       products: 'product/products',
+      pagination: 'product/pagination',
     }),
   },
   methods: {
