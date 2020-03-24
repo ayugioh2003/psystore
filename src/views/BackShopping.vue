@@ -9,22 +9,40 @@
           v-for="item in products"
           :key="item.key"
         >
-          <div class="card">
+          <div class="card h-100">
             <img
               class="card-img-top"
-              src="http://fakeimg.pl/500x300/#393?font=lobster"
+              :src="
+                item.imageUrl
+                  ? item.imageUrl
+                  : 'http://fakeimg.pl/500x300/#393?font=lobster'
+              "
               alt="Card image cap"
             />
             <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">
-                This is a wider card with supporting text below as a natural
-                lead-in to additional content. This content is a little bit
-                longer.
+              <div class="d-flex justify-content-between align-item-start">
+                <h5 class="card-title">{{ item.title }}</h5>
+                <div>
+                  <span class="badge badge-pill badge-info">
+                    {{ item.category }}
+                  </span>
+                </div>
+              </div>
+              <p class="card-text text-secondary">
+                {{ item.description }}
               </p>
+              <div class="d-flex justify-content-between">
+                <p class="card-text text-decoration-line-through">
+                  <del>原價 {{ item.origin_price }}</del>
+                </p>
+                <p class="card-text h5 text-right">
+                  限時特價 {{ item.price }} 元
+                </p>
+              </div>
             </div>
-            <div class="card-footer">
-              <small class="text-muted">Last updated 3 mins ago</small>
+            <div class="card-footer d-flex justify-content-between">
+              <button class="btn btn-outline-secondary">查看更多</button>
+              <button class="btn btn-outline-danger">加到購物車</button>
             </div>
           </div>
         </div>
