@@ -19,6 +19,9 @@ export default new Vuex.Store({
     },
   },
   actions: {
+    setIsLoading(context, status) {
+      context.commit('SET_ISLOADING', status);
+    },
     addCouponCode(context, code) {
       const API = `${process.env.VUE_APP_API}/coupon`;
       context.commit('SET_ISLOADING', true);

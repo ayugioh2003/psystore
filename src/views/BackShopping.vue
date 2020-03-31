@@ -136,7 +136,7 @@
     <!-- 後台測試購物車 -->
     <hr />
     <h2 class="mb-3">測試購物車清單</h2>
-    <div class="row">
+    <div class="row mb-3">
       <div class="col-8 mx-auto">
         <table class="table">
           <thead>
@@ -157,7 +157,12 @@
                   <font-awesome-icon :icon="['far', 'trash-alt']" />
                 </button>
               </th>
-              <td>{{ item.product.title }}</td>
+              <td>
+                <div>{{ item.product.title }}</div>
+                <div class="text-success" v-if="cart.total > cart.final_total">
+                  已套用優惠券
+                </div>
+              </td>
               <td>{{ item.qty }} 個</td>
               <td class="text-right">{{ item.total }}</td>
             </tr>
@@ -192,7 +197,63 @@
     </div>
 
     <!-- 後台測試結帳表單 -->
-    <h2>測試結帳表單</h2>
+    <hr />
+    <h2 class="mb-3">測試結帳表單</h2>
+    <div class="row mb-3">
+      <div class="col-8 mx-auto">
+        <form>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input
+              type="email"
+              class="form-control"
+              id="email"
+              v-model="form.user.email"
+            />
+          </div>
+          <div class="form-group">
+            <label for="name">收件人姓名</label>
+            <input
+              type="text"
+              class="form-control"
+              id="name"
+              v-model="form.user.name"
+            />
+          </div>
+          <div class="form-group">
+            <label for="tel">收件人電話</label>
+            <input
+              type="tel"
+              class="form-control"
+              id="tel"
+              v-model="form.user.tel"
+            />
+          </div>
+          <div class="form-group">
+            <label for="address">收件人地址</label>
+            <input
+              type="text"
+              class="form-control"
+              id="address"
+              v-model="form.user.address"
+            />
+          </div>
+          <div class="form-group">
+            <label for="message">留言</label>
+            <textarea
+              class="form-control"
+              id="message"
+              rows="3"
+              v-model="form.message"
+            ></textarea>
+          </div>
+
+          <div class="text-right">
+            <button type="submit" class="btn btn-primary">送出訂單</button>
+          </div>
+        </form>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -212,6 +273,15 @@ export default {
       status: {
         which_cartbtn_adding: NaN,
         is_cartbtn_adding: false,
+      },
+      form: {
+        user: {
+          name: '',
+          email: '',
+          tel: '',
+          address: '',
+        },
+        message: '',
       },
     };
   },
