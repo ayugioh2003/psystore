@@ -201,57 +201,78 @@
     <h2 class="mb-3">測試結帳表單</h2>
     <div class="row mb-3">
       <div class="col-8 mx-auto">
-        <form>
-          <div class="form-group">
-            <label for="email">Email</label>
-            <input
-              type="email"
-              class="form-control"
-              id="email"
-              v-model="form.user.email"
-            />
-          </div>
-          <div class="form-group">
-            <label for="name">收件人姓名</label>
-            <input
-              type="text"
-              class="form-control"
-              id="name"
-              v-model="form.user.name"
-            />
-          </div>
-          <div class="form-group">
-            <label for="tel">收件人電話</label>
-            <input
-              type="tel"
-              class="form-control"
-              id="tel"
-              v-model="form.user.tel"
-            />
-          </div>
-          <div class="form-group">
-            <label for="address">收件人地址</label>
-            <input
-              type="text"
-              class="form-control"
-              id="address"
-              v-model="form.user.address"
-            />
-          </div>
-          <div class="form-group">
-            <label for="message">留言</label>
-            <textarea
-              class="form-control"
-              id="message"
-              rows="3"
-              v-model="form.message"
-            ></textarea>
-          </div>
+        <ValidationObserver v-slot="{ invalid }">
+          <form @submit.prevent="onSubmit">
+            <div class="form-group">
+              <validation-provider rules="required" v-slot="{ errors }">
+                <label for="email">Email</label>
+                <input
+                  name="Email"
+                  type="email"
+                  class="form-control"
+                  id="email"
+                  v-model="form.user.email"
+                />
+                <span class="text-danger">{{ errors[0] }}</span>
+              </validation-provider>
+            </div>
+            <div class="form-group">
+              <validation-provider rules="required" v-slot="{ errors }">
+                <label for="name">收件人姓名</label>
+                <input
+                  name="收件人姓名"
+                  type="text"
+                  class="form-control"
+                  id="name"
+                  v-model="form.user.name"
+                />
+                <span class="text-danger">{{ errors[0] }}</span>
+              </validation-provider>
+            </div>
+            <div class="form-group">
+              <validation-provider rules="required" v-slot="{ errors }">
+                <label for="tel">收件人電話</label>
+                <input
+                  name="收件人電話"
+                  type="tel"
+                  class="form-control"
+                  id="tel"
+                  v-model="form.user.tel"
+                />
 
-          <div class="text-right">
-            <button type="submit" class="btn btn-primary">送出訂單</button>
-          </div>
-        </form>
+                <span class="text-danger">{{ errors[0] }}</span>
+              </validation-provider>
+            </div>
+            <div class="form-group">
+              <validation-provider rules="required" v-slot="{ errors }">
+                <label for="address">收件人地址</label>
+                <input
+                  name="收件人地址"
+                  type="text"
+                  class="form-control"
+                  id="address"
+                  v-model="form.user.address"
+                />
+                <span class="text-danger">{{ errors[0] }}</span>
+              </validation-provider>
+            </div>
+            <div class="form-group">
+              <label for="message">留言</label>
+              <textarea
+                class="form-control"
+                id="message"
+                rows="3"
+                v-model="form.message"
+              ></textarea>
+            </div>
+
+            <div class="text-right">
+              <button type="submit" class="btn btn-primary" :disabled="invalid">
+                送出訂單
+              </button>
+            </div>
+          </form>
+        </ValidationObserver>
       </div>
     </div>
   </div>
@@ -316,6 +337,9 @@ export default {
       vm.product = { ...item };
       vm.$set(vm.product, 'qty', 0);
       $('#productModal').modal('show');
+    },
+    onSubmit() {
+      console.log('送出表單');
     },
   },
   created() {

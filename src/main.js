@@ -20,6 +20,15 @@ import 'bootstrap';
 import Loading from 'vue-loading-overlay';
 import 'vue-loading-overlay/dist/vue-loading.css';
 
+import {
+  ValidationObserver,
+  ValidationProvider,
+  extend,
+  localize,
+} from 'vee-validate';
+import * as rules from 'vee-validate/dist/rules';
+import TW from 'vee-validate/dist/locale/zh_TW.json';
+
 import App from './App.vue';
 import router from './router';
 import store from './store';
@@ -46,6 +55,16 @@ Vue.component('font-awesome-icon', FontAwesomeIcon);
 
 axios.defaults.withCredentials = true; // axios
 Vue.use(VueAxios, axios);
+
+// vee-validate
+Object.keys(rules).forEach((rule) => {
+  extend(rule, rules[rule]);
+});
+
+localize('zh_TW', TW);
+
+Vue.component('ValidationObserver', ValidationObserver);
+Vue.component('ValidationProvider', ValidationProvider);
 
 // filter
 Vue.filter('currency', currency);
