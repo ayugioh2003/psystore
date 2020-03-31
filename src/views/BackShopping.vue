@@ -141,7 +141,7 @@
         <table class="table">
           <thead>
             <tr>
-              <th scope="col" width="50">#</th>
+              <th scope="col" width="100"></th>
               <th scope="col">品名</th>
               <th scope="col">數量</th>
               <th scope="col">單價</th>
@@ -151,7 +151,7 @@
             <tr v-for="item in cart.carts" :key="item.id">
               <th>
                 <button
-                  class="btn btn-outline-danger"
+                  class="btn btn-outline-danger btn-sm"
                   @click="removeCartItem(item.id)"
                 >
                   <font-awesome-icon :icon="['far', 'trash-alt']" />
@@ -159,10 +159,35 @@
               </th>
               <td>{{ item.product.title }}</td>
               <td>{{ item.qty }} 個</td>
-              <td>{{ item.total }}</td>
+              <td class="text-right">{{ item.total }}</td>
+            </tr>
+            <tr :class="{ 'text-secondary': cart.total > cart.final_total }">
+              <td colspan="3" class="text-right ">總計</td>
+              <td colspan="1" class="text-right">{{ cart.total }}</td>
+            </tr>
+            <tr v-if="cart.total > cart.final_total">
+              <td colspan="3" class="text-right">折扣價</td>
+              <td colspan="1" class="text-right">{{ cart.final_total }}</td>
             </tr>
           </tbody>
         </table>
+        <div class="input-group mb-3">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Insert coupon"
+            v-model="couponCode"
+          />
+          <div class="input-group-append">
+            <button
+              class="btn btn-outline-primary"
+              type="button"
+              @click="addCouponCode(couponCode)"
+            >
+              套用優惠碼
+            </button>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -183,6 +208,7 @@ export default {
   data() {
     return {
       product: {},
+      couponCode: '',
       status: {
         which_cartbtn_adding: NaN,
         is_cartbtn_adding: false,
@@ -197,6 +223,7 @@ export default {
     // }),
   },
   methods: {
+    ...mapActions(['addCouponCode']),
     ...mapActions('product', ['getProducts']),
     ...mapActions('cart', ['getCart', 'addtoCart', 'removeCartItem']),
     addtoCart(item) {

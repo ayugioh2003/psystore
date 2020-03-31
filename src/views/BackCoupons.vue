@@ -10,6 +10,7 @@
       <thead>
         <tr>
           <th scope="col">酷朋名稱</th>
+          <th scope="col">code</th>
           <th scope="col">酷朋折扣</th>
           <th scope="col">到期日期</th>
           <th scope="col">是否啟用</th>
@@ -19,6 +20,7 @@
       <tbody>
         <tr v-for="coupon in coupons" :key="coupon.id">
           <td>{{ coupon.title }}</td>
+          <td>{{ coupon.code }}</td>
           <td>{{ coupon.percent }}</td>
           <th>{{ coupon.due_date | date }}</th>
           <td :class="{ 'text-light': !coupon.is_enabled }">
@@ -72,6 +74,17 @@
               />
             </div>
             <div class="form-group">
+              <label for="title">酷朋code</label>
+              <input
+                type="text"
+                class="form-control"
+                id="title"
+                placeholder="輸入酷朋code"
+                v-model="tempCoupon.code"
+              />
+            </div>
+
+            <div class="form-group">
               <label for="percent">酷朋折扣</label>
               <input
                 type="number"
@@ -95,8 +108,10 @@
               <input
                 class="form-check-input"
                 type="checkbox"
-                v-model="tempCoupon.is_enbaled"
+                v-model="tempCoupon.is_enabled"
                 id="is_enabled"
+                :true-value="1"
+                :false-value="0"
               />
               <label class="form-check-label" for="is_enabled">
                 是否啟用
@@ -162,7 +177,7 @@ export default {
       vm.$store.commit('SET_ISLOADING', true);
 
       vm.$http.get(API).then((res) => {
-        console.log(res);
+        console.log('取得優惠券', res);
 
         vm.coupons = res.data.coupons;
         vm.pagination = res.data.pagination;
@@ -196,7 +211,7 @@ export default {
 
       vm.$store.commit('SET_ISLOADING', true);
       vm.$http[method](api, { data: vm.tempCoupon }).then((res) => {
-        console.log(res);
+        console.log('更新優惠券結果', res);
 
         vm.$store.commit('SET_ISLOADING', false);
         vm.getCoupons();
@@ -214,7 +229,7 @@ export default {
       vm.$store.commit('SET_ISLOADING', true);
 
       vm.$http.delete(API).then((res) => {
-        console.log(res);
+        console.log('刪除優惠券結果', res);
         $('#delModal').modal('hide');
         vm.getCoupons();
         vm.$store.commit('SET_ISLOADING', false);
