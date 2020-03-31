@@ -154,7 +154,7 @@
                   class="btn btn-outline-danger"
                   @click="removeCartItem(item.id)"
                 >
-                  <font-awesome-icon icon="trash-alt" />
+                  <font-awesome-icon :icon="['far', 'trash-alt']" />
                 </button>
               </th>
               <td>{{ item.product.title }}</td>

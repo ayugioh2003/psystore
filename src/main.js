@@ -10,8 +10,8 @@ import {
   faTicketAlt,
   faShoppingCart,
   faSpinner,
-  faTrashAlt,
 } from '@fortawesome/free-solid-svg-icons';
+import { faTrashAlt } from '@fortawesome/free-regular-svg-icons';
 import { faGooglePlus } from '@fortawesome/free-brands-svg-icons';
 
 import axios from 'axios';
