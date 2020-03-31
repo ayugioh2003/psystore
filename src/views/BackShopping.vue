@@ -190,19 +190,15 @@ export default {
     };
   },
   computed: {
-    ...mapGetters({
-      products: 'product/products',
-      pagination: 'product/pagination',
-      cart: 'cart/cart',
-    }),
+    ...mapGetters('product', ['products', 'pagination']),
+    ...mapGetters('cart', ['cart']),
+    // ...mapGetters({
+    //   cart: 'cart/cart',
+    // }),
   },
   methods: {
-    ...mapActions({
-      getProducts: 'product/getProducts',
-      getCart: 'cart/getCart',
-      addtoCart: 'cart/addtoCart',
-      removeCartItem: 'cart/removeCartItem',
-    }),
+    ...mapActions('product', ['getProducts']),
+    ...mapActions('cart', ['getCart', 'addtoCart', 'removeCartItem']),
     addtoCart(item) {
       const vm = this;
       vm.status.is_cartbtn_adding = true;
