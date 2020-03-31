@@ -32,15 +32,15 @@
           </tr>
           <tr>
             <th scope="row">姓名</th>
-            <td>{{ order.user.name}}</td>
+            <td>{{ order.user.name }}</td>
           </tr>
           <tr>
             <th scope="row">收件人電話</th>
-            <td>{{ order.user.tel}}</td>
+            <td>{{ order.user.tel }}</td>
           </tr>
           <tr>
             <th scope="row">收件人地址</th>
-            <td>{{ order.user.address}}</td>
+            <td>{{ order.user.address }}</td>
           </tr>
           <tr>
             <th scope="row">付款狀態</th>
@@ -53,7 +53,13 @@
       </table>
       <!-- 付款按鈕 -->
       <div class="text-right">
-        <button class="btn btn-danger btn-sm">確認付款去</button>
+        <button
+          class="btn btn-danger btn-sm"
+          v-if="!order.is_paid"
+          @click="payOrder($route.params.id)"
+        >
+          確認付款去
+        </button>
       </div>
     </div>
   </div>
@@ -67,7 +73,7 @@ export default {
     ...mapGetters('order', ['order']),
   },
   methods: {
-    ...mapActions('order', ['getOrder']),
+    ...mapActions('order', ['getOrder', 'payOrder']),
   },
   created() {
     this.getOrder(this.$route.params.id);
