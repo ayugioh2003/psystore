@@ -317,6 +317,7 @@ export default {
     ...mapActions(['addCouponCode']),
     ...mapActions('product', ['getProducts']),
     ...mapActions('cart', ['getCart', 'addtoCart', 'removeCartItem']),
+    ...mapActions('order', ['createOrder']),
     addtoCart(item) {
       const vm = this;
       vm.status.is_cartbtn_adding = true;
@@ -339,6 +340,7 @@ export default {
       $('#productModal').modal('show');
     },
     onSubmit() {
+      this.createOrder(this.form);
       console.log('送出表單');
     },
   },
