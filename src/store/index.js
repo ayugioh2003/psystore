@@ -31,6 +31,10 @@ export default new Vuex.Store({
         console.log('添加酷朋結果', res);
         context.dispatch('cart/getCart', null, { root: true });
         context.commit('SET_ISLOADING', false);
+        context.dispatch('alertMessage/updateMessage', {
+          message: res.data.message,
+          status: res.data.success ? 'success' : 'warning',
+        });
         return res;
       });
     },
