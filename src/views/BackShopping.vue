@@ -136,24 +136,35 @@
     <!-- 後台測試購物車 -->
     <hr />
     <h2 class="mb-3">測試購物車清單</h2>
-    <table class="table">
-      <thead>
-        <tr>
-          <th scope="col">#</th>
-          <th scope="col">品名</th>
-          <th scope="col">數量</th>
-          <th scope="col">單價</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr v-for="item in cart.carts" :key="item.id">
-          <th></th>
-          <td>{{ item.product.title }}</td>
-          <td>{{ item.qty }} 個</td>
-          <td>{{ item.total }}</td>
-        </tr>
-      </tbody>
-    </table>
+    <div class="row">
+      <div class="col-8 mx-auto">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col" width="50">#</th>
+              <th scope="col">品名</th>
+              <th scope="col">數量</th>
+              <th scope="col">單價</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-for="item in cart.carts" :key="item.id">
+              <th>
+                <button
+                  class="btn btn-outline-danger"
+                  @click="removeCartItem(item.id)"
+                >
+                  <font-awesome-icon icon="trash-alt" />
+                </button>
+              </th>
+              <td>{{ item.product.title }}</td>
+              <td>{{ item.qty }} 個</td>
+              <td>{{ item.total }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
 
     <!-- 後台測試結帳表單 -->
     <h2>測試結帳表單</h2>
@@ -190,6 +201,7 @@ export default {
       getProducts: 'product/getProducts',
       getCart: 'cart/getCart',
       addtoCart: 'cart/addtoCart',
+      removeCartItem: 'cart/removeCartItem',
     }),
     addtoCart(item) {
       const vm = this;

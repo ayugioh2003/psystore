@@ -10,6 +10,7 @@ import {
   faTicketAlt,
   faShoppingCart,
   faSpinner,
+  faTrashAlt,
 } from '@fortawesome/free-solid-svg-icons';
 import { faGooglePlus } from '@fortawesome/free-brands-svg-icons';
 
@@ -38,6 +39,7 @@ library.add(
   faTicketAlt,
   faShoppingCart,
   faSpinner,
+  faTrashAlt,
 );
 library.add(faGooglePlus);
 Vue.component('font-awesome-icon', FontAwesomeIcon);

@@ -42,10 +42,10 @@ export default {
     //   message: '是在哈佛2',
     //   status: 'danger',
     // });
-    this.$store.dispatch('alertMessage/updateMessage', {
-      message: '是在哈哈哈佛',
-      status: 'primary',
-    });
+    // this.$store.dispatch('alertMessage/updateMessage', {
+    //   message: '是在哈哈哈佛',
+    //   status: 'primary',
+    // });
   },
 };
 </script>
