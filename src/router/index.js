@@ -59,6 +59,12 @@ const routes = [
         component: () => import('@/views/BackShopping'),
         // meta: { requiresAuth: true },
       },
+      {
+        path: 'back_order_checkout/:id',
+        name: 'BackOrderCheckout',
+        component: () => import('@/views/BackOrderCheckout'),
+        // meta: { requiresAuth: true },
+      },
     ],
   },
 ];

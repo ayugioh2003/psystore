@@ -314,7 +314,7 @@ export default {
     // }),
   },
   methods: {
-    ...mapActions(['addCouponCode']),
+    ...mapActions(['addCouponCode', 'setIsLoading']),
     ...mapActions('product', ['getProducts']),
     ...mapActions('cart', ['getCart', 'addtoCart', 'removeCartItem']),
     ...mapActions('order', ['createOrder']),
@@ -340,8 +340,11 @@ export default {
       $('#productModal').modal('show');
     },
     onSubmit() {
-      this.createOrder(this.form);
-      console.log('送出表單');
+      this.setIsLoading(true);
+      this.createOrder(this.form).then((res) => {
+        this.setIsLoading(false);
+        this.$router.push(`/back_order_checkout/${res.data.orderId}`);
+      });
     },
   },
   created() {
