@@ -1,5 +1,5 @@
 <template>
-  <form class="login bg-primary" @submit.prevent="signin">
+  <form class="login bg-primary my-0 my-md-5" @submit.prevent="signin">
     <div class="login__head py-3">管理員登入</div>
     <div class="container login__body">
       <!-- email -->
@@ -87,7 +87,7 @@ export default {
 
 <style scoped lang="scss">
 .login {
-  width: 400px;
+  width: 600px;
   margin: 0 auto;
 
   @include media-breakpoint-down(sm) {
