@@ -51,7 +51,7 @@
   </nav>
 </template>
 
-<style lang="scss">
+<style lang="scss" scoped>
 /*
  * Sidebar
  */

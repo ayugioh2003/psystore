@@ -10,9 +10,11 @@ import {
   faTicketAlt,
   faShoppingCart,
   faSpinner,
+  faArrowRight,
+  faEnvelope,
 } from '@fortawesome/free-solid-svg-icons';
 import { faTrashAlt } from '@fortawesome/free-regular-svg-icons';
-import { faGooglePlus } from '@fortawesome/free-brands-svg-icons';
+import { faGooglePlus, faInstagramSquare, faFacebookSquare } from '@fortawesome/free-brands-svg-icons';
 
 import axios from 'axios';
 import VueAxios from 'vue-axios';
@@ -49,8 +51,10 @@ library.add(
   faShoppingCart,
   faSpinner,
   faTrashAlt,
+  faArrowRight,
+  faEnvelope,
 );
-library.add(faGooglePlus);
+library.add(faGooglePlus, faInstagramSquare, faFacebookSquare);
 Vue.component('font-awesome-icon', FontAwesomeIcon);
 
 axios.defaults.withCredentials = true; // axios
