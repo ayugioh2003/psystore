@@ -12,9 +12,14 @@ import {
   faSpinner,
   faArrowRight,
   faEnvelope,
+  faAngleDoubleDown,
 } from '@fortawesome/free-solid-svg-icons';
 import { faTrashAlt } from '@fortawesome/free-regular-svg-icons';
-import { faGooglePlus, faInstagramSquare, faFacebookSquare } from '@fortawesome/free-brands-svg-icons';
+import {
+  faGooglePlus,
+  faInstagramSquare,
+  faFacebookSquare,
+} from '@fortawesome/free-brands-svg-icons';
 
 import axios from 'axios';
 import VueAxios from 'vue-axios';
@@ -53,6 +58,7 @@ library.add(
   faTrashAlt,
   faArrowRight,
   faEnvelope,
+  faAngleDoubleDown,
 );
 library.add(faGooglePlus, faInstagramSquare, faFacebookSquare);
 Vue.component('font-awesome-icon', FontAwesomeIcon);
