@@ -12,14 +12,14 @@
         :style="{
           zIndex: -1,
           backgroundColor: 'red',
-          filter: 'grayscale(0%) blur(10px)',
+          filter: 'grayscale(10%)',
           backgroundImage:
             'url(https://images.unsplash.com/photo-1449495169669-7b118f960251?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1351&q=80)',
         }"
       ></div>
-      <div class="text-info text-center">
+      <div class="content text-info text-center">
         <p class="h1">Get Your Mind, and Heart Back</p>
-        <p>用心理學工具鍛鍊心智、修復心靈</p>
+        <p class="h4">用心理學鍛鍊心智、修復心靈</p>
       </div>
       <div
         class="down-arrow position-absolute p-5"
@@ -99,7 +99,6 @@
     </div>
 
     <!-- CTA -->
-
   </div>
 </template>
 
@@ -142,20 +141,26 @@ body {
 }
 
 // Banner
-.down-arrow {
-  animation-name: arrow-moving;
-  animation-duration: 2s;
-  animation-iteration-count: infinite;
-}
-@keyframes arrow-moving {
-  0% {
-    transform: translateY(0);
+.banner {
+  .content {
+    padding: 1rem;
+    background-color: rgba($color: #000000, $alpha: 0.6);
   }
-  50% {
-    transform: translateY(20px);
+  .down-arrow {
+    animation-name: arrow-moving;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
   }
-  100% {
-    transform: translateY(0);
+  @keyframes arrow-moving {
+    0% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(20px);
+    }
+    100% {
+      transform: translateY(0);
+    }
   }
 }
 
