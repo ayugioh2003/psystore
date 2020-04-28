@@ -30,5 +30,16 @@ export default {
         context.commit('SET_ISLOADING', false, { root: true });
       });
     },
+    getProductsAll(context) {
+      const API = `${process.env.VUE_APP_API}/products/all`;
+      context.commit('SET_ISLOADING', true, { root: true });
+
+      return axios.get(API).then((res) => {
+        console.log(res);
+        context.commit('GET_PRODUCTS', res.data.products);
+        // context.commit('GET_PAGINATION', res.data.pagination);
+        context.commit('SET_ISLOADING', false, { root: true });
+      });
+    },
   },
 };

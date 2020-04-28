@@ -16,9 +16,15 @@ const routes = [
         component: () => import('@/views/Home'),
       },
       {
-        path: '/products',
-        name: 'Products',
-        component: () => import('@/views/Products'),
+        path: '/product',
+        name: 'ProductList',
+        component: () => import('@/views/ProductList'),
+      },
+      {
+        path: '/product/:id',
+        name: 'productSingle',
+        component: () => import('@/views/Product'),
+        // meta: { requiresAuth: true },
       },
       {
         path: 'login',
