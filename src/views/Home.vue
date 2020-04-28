@@ -22,7 +22,7 @@
         <p class="h4">用心理學鍛鍊心智、修復心靈</p>
       </div>
       <div
-        class="down-arrow position-absolute p-5"
+        class="down-arrow position-absolute text-info p-5"
         style="bottom: 10%; cursor: pointer;"
         @click="scrollDown"
       >
