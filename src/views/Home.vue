@@ -134,10 +134,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-html,
-body {
-  scroll-behavior: smooth;
-}
+
 
 // Banner
 .banner {

@@ -22,7 +22,7 @@ const routes = [
       },
       {
         path: '/product/:id',
-        name: 'productSingle',
+        name: 'productDetail',
         component: () => import('@/views/Product'),
         // meta: { requiresAuth: true },
       },

@@ -4,10 +4,10 @@
     <div class="banner bg-cover"></div>
 
     <!-- Product list -->
-    <div class="container pt-5">
+    <div class="container mt-5">
       <div class="row ">
         <!-- Product Menu -->
-        <div class="col-3 ">
+        <div class="col-md-3 mb-5">
           <div class="list-group sticky-top">
             <button
               v-for="category in categories"
@@ -27,8 +27,8 @@
         </div>
 
         <!-- Porduct sub list -->
-        <div class="col-9">
-          <div class="h2 pb-3">所有商品</div>
+        <div class="col-md-9">
+          <div class="h2 pb-3">{{ status.category_now }}</div>
           <div class="row">
             <!-- product cards -->
             <div
@@ -68,7 +68,7 @@
                 <div class="card-footer d-flex justify-content-between">
                   <button
                     class="btn btn-outline-secondary"
-                    @click="openProductModal(item)"
+                    @click="openProductDetail(item)"
                   >
                     查看更多
                   </button>
@@ -118,7 +118,7 @@ export default {
         return this.products;
       }
 
-      const array = this.products.filter(function(product) {
+      const array = this.products.filter(function ifCategory(product) {
         return product.category === vm.status.category_now;
       });
       return array;
@@ -134,6 +134,12 @@ export default {
   },
   methods: {
     ...mapActions('product', ['getProducts', 'getProductsAll']),
+    openProductDetail(item) {
+      this.$router.push({
+        name: 'productDetail',
+        params: { id: item.id },
+      });
+    },
   },
   mounted() {
     this.getProductsAll();

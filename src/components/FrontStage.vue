@@ -109,3 +109,10 @@
     <!-- footer END -->
   </div>
 </template>
+
+<style lang="scss">
+html,
+body {
+  scroll-behavior: smooth;
+}
+</style>
