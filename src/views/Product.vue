@@ -5,6 +5,7 @@
 
     <!-- Product detail -->
     <div class="container mt-5 mb-5">
+      <!-- Product detail -->
       <div class="row">
         <!-- Product picture -->
         <div class="col-md-5 ">
@@ -17,7 +18,7 @@
         <!-- Product data -->
         <div class="col-md-7">
           <!-- title -->
-          <div class="d-flex product-head bg-light p-3 mb-3">
+          <div class="d-flex product-head bg-light p-3 mb-3 mt-3 mt-md-0">
             <div class="mr-3">
               <span class="badge badge-pill badge-info">
                 {{ product.category }}
@@ -48,7 +49,7 @@
               type="button"
               class="btn btn-primary w-100"
               :class="{ disabled: productQty === 0 }"
-              @click="addtoCart({ product_id: product.id, qty: productQty })"
+              @click="addToCart({ product_id: product.id, qty: productQty })"
             >
               <font-awesome-icon
                 icon="spinner"
@@ -64,7 +65,7 @@
       <div class="row" v-if="product.description && product.content">
         <div class="col-12"><hr /></div>
         <div class="col-md-8 mx-auto">
-          <div v-if="product.description">
+          <div v-if="product.description" class="mb-4">
             <h5>產品描述</h5>
             <p class="card-text ">
               {{ product.description }}
@@ -102,6 +103,21 @@ export default {
   },
   methods: {
     ...mapActions('product', ['getProduct']),
+    addToCart(item) {
+      const vm = this;
+      this.status.is_cartbtn_adding = true;
+
+      vm.$store.dispatch('cart/addtoCart', item).then((res) => {
+        vm.status.is_cartbtn_adding = false;
+        console.log('message', res.data.message);
+
+        this.$store.dispatch('alertMessage/updateMessage', {
+          message: `${res.data.message}`,
+          status: res.data.success ? 'success' : 'warning',
+        });
+      });
+    },
+    // ...mapActions('cart', ['addtoCart']),
   },
   mounted() {
     this.getProduct(this.routeId);

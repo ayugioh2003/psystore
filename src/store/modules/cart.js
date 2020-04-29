@@ -26,7 +26,7 @@ export default {
       const API = `${process.env.VUE_APP_API}/cart`;
 
       return axios.post(API, { data: payload }).then((res) => {
-        console.log(res);
+        console.log('Cart Detail', res);
         context.dispatch('getCart');
         return res;
       });
