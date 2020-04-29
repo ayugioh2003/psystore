@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1 class="mt-3 mb-4">測試產品頁面</h1>
+    <div class="container"><h1 class="mt-3 mb-4">測試產品頁面</h1></div>
     <!-- 後台測試產品頁面 -->
     <div class="container">
       <div class="row">
@@ -66,12 +66,13 @@
           </div>
         </div>
       </div>
+      <!-- 後台測試產品分頁列 -->
+      <Pagination
+        :pagination="pagination"
+        @change-page="getProducts"
+      ></Pagination>
     </div>
-    <!-- 後台測試產品分頁列 -->
-    <Pagination
-      :pagination="pagination"
-      @change-page="getProducts"
-    ></Pagination>
+
     <!-- 後台測試產品 modal -->
     <div
       class="modal fade"
@@ -135,7 +136,7 @@
 
     <!-- 後台測試購物車 -->
     <hr />
-    <h2 class="mb-3">測試購物車清單</h2>
+    <div class="container"><h2 class="mb-3">測試購物車清單</h2></div>
     <div class="row mb-3">
       <div class="col-8 mx-auto">
         <table class="table">
@@ -198,7 +199,7 @@
 
     <!-- 後台測試結帳表單 -->
     <hr />
-    <h2 class="mb-3">測試結帳表單</h2>
+    <div class="container"><h2 class="mb-3">測試結帳表單</h2></div>
     <div class="row mb-3">
       <div class="col-8 mx-auto">
         <ValidationObserver v-slot="{ invalid }">
