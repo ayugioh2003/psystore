@@ -16,10 +16,81 @@
         </button>
 
         <router-link to="/" exact class="navbar-brand">PsyStore</router-link>
+        
+        <div class="dropdown order-lg-1 pl-4 pr-1" v-if="cart.carts">
+          <button
+            class="btn"
+            type="button"
+            id="dropdownMenu2"
+            data-toggle="dropdown"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >
+            <font-awesome-icon icon="shopping-cart" />
+            {{ cart.carts.length }}
+          </button>
 
-        <router-link to="/cart" class="nav-link order-lg-1 pl-4 pr-1">
-          <font-awesome-icon icon="shopping-cart" size="lg" />
-        </router-link>
+          <div
+            v-if="cart.carts.length == 0"
+            class="dropdown-menu p-3 dropdown-menu-right "
+            style="min-width: 400px"
+          >
+            尚未選購商品。歡迎繼續採購 ~
+          </div>
+
+          <div
+            v-if="cart.carts.length > 0"
+            class="dropdown-menu p-3 dropdown-menu-right "
+            style="min-width: 400px"
+            aria-labelledby="dropdownMenu2"
+          >
+            <div class="h2 text-center mb-4">購物車清單</div>
+            <form>
+              <div class="table-responsive-md">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th scope="col"></th>
+                      <th scope="col">商品</th>
+                      <th scope="col">數量</th>
+                      <th scope="col">金額</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr v-for="item in cart.carts" :key="item.id">
+                      <td class="text-danger">
+                        <button
+                          class="btn btn-outline-danger btn-sm"
+                          @click.prevent="removeCartItem(item.id)"
+                        >
+                          <font-awesome-icon :icon="['far', 'trash-alt']" />
+                        </button>
+                      </td>
+                      <td>{{ item.product.title }}</td>
+                      <td class="text-right">
+                        {{ item.qty }} {{ item.product.unit }}
+                      </td>
+                      <td class="text-right">{{ item.product.price }}</td>
+                    </tr>
+                  </tbody>
+                  <tfoot>
+                    <tr>
+                      <td colspan="4">
+                        <div class="text-right text-success h5">
+                          小記: {{ cart.total }} 元
+                        </div>
+                      </td>
+                    </tr>
+                  </tfoot>
+                </table>
+              </div>
+            </form>
+
+            <router-link to="/cart" class="btn btn-primary w-100">
+              <font-awesome-icon icon="shopping-cart" /> 結帳去
+            </router-link>
+          </div>
+        </div>
 
         <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
           <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
@@ -109,6 +180,30 @@
     <!-- footer END -->
   </div>
 </template>
+
+<script>
+import { mapGetters, mapActions } from 'vuex';
+
+export default {
+  computed: {
+    ...mapGetters('cart', ['cart']),
+  },
+  methods: {
+    ...mapActions('cart', [
+      'getCart',
+      'removeCartItem',
+      'removeCartItemNoLoading',
+    ]),
+    // removeCartItem(id) {
+    //   this.removeCartItemNoLoading(id);
+    // },
+  },
+  mounted() {
+    this.getCart();
+    console.log(this.cart);
+  },
+};
+</script>
 
 <style lang="scss">
 html,

@@ -51,5 +51,23 @@ export default {
         return res;
       });
     },
+    removeCartItemNoLoading(context, id) {
+      const API = `${process.env.VUE_APP_API}/cart/${id}`;
+
+      return axios.delete(API).then((res) => {
+        console.log('刪除購物車項目結果', res);
+        context.dispatch('getCart');
+
+        context.dispatch(
+          'alertMessage/updateMessage',
+          {
+            message: res.data.message,
+            status: res.data.success ? 'success' : 'warning',
+          },
+          { root: true },
+        );
+        return res;
+      });
+    },
   },
 };
