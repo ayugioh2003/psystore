@@ -49,7 +49,7 @@
               type="button"
               class="btn btn-primary w-100"
               :class="{ disabled: productQty === 0 }"
-              @click="addToCart({ product_id: product.id, qty: productQty })"
+              @click="addtoCart({ product_id: product.id, qty: productQty })"
             >
               <font-awesome-icon
                 icon="spinner"
@@ -103,7 +103,7 @@ export default {
   },
   methods: {
     ...mapActions('product', ['getProduct']),
-    addToCart(item) {
+    addtoCart(item) {
       const vm = this;
       this.status.is_cartbtn_adding = true;
 

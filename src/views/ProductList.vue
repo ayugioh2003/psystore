@@ -32,8 +32,8 @@
           <div class="row">
             <!-- product cards -->
             <div
-              class="col-md-4 mb-3 mb-md-5 "
-              v-for="item in filterProducts"
+              class="col-md-6 col-lg-4 mb-3 mb-md-5 "
+              v-for="(item, index) in filterProducts"
               :key="item.id"
             >
               <div class="card h-100">
@@ -134,6 +134,21 @@ export default {
   },
   methods: {
     ...mapActions('product', ['getProducts', 'getProductsAll']),
+    addtoCart(item) {
+      const vm = this;
+      vm.status.is_cartbtn_adding = true;
+
+      vm.$store.dispatch('cart/addtoCart', item).then((res) => {
+        vm.status.is_cartbtn_adding = false;
+        console.log('after');
+
+        console.log(res.data.message);
+        this.$store.dispatch('alertMessage/updateMessage', {
+          message: `${res.data.message}`,
+          status: res.data.success ? 'success' : 'warning',
+        });
+      });
+    },
     openProductDetail(item) {
       this.$router.push({
         name: 'productDetail',
