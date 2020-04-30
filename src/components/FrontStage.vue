@@ -16,8 +16,10 @@
         </button>
 
         <router-link to="/" exact class="navbar-brand">PsyStore</router-link>
-        
-        <div class="dropdown order-lg-1 pl-4 pr-1" v-if="cart.carts">
+
+        <div class="dropdown order-lg-1 pl-4 pr-1" v-if="cart.carts"
+          style="z-index: 99999;"
+        >
           <button
             class="btn"
             type="button"
@@ -77,7 +79,7 @@
                     <tr>
                       <td colspan="4">
                         <div class="text-right text-success h5">
-                          小記: {{ cart.total }} 元
+                          總記 {{ cart.total }} 元
                         </div>
                       </td>
                     </tr>
@@ -210,4 +212,12 @@ html,
 body {
   scroll-behavior: smooth;
 }
+
+.banner {
+  height: 40vh;
+  @include media-breakpoint-down(sm) {
+    height: 20vh;
+  }
+}
+
 </style>

@@ -1,7 +1,11 @@
 <template>
   <div>
     <!-- Banner -->
-    <div class="banner bg-cover"></div>
+    <div
+      class="banner bg-cover"
+      style="  background-image: url(https://images.unsplash.com/photo-1493932484895-752d1471eab5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1355&q=80);
+    "
+    ></div>
 
     <!-- Product detail -->
     <div class="container mt-5 mb-5">
@@ -126,11 +130,4 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.banner {
-  background-image: url(https://images.unsplash.com/photo-1493932484895-752d1471eab5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1355&q=80);
-  height: 40vh;
-  @include media-breakpoint-down(sm) {
-    height: 20vh;
-  }
-}
 </style>

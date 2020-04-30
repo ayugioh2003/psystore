@@ -2,7 +2,7 @@
   <div class="home">
     <!-- banner -->
     <div
-      class="banner position-relative d-flex justify-content-center align-items-center"
+      class="home-banner position-relative d-flex justify-content-center align-items-center"
       :style="{
         height: `${screenHeight - navbarHeight}px`,
       }"
@@ -137,7 +137,7 @@ export default {
 
 
 // Banner
-.banner {
+.home-banner {
   .content {
     padding: 1rem;
     background-color: rgba($color: #000000, $alpha: 0.6);

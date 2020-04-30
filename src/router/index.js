@@ -27,6 +27,12 @@ const routes = [
         // meta: { requiresAuth: true },
       },
       {
+        path: '/cart',
+        name: 'Cart',
+        component: () => import('@/views/Cart'),
+        // meta: { requiresAuth: true },
+      },
+      {
         path: 'login',
         name: 'Login',
         component: () => import('@/views/Login'),
