@@ -17,7 +17,9 @@
 
         <router-link to="/" exact class="navbar-brand">PsyStore</router-link>
 
-        <div class="dropdown order-lg-1 pl-4 pr-1" v-if="cart.carts"
+        <div
+          class="dropdown order-lg-1 pl-4 pr-1"
+          v-if="cart.carts"
           style="z-index: 99999;"
         >
           <button
@@ -72,14 +74,16 @@
                       <td class="text-right">
                         {{ item.qty }} {{ item.product.unit }}
                       </td>
-                      <td class="text-right">{{ item.product.price }}</td>
+                      <td class="text-right">
+                        {{ item.product.price }}
+                      </td>
                     </tr>
                   </tbody>
                   <tfoot>
                     <tr>
                       <td colspan="4">
                         <div class="text-right text-success h5">
-                          總記 {{ cart.total }} 元
+                          小計 NT{{ cart.total | currency }}
                         </div>
                       </td>
                     </tr>
@@ -219,5 +223,4 @@ body {
     height: 20vh;
   }
 }
-
 </style>

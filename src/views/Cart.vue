@@ -19,7 +19,8 @@
                     class="bg-cover"
                     :style="
                       `
-                      background-image: url(${item.product.imageUrl || 'https://dummyimage.com/600x300/AAE.jpg'});
+                      background-image: url(${item.product.imageUrl ||
+                        'https://dummyimage.com/600x300/AAE.jpg'});
                       width: 100px;
                       height: 100px;
                     `
@@ -36,7 +37,7 @@
                   {{ item.qty }}
                   {{ item.product.unit }}
                 </td>
-                <td class="align-middle">{{ item.total | currency }}</td>
+                <td class="align-middle text-right">{{ item.total | currency }}</td>
                 <td class="align-middle">
                   <button
                     class="btn btn-outline-danger"
@@ -55,9 +56,9 @@
             <div class="border ">
               <div class="h2 text-center bg-light py-3">訂單摘要</div>
               <div class="p-3">
-                <table class="table">
+                <table class="table" v-if="cart.total">
                   <tr>
-                    <td>小記</td>
+                    <td>小計</td>
                     <td class="text-right">NT{{ cart.total | currency }}</td>
                   </tr>
                   <tr>
@@ -66,10 +67,10 @@
                       {{ cart.total - cart.final_total }}
                     </td>
                   </tr>
-                  <tr class="h3">
+                  <tr class="h4">
                     <td>總計</td>
                     <td class="text-right">
-                      NT{{ cart.final_total | currency }}
+                      NT{{ Math.ceil(cart.final_total) | currency }}
                     </td>
                   </tr>
                 </table>
@@ -81,12 +82,14 @@
                 type="text"
                 class="form-control"
                 placeholder="Enter Coupon Code"
+                v-model="code"
               />
               <div class="input-group-append">
                 <button
                   class="btn btn-outline-secondary"
                   type="button"
                   id="button-addon2"
+                  @click="addCouponCode(code)"
                 >
                   套用優惠碼
                 </button>
@@ -103,10 +106,16 @@
 import { mapGetters, mapActions } from 'vuex';
 
 export default {
+  data() {
+    return {
+      code: '',
+    };
+  },
   computed: {
     ...mapGetters('cart', ['cart']),
   },
   methods: {
+    ...mapActions(['addCouponCode']),
     ...mapActions('cart', ['getCart', 'removeCartItem']),
   },
   mounted() {
