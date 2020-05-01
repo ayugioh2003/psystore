@@ -39,7 +39,13 @@
           <div class="col-md-5 image">
             <img
               class="img-fluid"
-              src="https://dummyimage.com/600x300/603.jpg"
+              src="@/assets/image/hand.jpg"
+              style="
+              width: 100%;
+              height: 300px;
+              object-position: 30% 50%;
+              object-fit: cover;
+              "
               alt=""
             />
           </div>
@@ -68,7 +74,13 @@
           <div class="col-md-5 image order-1 order-md-2">
             <img
               class="img-fluid"
-              src="https://dummyimage.com/600x300/603.jpg"
+              src="@/assets/image/mind.jpg"
+              style="
+              width: 100%;
+              height: 300px;
+              object-fit: cover;
+              object-position: center 20%;
+              "
               alt=""
             />
           </div>
@@ -81,7 +93,12 @@
           <div class="col-md-5 image">
             <img
               class="img-fluid"
-              src="https://dummyimage.com/600x300/603.jpg"
+              style="
+              width: 100%;
+              height: 300px;
+              object-fit: cover;
+              "
+              src="@/assets/image/eye.jpg"
               alt=""
             />
           </div>
@@ -134,8 +151,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
-
 // Banner
 .home-banner {
   .content {
