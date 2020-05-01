@@ -33,6 +33,20 @@ const routes = [
         // meta: { requiresAuth: true },
       },
       {
+        path: '/checkout',
+        // name: 'Checkout',
+        component: () => import('@/components/Checkout'),
+        children: [
+          {
+            path: 'order_create',
+            name: 'OrderCreate',
+            component: () => import('@/views/OrderCreate'),
+            // meta: { requiresAuth: true },
+          },
+        ],
+        // meta: { requiresAuth: true },
+      },
+      {
         path: 'login',
         name: 'Login',
         component: () => import('@/views/Login'),

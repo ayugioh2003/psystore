@@ -11,6 +11,13 @@
         <div class="col-md-8">
           <h2 class="bg-light text-center p-3">購物清單確認</h2>
 
+          <div class="text-center" v-if="cart.carts.length === 0">
+            購物清單內尚無商品，歡迎繼續
+            <router-link class="" :to="{ name: 'ProductList' }"
+              ><u>前往採購</u></router-link
+            >
+          </div>
+
           <table class="table table-cart-list">
             <tbody>
               <tr v-for="item in cart.carts" :key="item.id">
@@ -37,7 +44,9 @@
                   {{ item.qty }}
                   {{ item.product.unit }}
                 </td>
-                <td class="align-middle text-right">{{ item.total | currency }}</td>
+                <td class="align-middle text-right">
+                  {{ item.total | currency }}
+                </td>
                 <td class="align-middle">
                   <button
                     class="btn btn-outline-danger"
@@ -76,8 +85,13 @@
                 </table>
               </div>
             </div>
-            <a href="#" class="btn btn-warning w-100 py-3 h2">結帳</a>
-            <div class="input-group mb-3">
+            <router-link
+              v-if="cart.carts.length > 0"
+              to="/checkout/order_create"
+              class="btn btn-warning w-100 py-3 h2"
+              >填寫訂購者資料</router-link
+            >
+            <div class="input-group mb-3" v-if="cart.carts.length > 0">
               <input
                 type="text"
                 class="form-control"

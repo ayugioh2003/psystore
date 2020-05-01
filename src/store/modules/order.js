@@ -4,13 +4,18 @@ export default {
   namespaced: true,
   state: {
     order: {},
+    orderStep: 'create',
   },
   getters: {
     order: (state) => state.order,
+    orderStep: (state) => state.orderStep,
   },
   mutations: {
     GET_ORDER(state, payload) {
       state.order = payload;
+    },
+    SET_ORDER_STEP(state, payload) {
+      state.orderStep = payload;
     },
   },
   actions: {
@@ -51,6 +56,9 @@ export default {
 
         return res;
       });
+    },
+    setOrderStep(context, step) {
+      context.commit('SET_ORDER_STEP', step);
     },
   },
 };
