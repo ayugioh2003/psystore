@@ -115,19 +115,27 @@ export default {
   },
   computed: {
     ...mapGetters('product', ['products', 'pagination']),
+    isEnabledProducts() {
+      return this.products.filter(function ifIsEnabled(product) {
+        return product.is_enabled === 1;
+      });
+    },
     filterProducts() {
       const vm = this;
       if (this.status.category_now === '所有商品') {
-        return this.products;
+        return vm.isEnabledProducts;
+        // return this.products;
       }
 
-      const array = this.products.filter(function ifCategory(product) {
+      const array = vm.isEnabledProducts.filter(function ifCategory(product) {
         return product.category === vm.status.category_now;
       });
       return array;
     },
     categories() {
-      let categories = this.products.map((product) => product.category);
+      let categories = this.isEnabledProducts.map(
+        (product) => product.category,
+      );
       categories = [...new Set(categories)];
       console.log(categories);
       categories = ['所有商品', ...categories];
@@ -165,5 +173,4 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
-</style>
+<style lang="scss" scoped></style>
