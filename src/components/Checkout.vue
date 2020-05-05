@@ -40,4 +40,7 @@ export default {
 .active {
   background-color: $warning;
 }
+.table td {
+  border: none;
+}
 </style>

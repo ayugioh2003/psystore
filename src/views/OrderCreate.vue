@@ -1,10 +1,12 @@
 <template>
   <div>
-    <div class="container mt-5">
+    <div class="container my-5">
       <div class="row">
         <div class="col-md-8 text-center" v-if="cart.carts.length === 0">
           購物清單內尚無商品，歡迎繼續
-          <router-link class="" :to="{name: 'ProductList'}"><u>前往採購</u></router-link>
+          <router-link class="" :to="{ name: 'ProductList' }"
+            ><u>前往採購</u></router-link
+          >
         </div>
         <div class="col-md-8" v-else>
           <div class="h2 text-center p-3 bg-light">填寫訂購人資料</div>
@@ -143,14 +145,6 @@
                           NT{{ item.total | currency }}
                         </div>
                       </td>
-                      <!-- <td class="align-middle">
-                        <button
-                          class="btn btn-outline-danger"
-                          @click="removeCartItem(item.id)"
-                        >
-                          <font-awesome-icon :icon="['far', 'trash-alt']" />
-                        </button>
-                      </td> -->
                     </tr>
                   </tbody>
                 </table>
@@ -203,3 +197,10 @@ export default {
   },
 };
 </script>
+
+<style lang="scss" scoped>
+.table th,
+.table td {
+  border: 0;
+}
+</style>

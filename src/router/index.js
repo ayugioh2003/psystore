@@ -43,6 +43,18 @@ const routes = [
             component: () => import('@/views/OrderCreate'),
             // meta: { requiresAuth: true },
           },
+          {
+            path: 'order_paying/:id',
+            name: 'OrderPaying',
+            component: () => import('@/views/OrderPaying'),
+            // meta: { requiresAuth: true },
+          },
+          {
+            path: 'order_paid/:id',
+            name: 'OrderPaid',
+            component: () => import('@/views/OrderPaid'),
+            // meta: { requiresAuth: true },
+          },
         ],
         // meta: { requiresAuth: true },
       },

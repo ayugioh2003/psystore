@@ -91,7 +91,7 @@
               class="btn btn-warning w-100 py-3 h2"
               >填寫訂購者資料</router-link
             >
-            <div class="input-group mb-3" v-if="cart.carts.length > 0">
+            <div class="input-group mb-1" v-if="cart.carts.length > 0">
               <input
                 type="text"
                 class="form-control"
@@ -108,6 +108,10 @@
                   套用優惠碼
                 </button>
               </div>
+            </div>
+            <div class="mb-3 text-right text-danger">
+              <div>全館五折特價中</div>
+              <div>輸入優惠碼：hope_disease_disappear</div>
             </div>
           </div>
         </div>
@@ -138,7 +142,7 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .table td {
   border: none;
 }
