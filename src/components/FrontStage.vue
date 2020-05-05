@@ -107,6 +107,9 @@
               <router-link to="/product" class="nav-link">商品</router-link>
             </li>
             <li class="nav-item px-4">
+              <router-link to="/orders" class="nav-link">訂單</router-link>
+            </li>
+            <li class="nav-item px-4">
               <router-link to="/login" class="nav-link">登入</router-link>
             </li>
           </ul>

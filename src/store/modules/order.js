@@ -4,18 +4,28 @@ export default {
   namespaced: true,
   state: {
     order: {},
+    orders: {},
     orderStep: 'create',
+    pagination: {},
   },
   getters: {
     order: (state) => state.order,
+    orders: (state) => state.orders,
     orderStep: (state) => state.orderStep,
+    pagination: (state) => state.pagination,
   },
   mutations: {
     GET_ORDER(state, payload) {
       state.order = payload;
     },
+    GET_ORDERS(state, payload) {
+      state.orders = payload;
+    },
     SET_ORDER_STEP(state, payload) {
       state.orderStep = payload;
+    },
+    GET_PAGINATION(state, payload) {
+      state.pagination = payload;
     },
   },
   actions: {
@@ -34,6 +44,17 @@ export default {
       return axios.get(API).then((res) => {
         console.log('取得訂單資料', res);
         context.commit('GET_ORDER', res.data.order);
+        return res;
+      });
+    },
+    getOrders(context, page) {
+      const API = `${process.env.VUE_APP_API}/orders?page=${page}`;
+      // context.commit('GET_ORDERS', {});
+
+      return axios.get(API).then((res) => {
+        console.log('取得訂單們資料', res);
+        context.commit('GET_ORDERS', res.data.orders);
+        context.commit('GET_PAGINATION', res.data.pagination);
         return res;
       });
     },
