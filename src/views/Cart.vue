@@ -5,7 +5,7 @@
       style="background-image: url(https://images.unsplash.com/photo-1557821552-17105176677c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1489&q=80);
       "
     ></div>
-    <div class="container mt-3 mb-3">
+    <div class="container my-5">
       <div class="row position-relative">
         <!-- 購物清單 -->
         <div class="col-md-8">
