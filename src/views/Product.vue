@@ -91,6 +91,11 @@
 import { mapGetters, mapActions } from 'vuex';
 
 export default {
+  metaInfo() {
+    return {
+      title: `${this.product.title} | PsyStore`,
+    };
+  },
   data() {
     return {
       productQty: 0,
@@ -129,5 +134,4 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
-</style>
+<style lang="scss" scoped></style>

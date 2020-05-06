@@ -8,6 +8,12 @@
 import CheckoutOrder from '@/components/CheckoutOrder.vue';
 
 export default {
+  metaInfo() {
+    return {
+      title: '結帳成功 | PsyStore',
+    };
+  },
+
   components: {
     CheckoutOrder,
   },

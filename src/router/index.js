@@ -13,6 +13,12 @@ const routes = [
       {
         path: '/',
         name: 'Home',
+        metaInfo: {
+          title: '首頁',
+        },
+        meta: {
+          title: '首頁',
+        },
         component: () => import('@/views/Home'),
       },
       {
@@ -24,17 +30,28 @@ const routes = [
             category: '所有商品',
           },
         },
+        meta: {
+          title: '商品清單',
+        },
+
         component: () => import('@/views/ProductList'),
       },
       {
         path: '/products/:category',
         name: 'ProductList',
+        meta: {
+          title: '商品清單',
+        },
+
         component: () => import('@/views/ProductList'),
       },
 
       {
         path: '/product/:id',
         name: 'productDetail',
+        meta: {
+          title: '商品',
+        },
         component: () => import('@/views/Product'),
         // meta: { requiresAuth: true },
       },
@@ -42,6 +59,10 @@ const routes = [
         path: '/cart',
         name: 'Cart',
         component: () => import('@/views/Cart'),
+        meta: {
+          title: '購物清單',
+        },
+
         // meta: { requiresAuth: true },
       },
       {
@@ -53,18 +74,30 @@ const routes = [
             path: 'order_create',
             name: 'OrderCreate',
             component: () => import('@/views/OrderCreate'),
+            meta: {
+              title: '建立訂單',
+            },
+
             // meta: { requiresAuth: true },
           },
           {
             path: 'order_paying/:id',
             name: 'OrderPaying',
             component: () => import('@/views/OrderPaying'),
+            meta: {
+              title: '金流付款',
+            },
+
             // meta: { requiresAuth: true },
           },
           {
             path: 'order_paid/:id',
             name: 'OrderPaid',
             component: () => import('@/views/OrderPaid'),
+            meta: {
+              title: '結帳成功',
+            },
+
             // meta: { requiresAuth: true },
           },
         ],
@@ -74,6 +107,10 @@ const routes = [
         path: 'orders',
         name: 'Orders',
         component: () => import('@/views/Orders'),
+        meta: {
+          title: '訂單列表',
+        },
+
         // meta: { requiresAuth: true },
       },
 
@@ -81,6 +118,9 @@ const routes = [
         path: 'login',
         name: 'Login',
         component: () => import('@/views/Login'),
+        meta: {
+          title: '登入頁面',
+        },
       },
     ],
   },

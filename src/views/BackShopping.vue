@@ -285,6 +285,12 @@ import { mapGetters, mapActions } from 'vuex';
 import Pagination from '@/components/Pagination.vue';
 
 export default {
+  metaInfo() {
+    return {
+      title: '後台購物測試 | PsyStore',
+    };
+  },
+
   components: {
     Pagination,
   },

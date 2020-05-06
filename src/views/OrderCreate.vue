@@ -162,6 +162,11 @@
 import { mapGetters, mapActions } from 'vuex';
 
 export default {
+  metaInfo() {
+    return {
+      title: '建立訂單 | PsyStore',
+    };
+  },
   data() {
     return {
       couponCode: '',

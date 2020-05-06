@@ -60,6 +60,12 @@ import { mapGetters, mapActions } from 'vuex';
 import Pagination from '@/components/Pagination.vue';
 
 export default {
+  metaInfo() {
+    return {
+      title: '訂單列表 | PsyStore',
+    };
+  },
+
   components: {
     Pagination,
   },

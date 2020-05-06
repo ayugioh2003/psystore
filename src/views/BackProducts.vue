@@ -230,6 +230,12 @@ import Pagination from '@/components/Pagination.vue';
 import DelModal from '@/components/DelModal.vue';
 
 export default {
+  metaInfo() {
+    return {
+      title: '後台產品管理 | PsyStore',
+    };
+  },
+
   components: {
     Pagination,
     DelModal,

@@ -104,6 +104,11 @@
 import { mapGetters, mapActions } from 'vuex';
 
 export default {
+  metaInfo() {
+    return {
+      title: `${this.$route.params.category}-商品列表 | PsyStore`,
+    };
+  },
   data() {
     return {
       // routeCategory: '所有商品',
@@ -158,11 +163,6 @@ export default {
       },
     },
   },
-  // watch: {
-  //   routeCategory() {
-  //     this.routeCategory = this.routeCategory;
-  //   },
-  // },
   methods: {
     ...mapActions('product', ['getProducts', 'getProductsAll']),
     addtoCart(item) {

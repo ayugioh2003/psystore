@@ -63,6 +63,9 @@ export default {
       },
     };
   },
+  metaInfo: {
+    title: '登入 | PsyStore',
+  },
   methods: {
     signin() {
       const vm = this;

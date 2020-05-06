@@ -129,6 +129,9 @@ export default {
       code: '',
     };
   },
+  metaInfo: {
+    title: '購物清單 | PsyStore',
+  },
   computed: {
     ...mapGetters('cart', ['cart']),
   },

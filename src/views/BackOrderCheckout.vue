@@ -69,6 +69,12 @@
 import { mapGetters, mapActions } from 'vuex';
 
 export default {
+  metaInfo() {
+    return {
+      title: '後台結帳測試 | PsyStore',
+    };
+  },
+
   computed: {
     ...mapGetters('order', ['order']),
   },

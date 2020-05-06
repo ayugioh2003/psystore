@@ -1,4 +1,5 @@
 import Vue from 'vue';
+import VueMeta from 'vue-meta';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import {
@@ -83,6 +84,9 @@ Vue.filter('date', date);
 // Loading
 Vue.component('Loading', Loading);
 
+// vue-meta
+Vue.use(VueMeta);
+
 // NEW VUE INSTANCE
 new Vue({
   router,
@@ -91,6 +95,19 @@ new Vue({
 }).$mount('#app');
 
 // router
+// function setMeta(to) {
+//   const defaultTitle = 'PsyStore';
+
+//   if (to.name === 'ProductList') {
+//     window.document.title = `${to.params.category}-${to.meta.title} | ${defaultTitle}`;
+//   } else if (to.meta.title) {
+//     window.document.title = `${to.meta.title} | ${defaultTitle}`;
+//   } else {
+//     window.document.title = defaultTitle;
+//   }
+//   console.log(to);
+// }
+
 router.beforeEach((to, from, next) => {
   if (to.meta.requiresAuth) {
     const api = `${process.env.VUE_APP_APIPATH}/api/user/check`;
@@ -100,15 +117,18 @@ router.beforeEach((to, from, next) => {
       .then((success) => {
         if (success) {
           console.log('signin check success');
+          // setMeta(to);
           next();
         } else {
           console.log('signin check fail');
           if (from.name !== 'Login') {
+            // setMeta(to);
             router.push('/login');
           }
         }
       });
   } else {
+    // setMeta(to);
     next();
   }
 });

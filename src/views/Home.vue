@@ -129,6 +129,9 @@ export default {
       screenHeight: 0,
     };
   },
+  metaInfo: {
+    title: '首頁 | PsyStore',
+  },
   methods: {
     scrollDown() {
       window.scrollTo(0, window.innerHeight);

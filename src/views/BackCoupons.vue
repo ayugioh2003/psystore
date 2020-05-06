@@ -150,6 +150,11 @@ import DelModal from '@/components/DelModal.vue';
 import getDate from '@/filters/date';
 
 export default {
+  metaInfo() {
+    return {
+      title: '後台酷朋管理 | PsyStore',
+    };
+  },
   components: {
     Pagination,
     DelModal,
