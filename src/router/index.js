@@ -16,10 +16,22 @@ const routes = [
         component: () => import('@/views/Home'),
       },
       {
-        path: '/product',
+        path: '/products',
+        // name: 'ProductList',
+        redirect: {
+          name: 'ProductList',
+          params: {
+            category: '所有商品',
+          },
+        },
+        component: () => import('@/views/ProductList'),
+      },
+      {
+        path: '/products/:category',
         name: 'ProductList',
         component: () => import('@/views/ProductList'),
       },
+
       {
         path: '/product/:id',
         name: 'productDetail',

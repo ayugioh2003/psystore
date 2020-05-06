@@ -17,10 +17,10 @@
               :key="category"
               type="button"
               class="list-group-item list-group-item-action"
-              :class="{ active: status.category_now == category }"
+              :class="{ active: routeCategory == category }"
               @click="
                 () => {
-                  status.category_now = category;
+                  routeCategory = category;
                 }
               "
             >
@@ -31,7 +31,7 @@
 
         <!-- Porduct sub list -->
         <div class="col-md-9">
-          <div class="h2 pb-3">{{ status.category_now }}</div>
+          <div class="h2 pb-3">{{ routeCategory }}</div>
           <div class="row">
             <!-- product cards -->
             <div
@@ -106,8 +106,8 @@ import { mapGetters, mapActions } from 'vuex';
 export default {
   data() {
     return {
+      // routeCategory: '所有商品',
       status: {
-        category_now: '所有商品',
         is_cartbtn_adding: false,
         which_cartbtn_adding: 0,
       },
@@ -122,13 +122,13 @@ export default {
     },
     filterProducts() {
       const vm = this;
-      if (this.status.category_now === '所有商品') {
+      if (this.routeCategory === '所有商品') {
         return vm.isEnabledProducts;
         // return this.products;
       }
 
       const array = vm.isEnabledProducts.filter(function ifCategory(product) {
-        return product.category === vm.status.category_now;
+        return product.category === vm.routeCategory;
       });
       return array;
     },
@@ -142,7 +142,27 @@ export default {
       console.log(categories);
       return categories;
     },
+    routeCategory: {
+      get() {
+        return this.$route.params.category || '所有商品';
+      },
+      set(newValue) {
+        if (this.$route.params.category === newValue) return;
+        console.log('change category');
+        this.$router.push({
+          name: 'ProductList',
+          params: {
+            category: newValue,
+          },
+        });
+      },
+    },
   },
+  // watch: {
+  //   routeCategory() {
+  //     this.routeCategory = this.routeCategory;
+  //   },
+  // },
   methods: {
     ...mapActions('product', ['getProducts', 'getProductsAll']),
     addtoCart(item) {
@@ -169,6 +189,7 @@ export default {
   },
   mounted() {
     this.getProductsAll();
+    console.log(this.$route.params.category);
   },
 };
 </script>
