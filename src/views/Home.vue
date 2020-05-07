@@ -115,24 +115,110 @@
     </div>
 
     <!-- CTA -->
+    <h2 class="text-center mb-5">熱門商品</h2>
+    <div class="container mb-3">
+      <div class="row">
+        <div
+          class="col-md-4 mb-4"
+          v-for="(item, index) in filterProducts"
+          :key="item.key"
+        >
+          <div class="card h-100">
+            <div style="width: 100%; height: 350px;">
+              <img
+                :src="item.imageUrl || 'https://dummyimage.com/600x300/AAE.jpg'"
+                class="w-100 h-100"
+                style="object-fit: cover; object-position: center;"
+                :alt="item.content"
+              />
+            </div>
+            <div class="card-body">
+              <div class="d-flex justify-content-between align-item-start">
+                <h5 class="card-title">{{ item.title }}</h5>
+                <div>
+                  <span class="badge badge-pill badge-info">
+                    {{ item.category }}
+                  </span>
+                </div>
+              </div>
+              <p class="card-text text-secondary">
+                {{ item.description }}
+              </p>
+              <div class="d-flex justify-content-between">
+                <p class="card-text text-decoration-line-through">
+                  <del>原價 {{ item.origin_price }}</del>
+                </p>
+                <p class="card-text h5 text-right">
+                  限時特價 {{ item.price }} 元
+                </p>
+              </div>
+            </div>
+            <div class="card-footer d-flex justify-content-between">
+              <button
+                class="btn btn-outline-secondary"
+                @click="openProductDetail(item)"
+              >
+                查看更多
+              </button>
+              <button
+                class="btn btn-outline-danger"
+                @click="addtoCart({ product_id: item.id, qty: 1 })"
+                @click.prevent="status.which_cartbtn_adding = index"
+              >
+                <font-awesome-icon
+                  icon="spinner"
+                  spin
+                  v-if="
+                    status.is_cartbtn_adding &&
+                      status.which_cartbtn_adding == index
+                  "
+                />
+                加到購物車
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
+import { mapGetters, mapActions } from 'vuex';
 
 export default {
-  name: 'Home',
+  metaInfo: {
+    title: '首頁 | PsyStore',
+  },
   data() {
     return {
       navbarHeight: 0,
       screenHeight: 0,
+      filterKeywords: ['覺察', '記憶', '時間'],
+      status: {
+        is_cartbtn_adding: false,
+        which_cartbtn_adding: 0,
+      },
     };
   },
-  metaInfo: {
-    title: '首頁 | PsyStore',
+  computed: {
+    ...mapGetters('product', ['products']),
+    filterProducts() {
+      const vm = this;
+      console.log(vm.products);
+      const filterArr = vm.filterKeywords.map(function filter(keyword) {
+        return vm.products.filter(function include(product) {
+          return product.title.includes(keyword);
+        })[0];
+      });
+
+      return filterArr;
+      // return keywordArr;
+    },
   },
   methods: {
+    ...mapActions('product', ['getProductsAll']),
     scrollDown() {
       window.scrollTo(0, window.innerHeight);
       console.log(window.innerHeight);
@@ -142,10 +228,36 @@ export default {
       this.screenHeight = window.innerHeight;
       console.log(this.navbarHeight, this.screenHeight);
     },
+    ...mapActions('product', ['getProducts', 'getProductsAll']),
+    addtoCart(item) {
+      const vm = this;
+      vm.status.is_cartbtn_adding = true;
+
+      vm.$store.dispatch('cart/addtoCart', item).then((res) => {
+        vm.status.is_cartbtn_adding = false;
+        console.log('after');
+
+        console.log(res.data.message);
+        this.$store.dispatch('alertMessage/updateMessage', {
+          message: `${res.data.message}`,
+          status: res.data.success ? 'success' : 'warning',
+        });
+      });
+    },
+    openProductDetail(item) {
+      this.$router.push({
+        name: 'productDetail',
+        params: { id: item.id },
+      });
+    },
   },
   mounted() {
+    // banner resize
     this.getNavbarAndScreenHeight();
     window.addEventListener('resize', this.getNavbarAndScreenHeight);
+
+    // get products
+    this.getProductsAll();
   },
   beforeDestroy() {
     window.removeEventListener('resize', this.getNavbarAndScreenHeight);
