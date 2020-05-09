@@ -122,6 +122,14 @@ const routes = [
           title: '登入頁面',
         },
       },
+      {
+        path: 'about',
+        name: 'About',
+        component: () => import('@/views/About.vue'),
+        meta: {
+          title: '關於我們',
+        },
+      },
     ],
   },
   {

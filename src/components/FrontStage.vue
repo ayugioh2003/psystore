@@ -166,11 +166,15 @@
 
     <!-- footer -->
     <footer class="bg-third py-4 container text-primary">
-      <div class="d-flex flex-column justify-content-between">
-        <div>
+      <div class="row">
+        <div class="col-md-6">
           <div>01-234-5678</div>
           <div>psystore@email.com</div>
           <div>100 桃園市龜山區心理路 520 號新惦店</div>
+        </div>
+        <div class="col-md-6 text-md-right mt-3 mt-md-0">
+          <div><router-link to="./about">關於我們</router-link></div>
+          <div>版權聲明</div>
         </div>
       </div>
 
