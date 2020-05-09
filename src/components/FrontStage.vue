@@ -15,7 +15,14 @@
           <span class="navbar-toggler-icon"></span>
         </button>
 
-        <router-link to="/" exact class="navbar-brand">PsyStore</router-link>
+        <router-link to="/" exact class="navbar-brand">
+          <img
+            src="@/assets/logo.png"
+            width="240"
+            height="60"
+            alt="psystore, make mind stronger"
+          />
+        </router-link>
 
         <div
           class="dropdown order-lg-1 pl-4 pr-1"
