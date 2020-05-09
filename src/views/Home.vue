@@ -148,7 +148,7 @@
                 <p class="card-text text-decoration-line-through">
                   <del>原價 {{ item.origin_price }}</del>
                 </p>
-                <p class="card-text h5 text-right">
+                <p class="card-text h5 text-right text-success">
                   限時特價 {{ item.price }} 元
                 </p>
               </div>
