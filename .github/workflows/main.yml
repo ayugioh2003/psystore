@@ -25,6 +25,7 @@ jobs:
       run: |
         npm install
     - name: git config
+      run: |
         git config --local user.name $USER_NAME
         git config --local user.email $USER_EMAIL
         git remote add origin https://$MY_SECRET@github.com/$GITHUB_REPOSITORY.git
