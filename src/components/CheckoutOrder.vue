@@ -55,7 +55,7 @@
               <tr v-else>
                 <td colspan="2">
                   <router-link
-                    to="./products"
+                    to="/products"
                     class="btn btn-accent btn-block"
                   >
                     繼續購物</router-link
