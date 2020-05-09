@@ -1,7 +1,6 @@
-# PsyStore
+# PsyStore 心理學主題電商 | 心惦店
 
 ![PsyStore 心惦店](https://i.imgur.com/RYoRNAz.jpg)
-
 
 
 ## Project setup
@@ -24,6 +23,11 @@ npm run build
 npm run lint
 ```
 
+### Deploy to gh-pages
+```
+npm run gh
+```
+
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
 
@@ -35,10 +39,7 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 * [Vue API 課程補充說明 – Dropbox Paper](https://paper.dropbox.com/doc/Vue-API-28OrjdvBouPMjspZUM7h7)
 
 
+## 版權/授權聲明
 
-* [Vue API 課程補充說明 – Dropbox Paper](https://paper.dropbox.com/doc/Vue-API-28OrjdvBouPMjspZUM7h7)
-
-## 版權聲明
-
-唐鳳組圖：攝影師 江凱維 以創用CC「姓名標示-非商業性-相同方式分享」授權條款釋出
-* [2020-04-17 | Flickr](https://www.flickr.com/photos/audreyt/albums/72157714043968706/with/49820229316/)
+此專案為練習用途，所用素材皆符合授權。
+* [版權聲明 | PsyStore](https://ayugioh2003.github.io/psystore/#/copyright)

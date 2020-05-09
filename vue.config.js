@@ -1,8 +1,8 @@
 const path = require('path');
 
 module.exports = {
-  publicPath: process.env.NODE_ENV === 'production' ? '/psystore/' : '/',
-  // publicPath: './',
+  // publicPath: process.env.NODE_ENV === 'production' ? '/psystore/' : '/',
+  publicPath: './',
 
   chainWebpack: (config) => {
     const types = ['vue-modules', 'vue', 'normal-modules', 'normal'];
