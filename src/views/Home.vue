@@ -116,12 +116,12 @@
 
     <!-- CTA -->
     <h2 class="text-center mb-5">熱門商品</h2>
-    <div class="container mb-3">
+    <div class="container mb-3" v-if="filterProducts[0]">
       <div class="row">
         <div
           class="col-md-4 mb-4"
           v-for="(item, index) in filterProducts"
-          :key="item.key"
+          :key="item.id"
         >
           <div class="card h-100">
             <div style="width: 100%; height: 350px;">
