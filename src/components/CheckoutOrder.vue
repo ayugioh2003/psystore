@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="container my-3">
+    <div class="container my-5">
       <h2 class="text-center mb-3">訂單明細</h2>
 
       <div class="row justify-content-center">
@@ -38,7 +38,7 @@
               <tr>
                 <td>付款狀態</td>
                 <td>
-                  <div v-if="order.is_paid">已付款</div>
+                  <div v-if="order.is_paid">付款成功</div>
                   <div v-else class="text-danger">
                     尚未付款
                   </div>
@@ -50,6 +50,16 @@
                   <button class="btn btn-primary" @click="payOrder">
                     前往付款
                   </button>
+                </td>
+              </tr>
+              <tr v-else>
+                <td colspan="2">
+                  <router-link
+                    to="./products"
+                    class="btn btn-accent btn-block"
+                  >
+                    繼續購物</router-link
+                  >
                 </td>
               </tr>
             </tfoot>
