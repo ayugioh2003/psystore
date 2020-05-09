@@ -53,10 +53,10 @@
                 </td>
               </tr>
               <tr v-else>
-                <td colspan="2">
+                <td colspan="2" class="pt-3">
                   <router-link
                     to="/products"
-                    class="btn btn-accent btn-block"
+                    class="btn btn-accent btn-lg btn-block"
                   >
                     繼續購物</router-link
                   >
