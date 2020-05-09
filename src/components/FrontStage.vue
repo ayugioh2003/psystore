@@ -174,7 +174,7 @@
         </div>
         <div class="col-md-6 text-md-right mt-3 mt-md-0">
           <div><router-link to="./about">關於我們</router-link></div>
-          <div>版權聲明</div>
+          <div><router-link to="./copyright">版權聲明</router-link></div>
         </div>
       </div>
 

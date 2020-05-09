@@ -130,6 +130,15 @@ const routes = [
           title: '關於我們',
         },
       },
+      {
+        path: 'copyright',
+        name: 'Copyright',
+        component: () => import('@/views/Copyright.vue'),
+        meta: {
+          title: '版權聲明',
+        },
+      },
+
     ],
   },
   {
