@@ -16,12 +16,12 @@
             'url(https://images.unsplash.com/photo-1449495169669-7b118f960251?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1351&q=80)',
         }"
       ></div>
-      <div class="content text-info text-center">
+      <div class="content text-primary text-center">
         <p class="h1">Get Your Mind, and Heart Back</p>
         <p class="h4">用心理學鍛鍊心智、修復心靈</p>
       </div>
       <div
-        class="down-arrow position-absolute text-info p-5"
+        class="down-arrow position-absolute text-primary p-5"
         style="bottom: 10%; cursor: pointer;"
         @click="scrollDown"
       >
@@ -270,7 +270,7 @@ export default {
 .home-banner {
   .content {
     padding: 1rem;
-    background-color: rgba($color: #000000, $alpha: 0.6);
+    background-color: rgba($color: #ffffff, $alpha: 0.5);
   }
   .down-arrow {
     animation-name: arrow-moving;
