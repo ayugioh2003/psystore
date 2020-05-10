@@ -8,7 +8,7 @@
     ></div>
 
     <!-- Product detail -->
-    <div class="container mt-5 mb-5">
+    <div class="container my-5">
       <!-- Product detail -->
       <div class="row">
         <!-- Product picture -->
@@ -68,7 +68,7 @@
       <!-- Product content -->
       <div class="row" v-if="product.description && product.content">
         <div class="col-12"><hr /></div>
-        <div class="col-md-8 mx-auto">
+        <div class="col-md-8 mx-auto my-5">
           <div v-if="product.description" class="mb-4">
             <h5>產品描述</h5>
             <p class="card-text ">
@@ -80,6 +80,72 @@
             <p class="card-text ">
               {{ product.content }}
             </p>
+          </div>
+        </div>
+        <div class="col-12"><hr /></div>
+      </div>
+    </div>
+
+    <!-- another product -->
+    <div class="container">
+      <div class="h2 text-center mb-5">類似商品</div>
+      <div class="row">
+        <!-- product cards -->
+        <div
+          class="col-md-6 col-lg-4 mb-3 mb-md-5 "
+          v-for="(item, index) in filterProductsByCategory"
+          :key="item.id"
+        >
+          <div class="card h-100">
+            <img
+              :src="item.imageUrl || 'https://dummyimage.com/600x300/AAE.jpg'"
+              class="card-img-top"
+              alt="..."
+            />
+            <div class="card-body">
+              <div class="d-flex justify-content-between align-item-start">
+                <h5 class="card-title">{{ item.title }}</h5>
+                <div>
+                  <span class="badge badge-pill badge-info">
+                    {{ item.category }}
+                  </span>
+                </div>
+              </div>
+              <p class="card-text text-secondary">
+                {{ item.description }}
+              </p>
+              <div class="d-flex justify-content-between">
+                <p class="card-text text-decoration-line-through">
+                  <del>原價 {{ item.origin_price }}</del>
+                </p>
+                <p class="card-text h5 text-right">
+                  限時特價 {{ item.price }} 元
+                </p>
+              </div>
+            </div>
+            <div class="card-footer d-flex justify-content-between">
+              <button
+                class="btn btn-outline-secondary"
+                @click="openProductDetail(item)"
+              >
+                查看更多
+              </button>
+              <button
+                class="btn btn-outline-danger"
+                @click="addtoCart({ product_id: item.id, qty: 1 })"
+                @click.prevent="status.which_cartbtn_adding = index"
+              >
+                <font-awesome-icon
+                  icon="spinner"
+                  spin
+                  v-if="
+                    status.is_cartbtn_adding &&
+                      status.which_cartbtn_adding == index
+                  "
+                />
+                加到購物車
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -101,17 +167,25 @@ export default {
       productQty: 0,
       status: {
         is_cartbtn_adding: false,
+        which_cartbtn_adding: 0,
       },
     };
   },
   computed: {
-    ...mapGetters('product', ['product']),
+    ...mapGetters('product', ['product', 'products']),
     routeId() {
       return this.$route.params.id;
     },
+    filterProductsByCategory() {
+      const vm = this;
+      const { category } = vm.product;
+      return vm.products.filter(
+        (item) => item.category === category && item.id !== vm.product.id,
+      );
+    },
   },
   methods: {
-    ...mapActions('product', ['getProduct']),
+    ...mapActions('product', ['getProduct', 'getProductsAll']),
     addtoCart(item) {
       const vm = this;
       this.status.is_cartbtn_adding = true;
@@ -126,10 +200,17 @@ export default {
         });
       });
     },
-    // ...mapActions('cart', ['addtoCart']),
+    openProductDetail(item) {
+      this.$router.push({
+        name: 'productDetail',
+        params: { id: item.id },
+      });
+      // this.$router.replace('/refresh');
+    },
   },
   mounted() {
     this.getProduct(this.routeId);
+    this.getProductsAll();
   },
 };
 </script>
