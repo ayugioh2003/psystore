@@ -138,7 +138,6 @@ const routes = [
           title: '版權聲明',
         },
       },
-
     ],
   },
   {
@@ -185,6 +184,12 @@ const routes = [
         // meta: { requiresAuth: true },
       },
     ],
+  },
+  {
+    path: '/refresh',
+    name: 'refresh',
+    component: () => import('@/components/Refresh'),
+    // 目录更改为你自己的refresh.vue的目录
   },
 ];
 
