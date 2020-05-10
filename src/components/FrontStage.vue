@@ -114,6 +114,9 @@
               <router-link to="/products" class="nav-link">商品</router-link>
             </li>
             <li class="nav-item px-4">
+              <router-link to="/coupons" class="nav-link">酷碰</router-link>
+            </li>
+            <li class="nav-item px-4">
               <router-link to="/orders" class="nav-link">訂單</router-link>
             </li>
             <li class="nav-item px-4">

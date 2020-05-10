@@ -113,7 +113,16 @@ const routes = [
 
         // meta: { requiresAuth: true },
       },
+      {
+        path: '/coupons',
+        name: 'Coupons',
+        component: () => import('@/views/Coupons.vue'),
+        meta: {
+          title: '酷碰清單',
+        },
 
+        // meta: { requiresAuth: true },
+      },
       {
         path: 'login',
         name: 'Login',
