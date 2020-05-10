@@ -56,6 +56,11 @@
               人們工作時數短、生活步調慢。如今資訊科技發達，人類透過機械與電腦提昇生產能力，
               間接導致需求變大，工作時數提昇，並從日常生活壓榨出時間，許多人的生活步調也漸趨緊張。
             </p>
+            <router-link
+              to="/product/-M6_as3MyB-8b4lUf8Ys"
+              class="btn btn-info btn-lg"
+              >成為時間管理大師，獲得更多休息時間</router-link
+            >
           </div>
         </div>
       </div>
@@ -70,6 +75,11 @@
               接著，覺察自己做出了什麼行為、產生了什麼信念，這些對生活帶來正面還是負面的影響。
               最後，與自己定下契約，逐步修改負面的行為或信念，藉此改善心理狀態、調整生活平衡。
             </p>
+            <router-link
+              to="/product/-M6ZTSZapd_HjKzpHJBd"
+              class="btn btn-info btn-lg"
+              >讓自己更了解自己，為自己負責與做出行動</router-link
+            >
           </div>
           <div class="col-md-5 image order-1 order-md-2">
             <img
@@ -109,6 +119,11 @@
               心理學科普部份，將以認知心理學與諮商心理學為主軸，介紹心理機制與心理學應用。
               心理學工具部份，將提供心理學測驗與相關技巧。
             </p>
+            <router-link
+              to="/products"
+              class="btn btn-info btn-lg"
+              >查看更多心理學，為自己來場心智健身之旅</router-link
+            >
           </div>
         </div>
       </div>
