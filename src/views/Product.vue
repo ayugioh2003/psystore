@@ -205,7 +205,7 @@ export default {
         name: 'productDetail',
         params: { id: item.id },
       });
-      // this.$router.replace('/refresh');
+      this.$router.replace('/refresh');
     },
   },
   mounted() {
