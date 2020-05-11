@@ -67,25 +67,24 @@
   * 使用 Github Pages 搭配後端 API 建置靜態網站
   * 使用 vue-meta 處理 SEO
   * 使用 vue-router 處理商品分類的網址
+  * 使用 vee-validate 驗證表單
 
 ## 套件使用
 
-* @fontawesome
-* axios
-* bootstrap
-* jquery
-* popper
-* vee-validate
-* vue
-* vue-axios
-* vue-headroom
-* vue-headroom
-* vue-loading-overlay
-* vue-meta
-* vue-router
-* vuex
-* eslint
-* gh-pages
+* [@fontawesome](https://fontawesome.com/how-to-use/on-the-web/setup/using-package-managers) | icon 圖示
+* [axios](https://www.npmjs.com/package/axios)、[vue-axios](https://www.npmjs.com/package/vue-axios) | 方便串接 API
+* [bootstrap](https://www.npmjs.com/package/bootstrap) | CSS library
+* [jquery](https://www.npmjs.com/package/jquery) | 搭配 BS4
+* [popper](https://www.npmjs.com/package/popper) | 搭配 BS4
+* [vee-validate](https://www.npmjs.com/package/vee-validate) | 驗證表單
+* [vue](https://www.npmjs.com/package/vue) | 前端框架
+* [vue-headroom](https://www.npmjs.com/package/vue-headroom) | 能隨著滾動調整 navbar 的出現與否
+* [vue-loading-overlay](https://www.npmjs.com/package/vue-loading-overlay) | 全畫面 loading 狀態
+* [vue-meta](https://www.npmjs.com/package/vue-meta) | 在 vue 添加 meta 資訊
+* [vue-router](https://www.npmjs.com/package/vue-router) | 管理 vue 前端路由
+* [vuex](https://www.npmjs.com/package/vue-vuex) | 管理 vue 網站狀態
+* [eslint](https://www.npmjs.com/package/eslint) | 管理程式碼風格
+* [gh-pages](https://www.npmjs.com/package/gh-pages) | 將編譯後的程式碼佈署到 gh-pages
 
 
 ## 環境建構
