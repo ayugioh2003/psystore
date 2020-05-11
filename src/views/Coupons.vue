@@ -15,7 +15,7 @@
           :key="item.coupon"
         >
           <div class="card h-100">
-            <img class="card-img-top" :src="item.imageUrl" :alt="item.title">
+            <img class="card-img-top" :src="item.imageUrl" :alt="item.title" />
             <div class="card-body">
               <h5 class="card-title">{{ item.title }}</h5>
               <div class="card-text">
@@ -46,6 +46,7 @@
                   </button>
                 </div>
               </div>
+              <div class="text-right mt-1">折扣 {{ item.discount }}%</div>
             </div>
           </div>
         </div>
@@ -71,6 +72,7 @@ export default {
                   除了自救外，台灣也是國際社會的一份子，行有餘力時也能向外援助。Taiwan
                   can help.`,
           coupon: 'TaiwanCanHelp',
+          discount: 50,
         },
         {
           title: '希望武漢肺炎疫情趕快結束',
@@ -79,6 +81,7 @@ export default {
                   等到各國意識到武漢肺炎的嚴重性時，世界已經淪陷了。
                   希望人類能儘快控制住這場疫情，早日研發出疫苗。`,
           coupon: 'Hope_Disease_Disappear',
+          discount: 50,
         },
         {
           title: '不要污名化精神疾患',
@@ -89,6 +92,7 @@ export default {
                   而好的討論，應該是能讓社會往更好的地方走去。
                   希望大家能持續保持關注，而不是去污名化精神疾患。`,
           coupon: 'Dont_Discriminate_Mental_Illness',
+          discount: 50,
         },
       ],
     };
