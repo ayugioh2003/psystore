@@ -6,11 +6,13 @@ export default {
     product: {},
     products: [],
     pagination: {},
+    favorites: [],
   },
   getters: {
     product: (state) => state.product,
     products: (state) => state.products,
     pagination: (state) => state.pagination,
+    favorites: (state) => state.favorites,
   },
   mutations: {
     GET_PRODUCT(state, payload) {
@@ -21,6 +23,9 @@ export default {
     },
     GET_PAGINATION(state, payload) {
       state.pagination = payload;
+    },
+    SET_FAVORITES(state, payload) {
+      state.favorites = payload;
     },
   },
   actions: {
@@ -55,6 +60,33 @@ export default {
         // context.commit('GET_PAGINATION', res.data.pagination);
         context.commit('SET_ISLOADING', false, { root: true });
       });
+    },
+    getFavorites(context) {
+      const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+      context.commit('SET_FAVORITES', favorites);
+      console.log(
+        'favoritesTitle',
+        favorites.map((item) => item.title),
+      );
+    },
+    addToFavorites(context, product) {
+      const { favorites } = context.state;
+      favorites.push(product);
+
+      localStorage.setItem('favorites', JSON.stringify(favorites));
+      context.commit('SET_FAVORITES', favorites);
+      context.dispatch('getFavorites');
+    },
+    removeFavoritesItem(context, product) {
+      const { favorites } = context.state;
+      const productIndexInFavorites = favorites.findIndex(
+        (item) => item.id === product.id,
+      );
+      favorites.splice(productIndexInFavorites, 1);
+
+      localStorage.setItem('favorites', JSON.stringify(favorites));
+      context.commit('SET_FAVORITES', favorites);
+      context.dispatch('getFavorites');
     },
   },
 };

@@ -14,8 +14,12 @@ import {
   faArrowRight,
   faEnvelope,
   faAngleDoubleDown,
+  faHeart as fasHeart,
 } from '@fortawesome/free-solid-svg-icons';
-import { faTrashAlt } from '@fortawesome/free-regular-svg-icons';
+import {
+  faTrashAlt,
+  faHeart as farHeart,
+} from '@fortawesome/free-regular-svg-icons';
 import {
   faGooglePlus,
   faInstagramSquare,
@@ -60,6 +64,8 @@ library.add(
   faArrowRight,
   faEnvelope,
   faAngleDoubleDown,
+  fasHeart,
+  farHeart,
 );
 library.add(faGooglePlus, faInstagramSquare, faFacebookSquare);
 Vue.component('font-awesome-icon', FontAwesomeIcon);

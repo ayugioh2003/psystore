@@ -39,7 +39,29 @@
               v-for="(item, index) in filterProducts"
               :key="item.id"
             >
-              <div class="card h-100">
+              <div class="card h-100 position-relative">
+                <div class="position-absolute" style="right: 0">
+                  <!-- 移出最愛 -->
+                  <button
+                    class="btn text-danger"
+                    @click="removeFavoritesItem(item)"
+                    v-if="
+                      favorites.map((product) => product.id).includes(item.id)
+                    "
+                  >
+                    <font-awesome-icon :icon="['fas', 'heart']" size="lg" />
+                  </button>
+                  <!-- 加到最愛 -->
+                  <button
+                    class="btn text-danger"
+                    @click="addToFavorites(item)"
+                    v-if="
+                      !favorites.map((product) => product.id).includes(item.id)
+                    "
+                  >
+                    <font-awesome-icon :icon="['far', 'heart']" size="lg" />
+                  </button>
+                </div>
                 <img
                   :src="
                     item.imageUrl || 'https://dummyimage.com/600x300/AAE.jpg'
@@ -119,7 +141,7 @@ export default {
     };
   },
   computed: {
-    ...mapGetters('product', ['products', 'pagination']),
+    ...mapGetters('product', ['products', 'pagination', 'favorites']),
     isEnabledProducts() {
       return this.products.filter(function ifIsEnabled(product) {
         return product.is_enabled === 1;
@@ -164,7 +186,14 @@ export default {
     },
   },
   methods: {
-    ...mapActions('product', ['getProducts', 'getProductsAll']),
+    ...mapActions('product', [
+      'getProducts',
+      'getProductsAll',
+      'getFavorites',
+      'addToFavorites',
+      'removeFavoritesItem',
+      'isFavorite',
+    ]),
     addtoCart(item) {
       const vm = this;
       vm.status.is_cartbtn_adding = true;
@@ -190,6 +219,8 @@ export default {
   mounted() {
     this.getProductsAll();
     console.log(this.$route.params.category);
+
+    this.getFavorites();
   },
 };
 </script>
