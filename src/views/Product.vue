@@ -12,7 +12,25 @@
       <!-- Product detail -->
       <div class="row">
         <!-- Product picture -->
-        <div class="col-md-5 ">
+        <div class="col-md-5 position-relative">
+          <div class="position-absolute" style="right: 16px">
+            <!-- 移出最愛 -->
+            <button
+              class="btn text-danger"
+              @click="removeFavoritesItem(product)"
+              v-if="favorites.map((item) => item.id).includes(product.id)"
+            >
+              <font-awesome-icon :icon="['fas', 'heart']" size="lg" />
+            </button>
+            <!-- 加到最愛 -->
+            <button
+              class="btn text-danger"
+              @click="addToFavorites(product)"
+              v-if="!favorites.map((item) => item.id).includes(product.id)"
+            >
+              <font-awesome-icon :icon="['far', 'heart']" size="lg" />
+            </button>
+          </div>
           <img
             :src="product.imageUrl || 'https://dummyimage.com/600x300/AAE.jpg'"
             class="card-img-top"
@@ -177,7 +195,7 @@ export default {
     };
   },
   computed: {
-    ...mapGetters('product', ['product', 'products']),
+    ...mapGetters('product', ['product', 'products', 'favorites']),
     routeId() {
       return this.$route.params.id;
     },
@@ -190,7 +208,13 @@ export default {
     },
   },
   methods: {
-    ...mapActions('product', ['getProduct', 'getProductsAll']),
+    ...mapActions('product', [
+      'getProduct',
+      'getProductsAll',
+      'getFavorites',
+      'addToFavorites',
+      'removeFavoritesItem',
+    ]),
     addtoCart(item) {
       const vm = this;
       this.status.is_cartbtn_adding = true;
