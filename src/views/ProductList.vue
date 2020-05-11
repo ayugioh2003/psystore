@@ -154,6 +154,11 @@ export default {
         // return this.products;
       }
 
+      if (this.routeCategory === '我的最愛') {
+        return vm.favorites;
+        // return this.products;
+      }
+
       const array = vm.isEnabledProducts.filter(function ifCategory(product) {
         return product.category === vm.routeCategory;
       });
@@ -165,7 +170,7 @@ export default {
       );
       categories = [...new Set(categories)];
       console.log(categories);
-      categories = ['所有商品', ...categories];
+      categories = ['所有商品', ...categories, '我的最愛'];
       console.log(categories);
       return categories;
     },
