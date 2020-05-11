@@ -115,6 +115,7 @@ export default {
         name: 'productDetail',
         params: { id: item.id },
       });
+      this.$router.push('/refresh');
     },
   },
   mounted() {

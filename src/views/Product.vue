@@ -96,7 +96,7 @@
           v-for="(item, index) in filterProductsByCategory"
           :key="item.id"
         >
-          <div class="card h-100">
+          <!-- <div class="card h-100">
             <img
               :src="item.imageUrl || 'https://dummyimage.com/600x300/AAE.jpg'"
               class="card-img-top"
@@ -146,7 +146,8 @@
                 加到購物車
               </button>
             </div>
-          </div>
+          </div> -->
+          <ProductCard :item="item" :index="index"></ProductCard>
         </div>
       </div>
     </div>
@@ -155,8 +156,12 @@
 
 <script>
 import { mapGetters, mapActions } from 'vuex';
+import ProductCard from '@/components/ProductCard.vue';
 
 export default {
+  components: {
+    ProductCard,
+  },
   metaInfo() {
     return {
       title: `${this.product.title} | PsyStore`,
