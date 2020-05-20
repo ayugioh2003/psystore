@@ -83,9 +83,8 @@ export default {
   overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
 }
 
-@supports ((position: -webkit-sticky) or (position: sticky)) {
+@supports (position: sticky) {
   .sidebar-sticky {
-    position: -webkit-sticky;
     position: sticky;
   }
 }
