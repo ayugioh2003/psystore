@@ -243,6 +243,7 @@ export default {
     const vm = this;
     vm.getProduct(vm.routeId);
     vm.getProductsAll();
+    vm.getFavorites();
   },
 };
 </script>

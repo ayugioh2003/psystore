@@ -84,13 +84,10 @@ export default {
     };
   },
   computed: {
-    ...mapGetters('product', ['products', 'pagination', 'favorites']),
+    ...mapGetters('product', ['favorites']),
   },
   methods: {
     ...mapActions('product', [
-      'getProducts',
-      'getProductsAll',
-      'getFavorites',
       'addToFavorites',
       'removeFavoritesItem',
       'isFavorite',
@@ -118,11 +115,6 @@ export default {
       });
       vm.$router.push('/refresh');
     },
-  },
-  mounted() {
-    const vm = this;
-    vm.getProductsAll();
-    vm.getFavorites();
   },
 };
 </script>

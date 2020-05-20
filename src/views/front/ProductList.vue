@@ -126,7 +126,6 @@ export default {
   },
   methods: {
     ...mapActions('product', [
-      'getProducts',
       'getProductsAll',
       'getFavorites',
       'addToFavorites',
