@@ -197,7 +197,8 @@ export default {
   computed: {
     ...mapGetters('product', ['product', 'products', 'favorites']),
     routeId() {
-      return this.$route.params.id;
+      const vm = this;
+      return vm.$route.params.id;
     },
     filterProductsByCategory() {
       const vm = this;
@@ -217,29 +218,31 @@ export default {
     ]),
     addtoCart(item) {
       const vm = this;
-      this.status.is_cartbtn_adding = true;
+      vm.status.is_cartbtn_adding = true;
 
       vm.$store.dispatch('cart/addtoCart', item).then((res) => {
         vm.status.is_cartbtn_adding = false;
         console.log('message', res.data.message);
 
-        this.$store.dispatch('alertMessage/updateMessage', {
+        vm.$store.dispatch('alertMessage/updateMessage', {
           message: `${res.data.message}`,
           status: res.data.success ? 'success' : 'warning',
         });
       });
     },
     openProductDetail(item) {
-      this.$router.push({
+      const vm = this;
+      vm.$router.push({
         name: 'productDetail',
         params: { id: item.id },
       });
-      this.$router.replace('/refresh');
+      vm.$router.replace('/refresh');
     },
   },
   mounted() {
-    this.getProduct(this.routeId);
-    this.getProductsAll();
+    const vm = this;
+    vm.getProduct(vm.routeId);
+    vm.getProductsAll();
   },
 };
 </script>

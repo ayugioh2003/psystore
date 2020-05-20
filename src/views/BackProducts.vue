@@ -257,7 +257,7 @@ export default {
       const API = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMPATH}/admin/products/?page=${page}`;
       vm.$store.commit('SET_ISLOADING', true);
 
-      this.$http.get(API).then((response) => {
+      vm.$http.get(API).then((response) => {
         vm.products = response.data.products;
         vm.pagination = response.data.pagination;
         vm.$store.commit('SET_ISLOADING', false);
@@ -278,7 +278,7 @@ export default {
       const method = getMethod(vm.isNew);
       vm.$store.commit('SET_ISLOADING', true);
 
-      this.$http[method](API, { data: vm.tempProduct }).then((data) => {
+      vm.$http[method](API, { data: vm.tempProduct }).then((data) => {
         console.log(data);
         $('#productModal').modal('hide');
         vm.getProductsA();
@@ -295,7 +295,7 @@ export default {
       const formData = new FormData();
       formData.append('file-to-upload', uploadedFile);
 
-      this.$http
+      vm.$http
         .post(API, formData, {
           headers: {
             'Content-Type': 'multipart/form-data',
@@ -330,7 +330,7 @@ export default {
       const API = `${process.env.VUE_APP_API}/admin/product/${vm.tempProduct.id}`;
       vm.$store.commit('SET_ISLOADING', true);
 
-      this.$http.delete(API).then((response) => {
+      vm.$http.delete(API).then((response) => {
         console.log(response);
         $('#delModal').modal('hide');
         vm.$store.commit('SET_ISLOADING', false);
@@ -340,10 +340,10 @@ export default {
   },
   created() {
     console.log('BackProducts page');
-
+    const vm = this;
     // const API = `${process.env.VUE_APP_API}/admin/product/-M1ys9UiSPVlRcATxrVt`;
     // this.$http.delete(API).then((data) => console.log(data));
-    this.getProductsA();
+    vm.getProductsA();
   },
 };
 </script>

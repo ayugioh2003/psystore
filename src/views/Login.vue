@@ -71,7 +71,7 @@ export default {
       const vm = this;
       const api = `${process.env.VUE_APP_APIPATH}/admin/signin`;
 
-      this.$http
+      vm.$http
         .post(api, vm.user)
         .then((data) => data.data.success)
         .then((success) => {

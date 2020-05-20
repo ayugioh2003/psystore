@@ -64,7 +64,8 @@ export default {
   },
   methods: {
     delItem() {
-      this.$emit('del-item');
+      const vm = this;
+      vm.$emit('del-item');
     },
   },
 };

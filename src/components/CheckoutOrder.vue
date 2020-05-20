@@ -81,12 +81,13 @@ export default {
     ...mapActions('cart', ['getCart']),
     ...mapActions('order', ['setOrderStep', 'getOrder', 'payOrder']),
     payOrder() {
-      const { id } = this.$route.params;
+      const vm = this;
+      const { id } = vm.$route.params;
 
-      this.$store.dispatch('order/payOrder', id).then((res) => {
+      vm.$store.dispatch('order/payOrder', id).then((res) => {
         console.log('已付款', res);
-        this.setOrderStep('paid');
-        this.$router.push({ name: 'OrderPaid' });
+        vm.setOrderStep('paid');
+        vm.$router.push({ name: 'OrderPaid' });
       });
     },
   },

@@ -140,7 +140,8 @@ export default {
     ...mapActions('cart', ['getCart', 'removeCartItem']),
   },
   mounted() {
-    this.getCart();
+    const vm = this;
+    vm.getCart();
   },
 };
 </script>

@@ -242,7 +242,8 @@ export default {
     },
   },
   created() {
-    this.getCoupons();
+    const vm = this;
+    vm.getCoupons();
   },
 };
 </script>

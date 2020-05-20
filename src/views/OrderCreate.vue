@@ -189,16 +189,18 @@ export default {
     ...mapActions('cart', ['getCart', 'addtoCart', 'removeCartItem']),
     ...mapActions('order', ['createOrder', 'setOrderStep']),
     onSubmit() {
-      this.setIsLoading(true);
-      this.createOrder(this.form).then((res) => {
-        this.setIsLoading(false);
-        this.$router.push(`/checkout/order_paying/${res.data.orderId}`);
+      const vm = this;
+      vm.setIsLoading(true);
+      vm.createOrder(vm.form).then((res) => {
+        vm.setIsLoading(false);
+        vm.$router.push(`/checkout/order_paying/${res.data.orderId}`);
       });
     },
   },
   mounted() {
-    this.getCart();
-    this.setOrderStep('create');
+    const vm = this;
+    vm.getCart();
+    vm.setOrderStep('create');
   },
 };
 </script>

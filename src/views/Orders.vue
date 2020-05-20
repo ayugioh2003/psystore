@@ -85,7 +85,8 @@ export default {
     },
   },
   mounted() {
-    this.getOrders(1);
+    const vm = this;
+    vm.getOrders(1);
   },
 };
 </script>

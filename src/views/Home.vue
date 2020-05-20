@@ -119,9 +119,7 @@
               心理學科普部份，將以認知心理學與諮商心理學為主軸，介紹心理機制與心理學應用。
               心理學工具部份，將提供心理學測驗與相關技巧。
             </p>
-            <router-link
-              to="/products"
-              class="btn btn-info btn-lg"
+            <router-link to="/products" class="btn btn-info btn-lg"
               >查看更多心理學，為自己來場心智健身之旅</router-link
             >
           </div>
@@ -239,9 +237,10 @@ export default {
       console.log(window.innerHeight);
     },
     getNavbarAndScreenHeight() {
-      this.navbarHeight = document.querySelector('.navbar').offsetHeight;
-      this.screenHeight = window.innerHeight;
-      console.log(this.navbarHeight, this.screenHeight);
+      const vm = this;
+      vm.navbarHeight = document.querySelector('.navbar').offsetHeight;
+      vm.screenHeight = window.innerHeight;
+      console.log(vm.navbarHeight, vm.screenHeight);
     },
     ...mapActions('product', ['getProducts', 'getProductsAll']),
     addtoCart(item) {
@@ -253,29 +252,31 @@ export default {
         console.log('after');
 
         console.log(res.data.message);
-        this.$store.dispatch('alertMessage/updateMessage', {
+        vm.$store.dispatch('alertMessage/updateMessage', {
           message: `${res.data.message}`,
           status: res.data.success ? 'success' : 'warning',
         });
       });
     },
     openProductDetail(item) {
-      this.$router.push({
+      const vm = this;
+      vm.$router.push({
         name: 'productDetail',
         params: { id: item.id },
       });
     },
   },
   mounted() {
+    const vm = this;
     // banner resize
-    this.getNavbarAndScreenHeight();
-    window.addEventListener('resize', this.getNavbarAndScreenHeight);
-
+    vm.getNavbarAndScreenHeight();
+    window.addEventListener('resize', vm.getNavbarAndScreenHeight);
     // get products
-    this.getProductsAll();
+    vm.getProductsAll();
   },
   beforeDestroy() {
-    window.removeEventListener('resize', this.getNavbarAndScreenHeight);
+    const vm = this;
+    window.removeEventListener('resize', vm.getNavbarAndScreenHeight);
   },
 };
 </script>

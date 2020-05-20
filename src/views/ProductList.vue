@@ -73,20 +73,21 @@ export default {
   computed: {
     ...mapGetters('product', ['products', 'pagination', 'favorites']),
     isEnabledProducts() {
-      return this.products.filter(function ifIsEnabled(product) {
+      const vm = this;
+      return vm.products.filter(function ifIsEnabled(product) {
         return product.is_enabled === 1;
       });
     },
     filterProducts() {
       const vm = this;
-      if (this.routeCategory === '所有商品') {
+      if (vm.routeCategory === '所有商品') {
         return vm.isEnabledProducts;
-        // return this.products;
+        // return vm.products;
       }
 
-      if (this.routeCategory === '我的最愛') {
+      if (vm.routeCategory === '我的最愛') {
         return vm.favorites;
-        // return this.products;
+        // return vm.products;
       }
 
       const array = vm.isEnabledProducts.filter(function ifCategory(product) {
@@ -95,7 +96,8 @@ export default {
       return array;
     },
     categories() {
-      let categories = this.isEnabledProducts.map(
+      const vm = this;
+      let categories = vm.isEnabledProducts.map(
         (product) => product.category,
       );
       categories = [...new Set(categories)];
@@ -106,12 +108,14 @@ export default {
     },
     routeCategory: {
       get() {
-        return this.$route.params.category || '所有商品';
+        const vm = this;
+        return vm.$route.params.category || '所有商品';
       },
       set(newValue) {
-        if (this.$route.params.category === newValue) return;
+        const vm = this;
+        if (vm.$route.params.category === newValue) return;
         console.log('change category');
-        this.$router.push({
+        vm.$router.push({
           name: 'ProductList',
           params: {
             category: newValue,
@@ -138,24 +142,26 @@ export default {
         console.log('after');
 
         console.log(res.data.message);
-        this.$store.dispatch('alertMessage/updateMessage', {
+        vm.$store.dispatch('alertMessage/updateMessage', {
           message: `${res.data.message}`,
           status: res.data.success ? 'success' : 'warning',
         });
       });
     },
     openProductDetail(item) {
-      this.$router.push({
+      const vm = this;
+      vm.$router.push({
         name: 'productDetail',
         params: { id: item.id },
       });
     },
   },
   mounted() {
-    this.getProductsAll();
-    console.log(this.$route.params.category);
+    const vm = this;
+    vm.getProductsAll();
+    console.log(vm.$route.params.category);
 
-    this.getFavorites();
+    vm.getFavorites();
   },
 };
 </script>

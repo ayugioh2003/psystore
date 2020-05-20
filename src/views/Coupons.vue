@@ -99,11 +99,12 @@ export default {
   },
   methods: {
     copyCoupon(coupon) {
+      const vm = this;
       const copyText = document.getElementById(coupon);
       copyText.select();
       copyText.setSelectionRange(0, 99999);
       document.execCommand('copy');
-      this.$store.dispatch('alertMessage/updateMessage', {
+      vm.$store.dispatch('alertMessage/updateMessage', {
         message: '複製酷朋成功',
         status: 'success',
       });

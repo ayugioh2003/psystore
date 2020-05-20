@@ -232,8 +232,9 @@ export default {
     // },
   },
   mounted() {
-    this.getCart();
-    console.log(this.cart);
+    const vm = this;
+    vm.getCart();
+    console.log(vm.cart);
   },
 };
 </script>

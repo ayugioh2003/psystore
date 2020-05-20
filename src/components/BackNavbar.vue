@@ -19,7 +19,7 @@ export default {
       const vm = this;
       const api = `${process.env.VUE_APP_APIPATH}/logout`;
 
-      this.$http
+      vm.$http
         .post(api)
         .then((data) => data.data.success)
         .then((success) => {

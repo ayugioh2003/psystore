@@ -329,12 +329,12 @@ export default {
       const vm = this;
       vm.status.is_cartbtn_adding = true;
 
-      this.$store.dispatch('cart/addtoCart', item).then((res) => {
+      vm.$store.dispatch('cart/addtoCart', item).then((res) => {
         vm.status.is_cartbtn_adding = false;
         $('#productModal').modal('hide');
 
         console.log(res.data.message);
-        this.$store.dispatch('alertMessage/updateMessage', {
+        vm.$store.dispatch('alertMessage/updateMessage', {
           message: `${res.data.message}`,
           status: res.data.success ? 'success' : 'warning',
         });
@@ -347,16 +347,18 @@ export default {
       $('#productModal').modal('show');
     },
     onSubmit() {
-      this.setIsLoading(true);
-      this.createOrder(this.form).then((res) => {
-        this.setIsLoading(false);
-        this.$router.push(`/back_order_checkout/${res.data.orderId}`);
+      const vm = this;
+      vm.setIsLoading(true);
+      vm.createOrder(vm.form).then((res) => {
+        vm.setIsLoading(false);
+        vm.$router.push(`/back_order_checkout/${res.data.orderId}`);
       });
     },
   },
   created() {
-    this.getProducts();
-    this.getCart();
+    const vm = this;
+    vm.getProducts();
+    vm.getCart();
   },
 };
 </script>

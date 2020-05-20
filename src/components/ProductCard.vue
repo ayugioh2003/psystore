@@ -104,23 +104,25 @@ export default {
         console.log('after');
 
         console.log(res.data.message);
-        this.$store.dispatch('alertMessage/updateMessage', {
+        vm.$store.dispatch('alertMessage/updateMessage', {
           message: `${res.data.message}`,
           status: res.data.success ? 'success' : 'warning',
         });
       });
     },
     openProductDetail(item) {
-      this.$router.push({
+      const vm = this;
+      vm.$router.push({
         name: 'productDetail',
         params: { id: item.id },
       });
-      this.$router.push('/refresh');
+      vm.$router.push('/refresh');
     },
   },
   mounted() {
-    this.getProductsAll();
-    this.getFavorites();
+    const vm = this;
+    vm.getProductsAll();
+    vm.getFavorites();
   },
 };
 </script>

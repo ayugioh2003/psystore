@@ -82,7 +82,8 @@ export default {
     ...mapActions('order', ['getOrder', 'payOrder']),
   },
   created() {
-    this.getOrder(this.$route.params.id);
+    const vm = this;
+    vm.getOrder(vm.$route.params.id);
   },
 };
 </script>

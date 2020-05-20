@@ -142,7 +142,8 @@ export default {
     },
   },
   created() {
-    this.getOrdersA();
+    const vm = this;
+    vm.getOrdersA();
   },
 };
 </script>
