@@ -19,7 +19,7 @@ const routes = [
         meta: {
           title: '首頁',
         },
-        component: () => import('@/views/Home'),
+        component: () => import('@/views/front/Home'),
       },
       {
         path: '/products',
@@ -34,7 +34,7 @@ const routes = [
           title: '商品清單',
         },
 
-        component: () => import('@/views/ProductList'),
+        component: () => import('@/views/front/ProductList'),
       },
       {
         path: '/products/:category',
@@ -42,8 +42,7 @@ const routes = [
         meta: {
           title: '商品清單',
         },
-
-        component: () => import('@/views/ProductList'),
+        component: () => import('@/views/front/ProductList'),
       },
 
       {
@@ -52,13 +51,13 @@ const routes = [
         meta: {
           title: '商品',
         },
-        component: () => import('@/views/Product'),
+        component: () => import('@/views/front/Product'),
         // meta: { requiresAuth: true },
       },
       {
         path: '/cart',
         name: 'Cart',
-        component: () => import('@/views/Cart'),
+        component: () => import('@/views/front/Cart'),
         meta: {
           title: '購物清單',
         },
@@ -73,7 +72,7 @@ const routes = [
           {
             path: 'order_create',
             name: 'OrderCreate',
-            component: () => import('@/views/OrderCreate'),
+            component: () => import('@/views/front/OrderCreate'),
             meta: {
               title: '建立訂單',
             },
@@ -83,7 +82,7 @@ const routes = [
           {
             path: 'order_paying/:id',
             name: 'OrderPaying',
-            component: () => import('@/views/OrderPaying'),
+            component: () => import('@/views/front/OrderPaying'),
             meta: {
               title: '金流付款',
             },
@@ -93,7 +92,7 @@ const routes = [
           {
             path: 'order_paid/:id',
             name: 'OrderPaid',
-            component: () => import('@/views/OrderPaid'),
+            component: () => import('@/views/front/OrderPaid'),
             meta: {
               title: '結帳成功',
             },
@@ -106,7 +105,7 @@ const routes = [
       {
         path: 'orders',
         name: 'Orders',
-        component: () => import('@/views/Orders'),
+        component: () => import('@/views/front/Orders'),
         meta: {
           title: '訂單列表',
         },
@@ -116,7 +115,7 @@ const routes = [
       {
         path: '/coupons',
         name: 'Coupons',
-        component: () => import('@/views/Coupons.vue'),
+        component: () => import('@/views/front/Coupons.vue'),
         meta: {
           title: '酷碰清單',
         },
@@ -126,7 +125,7 @@ const routes = [
       {
         path: 'login',
         name: 'Login',
-        component: () => import('@/views/Login'),
+        component: () => import('@/views/front/Login'),
         meta: {
           title: '登入頁面',
         },
@@ -134,7 +133,7 @@ const routes = [
       {
         path: 'about',
         name: 'About',
-        component: () => import('@/views/About.vue'),
+        component: () => import('@/views/front/About.vue'),
         meta: {
           title: '關於我們',
         },
@@ -142,7 +141,7 @@ const routes = [
       {
         path: 'copyright',
         name: 'Copyright',
-        component: () => import('@/views/Copyright.vue'),
+        component: () => import('@/views/front/Copyright.vue'),
         meta: {
           title: '版權聲明',
         },
@@ -158,19 +157,19 @@ const routes = [
       {
         path: 'products',
         name: 'BackProducts',
-        component: () => import('@/views/BackProducts'),
+        component: () => import('@/views/back/BackProducts'),
         meta: { requiresAuth: true },
       },
       {
         path: 'orders',
         name: 'BackOrders',
-        component: () => import('@/views/BackOrders'),
+        component: () => import('@/views/back/BackOrders'),
         meta: { requiresAuth: true },
       },
       {
         path: 'coupons',
         name: 'BackCoupons',
-        component: () => import('@/views/BackCoupons'),
+        component: () => import('@/views/back/BackCoupons'),
         meta: { requiresAuth: true },
       },
     ],
@@ -183,13 +182,13 @@ const routes = [
       {
         path: 'shopping',
         name: 'BackShopping',
-        component: () => import('@/views/BackShopping'),
+        component: () => import('@/views/back/BackShopping'),
         // meta: { requiresAuth: true },
       },
       {
         path: 'back_order_checkout/:id',
         name: 'BackOrderCheckout',
-        component: () => import('@/views/BackOrderCheckout'),
+        component: () => import('@/views/back/BackOrderCheckout'),
         // meta: { requiresAuth: true },
       },
     ],
