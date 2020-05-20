@@ -27,7 +27,7 @@ function addStyleResource(rule) {
           __dirname,
           './node_modules/bootstrap/scss/_functions.scss',
         ),
-        path.resolve(__dirname, './src/assets/helpers/_variables.scss'),
+        path.resolve(__dirname, './src/assets/scss/helpers/_variables.scss'),
         path.resolve(__dirname, './node_modules/bootstrap/scss/_mixins.scss'),
       ],
     });
