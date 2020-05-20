@@ -333,7 +333,7 @@ export default {
         vm.status.is_cartbtn_adding = false;
         $('#productModal').modal('hide');
 
-        console.log(res.data.message);
+        // console.log('message', res.data.message);
         vm.$store.dispatch('alertMessage/updateMessage', {
           message: `${res.data.message}`,
           status: res.data.success ? 'success' : 'warning',

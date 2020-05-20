@@ -80,8 +80,8 @@ export default {
     getOrders(page = 1) {
       const vm = this;
       vm.setIsLoading(true);
-      vm.$store.dispatch('order/getOrders', page).then((res) => {
-        console.log('orders change page', res);
+      vm.$store.dispatch('order/getOrders', page).then(() => {
+        // console.log('orders change page', res);
         vm.setIsLoading(false);
       });
     },

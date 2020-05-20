@@ -261,7 +261,6 @@ export default {
         vm.products = response.data.products;
         vm.pagination = response.data.pagination;
         vm.$store.commit('SET_ISLOADING', false);
-        console.log(vm.products);
       });
     },
     updateProduct() {
@@ -278,8 +277,7 @@ export default {
       const method = getMethod(vm.isNew);
       vm.$store.commit('SET_ISLOADING', true);
 
-      vm.$http[method](API, { data: vm.tempProduct }).then((data) => {
-        console.log(data);
+      vm.$http[method](API, { data: vm.tempProduct }).then(() => {
         $('#productModal').modal('hide');
         vm.getProductsA();
         vm.$store.commit('SET_ISLOADING', false);
@@ -289,8 +287,8 @@ export default {
       const vm = this;
       const uploadedFile = vm.$refs.files.files[0];
       const API = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMPATH}/admin/upload`;
-      console.log(uploadedFile);
       vm.status.fileUploading = true;
+      // console.log(uploadedFile);
 
       const formData = new FormData();
       formData.append('file-to-upload', uploadedFile);
@@ -302,7 +300,7 @@ export default {
           },
         })
         .then((data) => {
-          console.log(data);
+          // console.log(data);
           vm.$set(vm.tempProduct, 'imageUrl', data.data.imageUrl);
           vm.status.fileUploading = false;
         });
@@ -330,8 +328,8 @@ export default {
       const API = `${process.env.VUE_APP_API}/admin/product/${vm.tempProduct.id}`;
       vm.$store.commit('SET_ISLOADING', true);
 
-      vm.$http.delete(API).then((response) => {
-        console.log(response);
+      vm.$http.delete(API).then(() => {
+        // console.log(response);
         $('#delModal').modal('hide');
         vm.$store.commit('SET_ISLOADING', false);
         vm.getProductsA();
@@ -339,10 +337,7 @@ export default {
     },
   },
   created() {
-    console.log('BackProducts page');
     const vm = this;
-    // const API = `${process.env.VUE_APP_API}/admin/product/-M1ys9UiSPVlRcATxrVt`;
-    // this.$http.delete(API).then((data) => console.log(data));
     vm.getProductsA();
   },
 };

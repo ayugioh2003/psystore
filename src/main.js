@@ -100,20 +100,6 @@ new Vue({
   render: (h) => h(App),
 }).$mount('#app');
 
-// router
-// function setMeta(to) {
-//   const defaultTitle = 'PsyStore';
-
-//   if (to.name === 'ProductList') {
-//     window.document.title = `${to.params.category}-${to.meta.title} | ${defaultTitle}`;
-//   } else if (to.meta.title) {
-//     window.document.title = `${to.meta.title} | ${defaultTitle}`;
-//   } else {
-//     window.document.title = defaultTitle;
-//   }
-//   console.log(to);
-// }
-
 router.beforeEach((to, from, next) => {
   if (to.meta.requiresAuth) {
     const api = `${process.env.VUE_APP_APIPATH}/api/user/check`;
@@ -122,19 +108,16 @@ router.beforeEach((to, from, next) => {
       .then((data) => data.data.success)
       .then((success) => {
         if (success) {
-          console.log('signin check success');
-          // setMeta(to);
+          // console.log('signin check success');
           next();
         } else {
           console.log('signin check fail');
           if (from.name !== 'Login') {
-            // setMeta(to);
             router.push('/login');
           }
         }
       });
   } else {
-    // setMeta(to);
     next();
   }
 });

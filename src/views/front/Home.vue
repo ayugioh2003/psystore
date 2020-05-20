@@ -219,7 +219,6 @@ export default {
     ...mapGetters('product', ['products']),
     filterProducts() {
       const vm = this;
-      console.log(vm.products);
       const filterArr = vm.filterKeywords.map(function filter(keyword) {
         return vm.products.filter(function include(product) {
           return product.title.includes(keyword);
@@ -234,13 +233,13 @@ export default {
     ...mapActions('product', ['getProductsAll']),
     scrollDown() {
       window.scrollTo(0, window.innerHeight);
-      console.log(window.innerHeight);
+      // console.log(window.innerHeight);
     },
     getNavbarAndScreenHeight() {
       const vm = this;
       vm.navbarHeight = document.querySelector('.navbar').offsetHeight;
       vm.screenHeight = window.innerHeight;
-      console.log(vm.navbarHeight, vm.screenHeight);
+      // console.log(vm.navbarHeight, vm.screenHeight);
     },
     ...mapActions('product', ['getProducts', 'getProductsAll']),
     addtoCart(item) {
@@ -249,9 +248,8 @@ export default {
 
       vm.$store.dispatch('cart/addtoCart', item).then((res) => {
         vm.status.is_cartbtn_adding = false;
-        console.log('after');
+        // console.log('message', res.data.message);
 
-        console.log(res.data.message);
         vm.$store.dispatch('alertMessage/updateMessage', {
           message: `${res.data.message}`,
           status: res.data.success ? 'success' : 'warning',

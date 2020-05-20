@@ -49,8 +49,8 @@ export default {
   },
   methods: {
     changePage(page) {
+      // console.log(page);
       const vm = this;
-      console.log(page);
       vm.$emit('change-page', page);
     },
   },

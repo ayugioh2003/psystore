@@ -128,8 +128,8 @@ export default {
       const order = { data: vm.tempOrder };
       vm.$store.commit('SET_ISLOADING', true);
 
-      vm.$http.put(API, order).then((res) => {
-        console.log(res);
+      vm.$http.put(API, order).then(() => {
+        // console.log(res);
         $('#orderModal').modal('hide');
         vm.getOrdersA();
         vm.$store.commit('SET_ISLOADING', false);

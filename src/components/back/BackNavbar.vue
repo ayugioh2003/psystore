@@ -29,10 +29,10 @@ export default {
         .then((data) => data.data.success)
         .then((success) => {
           if (success) {
-            console.log('signout success');
+            // console.log('signout success');
             vm.$router.push('/');
           } else {
-            console.log('signout fail');
+            // console.log('signout fail');
           }
         });
     },

@@ -77,9 +77,7 @@ export default {
         .then((success) => {
           if (success) {
             vm.$router.push('/admin/products');
-            console.log('signin success');
-          } else {
-            console.log('signin fail');
+            // console.log('signin success');
           }
         });
     },

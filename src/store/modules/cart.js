@@ -16,17 +16,15 @@ export default {
   actions: {
     getCart(context) {
       const API = `${process.env.VUE_APP_API}/cart`;
-
       return axios.get(API).then((res) => {
-        console.log('購物車項目', res);
         context.commit('GET_CART', res.data.data);
+        // console.log('購物車項目', res);
       });
     },
     addtoCart(context, payload) {
       const API = `${process.env.VUE_APP_API}/cart`;
-
       return axios.post(API, { data: payload }).then((res) => {
-        console.log('Cart Detail', res);
+        // console.log('Cart Detail', res);
         context.dispatch('getCart');
         return res;
       });
@@ -36,10 +34,9 @@ export default {
 
       context.commit('SET_ISLOADING', true, { root: true });
       return axios.delete(API).then((res) => {
-        console.log('刪除購物車項目結果', res);
+        // console.log('刪除購物車項目結果', res);
         context.commit('SET_ISLOADING', false, { root: true });
         context.dispatch('getCart');
-
         context.dispatch(
           'alertMessage/updateMessage',
           {
@@ -55,9 +52,8 @@ export default {
       const API = `${process.env.VUE_APP_API}/cart/${id}`;
 
       return axios.delete(API).then((res) => {
-        console.log('刪除購物車項目結果', res);
+        // console.log('刪除購物車項目結果', res);
         context.dispatch('getCart');
-
         context.dispatch(
           'alertMessage/updateMessage',
           {

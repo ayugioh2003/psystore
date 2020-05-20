@@ -101,9 +101,7 @@ export default {
         (product) => product.category,
       );
       categories = [...new Set(categories)];
-      console.log(categories);
       categories = ['所有商品', ...categories, '我的最愛'];
-      console.log(categories);
       return categories;
     },
     routeCategory: {
@@ -114,7 +112,7 @@ export default {
       set(newValue) {
         const vm = this;
         if (vm.$route.params.category === newValue) return;
-        console.log('change category');
+
         vm.$router.push({
           name: 'ProductList',
           params: {
@@ -138,9 +136,8 @@ export default {
 
       vm.$store.dispatch('cart/addtoCart', item).then((res) => {
         vm.status.is_cartbtn_adding = false;
-        console.log('after');
+        // console.log(res.data.message);
 
-        console.log(res.data.message);
         vm.$store.dispatch('alertMessage/updateMessage', {
           message: `${res.data.message}`,
           status: res.data.success ? 'success' : 'warning',
@@ -158,8 +155,6 @@ export default {
   mounted() {
     const vm = this;
     vm.getProductsAll();
-    console.log(vm.$route.params.category);
-
     vm.getFavorites();
   },
 };

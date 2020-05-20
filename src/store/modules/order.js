@@ -31,18 +31,14 @@ export default {
   actions: {
     createOrder(context, form) {
       const API = `${process.env.VUE_APP_API}/order`;
-
-      return axios.post(API, { data: form }).then((res) => {
-        console.log('訂單結帳結果', res);
-        return res;
-      });
+      return axios.post(API, { data: form }).then((res) => res);
     },
     getOrder(context, orderId) {
       const API = `${process.env.VUE_APP_API}/order/${orderId}`;
       context.commit('GET_ORDER', {});
 
       return axios.get(API).then((res) => {
-        console.log('取得訂單資料', res);
+        // console.log('取得訂單資料', res);
         context.commit('GET_ORDER', res.data.order);
         return res;
       });
@@ -52,7 +48,7 @@ export default {
       // context.commit('GET_ORDERS', {});
 
       return axios.get(API).then((res) => {
-        console.log('取得訂單們資料', res);
+        // console.log('取得訂單們資料', res);
         context.commit('GET_ORDERS', res.data.orders);
         context.commit('GET_PAGINATION', res.data.pagination);
         return res;
@@ -63,7 +59,7 @@ export default {
       context.dispatch('setIsLoading', true, { root: true });
 
       return axios.post(API).then((res) => {
-        console.log('取得訂單付款狀態', res);
+        // console.log('取得訂單付款狀態', res);
         context.dispatch('getOrder', orderId);
         context.dispatch(
           'alertMessage/updateMessage',

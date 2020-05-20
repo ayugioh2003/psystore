@@ -87,8 +87,8 @@ export default {
       const vm = this;
       const { id } = vm.$route.params;
 
-      vm.$store.dispatch('order/payOrder', id).then((res) => {
-        console.log('已付款', res);
+      vm.$store.dispatch('order/payOrder', id).then(() => {
+        // console.log('已付款', res);
         vm.setOrderStep('paid');
         vm.$router.push({ name: 'OrderPaid' });
       });
@@ -100,8 +100,8 @@ export default {
     vm.getCart().then(() => {
       vm.getOrder(vm.$route.params.id).then(() => {
         const isPaidPage = vm.$route.name === 'OrderPaid';
-        console.log('isPaidPage', isPaidPage);
-        console.log('isPaid', vm.order.is_paid);
+        // console.log('isPaidPage', isPaidPage);
+        // console.log('isPaid', vm.order.is_paid);
 
         if (!isPaidPage && vm.order.is_paid) {
           vm.$router.push({ name: 'OrderPaid' });

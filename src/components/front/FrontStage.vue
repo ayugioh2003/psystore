@@ -237,7 +237,6 @@ export default {
   mounted() {
     const vm = this;
     vm.getCart();
-    console.log(vm.cart);
   },
 };
 </script>
