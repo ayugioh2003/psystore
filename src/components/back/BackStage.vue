@@ -11,8 +11,8 @@
 </template>
 
 <script>
-import BackNavbar from '@/components/BackNavbar.vue';
-import BackSidebar from '@/components/BackSidebar.vue';
+import BackNavbar from '@/components/back/BackNavbar.vue';
+import BackSidebar from '@/components/back/BackSidebar.vue';
 
 export default {
   components: {

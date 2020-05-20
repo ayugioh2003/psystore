@@ -8,7 +8,7 @@ const routes = [
   {
     path: '/',
     // name: 'FrontStage',
-    component: () => import('@/components/FrontStage.vue'),
+    component: () => import('@/components/front/FrontStage.vue'),
     children: [
       {
         path: '/',
@@ -67,7 +67,7 @@ const routes = [
       {
         path: '/checkout',
         // name: 'Checkout',
-        component: () => import('@/components/Checkout'),
+        component: () => import('@/components/front/Checkout'),
         children: [
           {
             path: 'order_create',
@@ -151,7 +151,7 @@ const routes = [
   {
     path: '/admin',
     // name: 'BackStage',
-    component: () => import('@/components/BackStage'),
+    component: () => import('@/components/back/BackStage'),
     redirect: '/admin/products',
     children: [
       {
@@ -177,7 +177,7 @@ const routes = [
   {
     path: '/',
     // name: 'BackStage',
-    component: () => import('@/components/BackStage'),
+    component: () => import('@/components/back/BackStage'),
     children: [
       {
         path: 'shopping',

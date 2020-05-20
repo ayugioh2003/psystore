@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import CheckoutOrder from '@/components/CheckoutOrder.vue';
+import CheckoutOrder from '@/components/front/CheckoutOrder.vue';
 
 export default {
   metaInfo() {
