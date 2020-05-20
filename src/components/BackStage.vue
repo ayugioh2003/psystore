@@ -19,6 +19,9 @@ export default {
     BackNavbar,
     BackSidebar,
   },
+  data() {
+    return {};
+  },
 };
 </script>
 

@@ -74,7 +74,9 @@ export default {
       title: '後台結帳測試 | PsyStore',
     };
   },
-
+  data() {
+    return {};
+  },
   computed: {
     ...mapGetters('order', ['order']),
   },

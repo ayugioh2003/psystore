@@ -65,9 +65,11 @@ export default {
       title: '訂單列表 | PsyStore',
     };
   },
-
   components: {
     Pagination,
+  },
+  data() {
+    return {};
   },
   computed: {
     ...mapGetters('order', ['orders', 'pagination']),

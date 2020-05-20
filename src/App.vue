@@ -13,6 +13,9 @@ export default {
   components: {
     AlertMessage,
   },
+  data() {
+    return {};
+  },
   computed: {
     isLoading() {
       const vm = this;

@@ -62,6 +62,9 @@ export default {
       default: '商品',
     },
   },
+  data() {
+    return {};
+  },
   methods: {
     delItem() {
       const vm = this;

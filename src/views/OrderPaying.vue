@@ -13,7 +13,9 @@ export default {
       title: '金流付款 | PsyStore',
     };
   },
-
+  data() {
+    return {};
+  },
   components: {
     CheckoutOrder,
   },

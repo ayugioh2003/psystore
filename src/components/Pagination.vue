@@ -44,6 +44,9 @@ export default {
       required: true,
     },
   },
+  data() {
+    return {};
+  },
   methods: {
     changePage(page) {
       const vm = this;

@@ -37,6 +37,9 @@
 import { mapGetters } from 'vuex';
 
 export default {
+  data() {
+    return {};
+  },
   computed: {
     ...mapGetters('order', ['orderStep']),
   },
@@ -51,7 +54,6 @@ export default {
     padding: 3rem;
   }
 }
-
 
 .active {
   background-color: $warning !important;

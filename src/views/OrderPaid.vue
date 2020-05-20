@@ -13,7 +13,9 @@ export default {
       title: '結帳成功 | PsyStore',
     };
   },
-
+  data() {
+    return {};
+  },
   components: {
     CheckoutOrder,
   },

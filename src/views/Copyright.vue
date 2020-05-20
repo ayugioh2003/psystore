@@ -42,5 +42,8 @@ export default {
       title: '版權聲明 | PsyStore',
     };
   },
+  data() {
+    return {};
+  },
 };
 </script>

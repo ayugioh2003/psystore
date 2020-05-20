@@ -218,6 +218,9 @@ export default {
   components: {
     headroom,
   },
+  data() {
+    return {};
+  },
   computed: {
     ...mapGetters('cart', ['cart']),
   },
