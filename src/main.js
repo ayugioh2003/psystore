@@ -108,13 +108,13 @@ router.beforeEach((to, from, next) => {
       .then((data) => data.data.success)
       .then((success) => {
         if (success) {
-          // console.log('signin check success');
           next();
         } else {
-          console.log('signin check fail');
-          if (from.name !== 'Login') {
-            router.push('/login');
-          }
+          router.push('/login');
+          Vue.$store.dispatch('alertMessage/updateMessage', {
+            message: '登入後才能進入此頁',
+            status: 'hint',
+          });
         }
       });
   } else {

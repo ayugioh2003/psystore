@@ -29,10 +29,16 @@ export default {
         .then((data) => data.data.success)
         .then((success) => {
           if (success) {
-            // console.log('signout success');
+            vm.$store.dispatch('alertMessage/updateMessage', {
+              message: '登出成功',
+              status: 'success',
+            });
             vm.$router.push('/');
           } else {
-            // console.log('signout fail');
+            vm.$store.dispatch('alertMessage/updateMessage', {
+              message: '登入失敗',
+              status: 'danger',
+            });
           }
         });
     },

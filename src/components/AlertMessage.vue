@@ -50,12 +50,12 @@ export default {
 };
 </script>
 
-<style scope>
+<style scope lang="scss">
 .message-alert {
   position: fixed;
   max-width: 50%;
   top: 56px;
   right: 20px;
-  z-index: 1100;
+  z-index: 110000; // make z-index > navbar
 }
 </style>

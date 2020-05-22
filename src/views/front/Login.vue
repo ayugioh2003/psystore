@@ -77,7 +77,15 @@ export default {
         .then((success) => {
           if (success) {
             vm.$router.push('/admin/products');
-            // console.log('signin success');
+            vm.$store.dispatch('alertMessage/updateMessage', {
+              message: '登入成功',
+              status: 'success',
+            });
+          } else {
+            vm.$store.dispatch('alertMessage/updateMessage', {
+              message: '登入失敗',
+              status: 'danger',
+            });
           }
         });
     },
