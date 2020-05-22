@@ -78,7 +78,7 @@
               <input
                 type="text"
                 class="form-control"
-                id="title"
+                id="code"
                 placeholder="輸入酷朋code"
                 v-model="tempCoupon.code"
               />
