@@ -40,7 +40,6 @@
     <!-- Pagination -->
     <Pagination :pagination="pagination" @change-page="getCoupons"></Pagination>
     <!-- couponModal -->
-    <!-- Modal -->
     <div
       class="modal fade"
       id="couponModal"
@@ -133,7 +132,6 @@
         </div>
       </div>
     </div>
-
     <!-- delModal -->
     <DelModal
       itemType="酷朋"

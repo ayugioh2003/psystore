@@ -31,7 +31,6 @@
         ></font-awesome-icon>
       </div>
     </div>
-
     <!-- why3 -->
     <div class="why why1">
       <div class="container">
@@ -126,7 +125,6 @@
         </div>
       </div>
     </div>
-
     <!-- CTA -->
     <h2 class="text-center mb-5">熱門商品</h2>
     <div class="container mb-3" v-if="filterProducts[0]">

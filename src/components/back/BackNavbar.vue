@@ -1,7 +1,6 @@
 <template>
   <div class="container-fluid">
     <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
-      <!-- <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">心惦店</a> -->
       <router-link to="/" class="navbar-brand col-sm-3 col-md-2 mr-0"
         >心惦店</router-link
       >

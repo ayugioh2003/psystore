@@ -72,7 +72,6 @@
         @change-page="getProducts"
       ></Pagination>
     </div>
-
     <!-- 後台測試產品 modal -->
     <div
       class="modal fade"
@@ -133,7 +132,6 @@
         </div>
       </div>
     </div>
-
     <!-- 後台測試購物車 -->
     <hr />
     <div class="container"><h2 class="mb-3">測試購物車清單</h2></div>
@@ -196,7 +194,6 @@
         </div>
       </div>
     </div>
-
     <!-- 後台測試結帳表單 -->
     <hr />
     <div class="container"><h2 class="mb-3">測試結帳表單</h2></div>
