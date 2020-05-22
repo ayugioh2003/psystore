@@ -182,7 +182,6 @@ export default {
       vm.$store.commit('SET_ISLOADING', true);
 
       vm.$http.get(API).then((res) => {
-        // console.log('取得優惠券', res);
         vm.coupons = res.data.coupons;
         vm.pagination = res.data.pagination;
         vm.$store.commit('SET_ISLOADING', false);
@@ -215,7 +214,6 @@ export default {
 
       vm.$store.commit('SET_ISLOADING', true);
       vm.$http[method](api, { data: vm.tempCoupon }).then(() => {
-        // console.log('更新優惠券結果', res);
         vm.$store.commit('SET_ISLOADING', false);
         vm.getCoupons();
         $('#couponModal').modal('hide');
@@ -232,7 +230,6 @@ export default {
       vm.$store.commit('SET_ISLOADING', true);
 
       vm.$http.delete(API).then(() => {
-        // console.log('刪除優惠券結果', res);
         $('#delModal').modal('hide');
         vm.getCoupons();
         vm.$store.commit('SET_ISLOADING', false);

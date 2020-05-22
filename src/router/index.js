@@ -1,13 +1,11 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-// import Home from '../views/Home.vue';
 
 Vue.use(VueRouter);
 
 const routes = [
   {
     path: '/',
-    // name: 'FrontStage',
     component: () => import('@/components/front/FrontStage.vue'),
     children: [
       {
@@ -23,7 +21,6 @@ const routes = [
       },
       {
         path: '/products',
-        // name: 'ProductList',
         redirect: {
           name: 'ProductList',
           params: {
@@ -52,7 +49,6 @@ const routes = [
           title: '商品',
         },
         component: () => import('@/views/front/Product'),
-        // meta: { requiresAuth: true },
       },
       {
         path: '/cart',
@@ -61,12 +57,9 @@ const routes = [
         meta: {
           title: '購物清單',
         },
-
-        // meta: { requiresAuth: true },
       },
       {
         path: '/checkout',
-        // name: 'Checkout',
         component: () => import('@/components/front/Checkout'),
         children: [
           {
@@ -76,8 +69,6 @@ const routes = [
             meta: {
               title: '建立訂單',
             },
-
-            // meta: { requiresAuth: true },
           },
           {
             path: 'order_paying/:id',
@@ -86,8 +77,6 @@ const routes = [
             meta: {
               title: '金流付款',
             },
-
-            // meta: { requiresAuth: true },
           },
           {
             path: 'order_paid/:id',
@@ -96,11 +85,8 @@ const routes = [
             meta: {
               title: '結帳成功',
             },
-
-            // meta: { requiresAuth: true },
           },
         ],
-        // meta: { requiresAuth: true },
       },
       {
         path: 'orders',
@@ -109,8 +95,6 @@ const routes = [
         meta: {
           title: '訂單列表',
         },
-
-        // meta: { requiresAuth: true },
       },
       {
         path: '/coupons',
@@ -119,8 +103,6 @@ const routes = [
         meta: {
           title: '酷碰清單',
         },
-
-        // meta: { requiresAuth: true },
       },
       {
         path: 'login',
@@ -150,7 +132,6 @@ const routes = [
   },
   {
     path: '/admin',
-    // name: 'BackStage',
     component: () => import('@/components/back/BackStage'),
     redirect: '/admin/products',
     children: [
@@ -176,20 +157,17 @@ const routes = [
   },
   {
     path: '/',
-    // name: 'BackStage',
     component: () => import('@/components/back/BackStage'),
     children: [
       {
         path: 'shopping',
         name: 'BackShopping',
         component: () => import('@/views/back/BackShopping'),
-        // meta: { requiresAuth: true },
       },
       {
         path: 'back_order_checkout/:id',
         name: 'BackOrderCheckout',
         component: () => import('@/views/back/BackOrderCheckout'),
-        // meta: { requiresAuth: true },
       },
     ],
   },
@@ -197,7 +175,6 @@ const routes = [
     path: '/refresh',
     name: 'refresh',
     component: () => import('@/components/Refresh'),
-    // 目录更改为你自己的refresh.vue的目录
   },
 ];
 

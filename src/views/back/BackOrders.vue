@@ -129,7 +129,6 @@ export default {
       vm.$store.commit('SET_ISLOADING', true);
 
       vm.$http.put(API, order).then(() => {
-        // console.log(res);
         $('#orderModal').modal('hide');
         vm.getOrdersA();
         vm.$store.commit('SET_ISLOADING', false);

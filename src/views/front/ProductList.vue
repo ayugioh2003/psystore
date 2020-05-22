@@ -82,12 +82,9 @@ export default {
       const vm = this;
       if (vm.routeCategory === '所有商品') {
         return vm.isEnabledProducts;
-        // return vm.products;
       }
-
       if (vm.routeCategory === '我的最愛') {
         return vm.favorites;
-        // return vm.products;
       }
 
       const array = vm.isEnabledProducts.filter(function ifCategory(product) {
@@ -136,8 +133,6 @@ export default {
 
       vm.$store.dispatch('cart/addtoCart', item).then((res) => {
         vm.status.is_cartbtn_adding = false;
-        // console.log(res.data.message);
-
         vm.$store.dispatch('alertMessage/updateMessage', {
           message: `${res.data.message}`,
           status: res.data.success ? 'success' : 'warning',

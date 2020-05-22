@@ -226,20 +226,17 @@ export default {
       });
 
       return filterArr;
-      // return keywordArr;
     },
   },
   methods: {
     ...mapActions('product', ['getProductsAll']),
     scrollDown() {
       window.scrollTo(0, window.innerHeight);
-      // console.log(window.innerHeight);
     },
     getNavbarAndScreenHeight() {
       const vm = this;
       vm.navbarHeight = document.querySelector('.navbar').offsetHeight;
       vm.screenHeight = window.innerHeight;
-      // console.log(vm.navbarHeight, vm.screenHeight);
     },
     ...mapActions('product', ['getProducts', 'getProductsAll']),
     addtoCart(item) {
@@ -248,8 +245,6 @@ export default {
 
       vm.$store.dispatch('cart/addtoCart', item).then((res) => {
         vm.status.is_cartbtn_adding = false;
-        // console.log('message', res.data.message);
-
         vm.$store.dispatch('alertMessage/updateMessage', {
           message: `${res.data.message}`,
           status: res.data.success ? 'success' : 'warning',
@@ -266,10 +261,8 @@ export default {
   },
   mounted() {
     const vm = this;
-    // banner resize
     vm.getNavbarAndScreenHeight();
     window.addEventListener('resize', vm.getNavbarAndScreenHeight);
-    // get products
     vm.getProductsAll();
   },
   beforeDestroy() {
@@ -280,7 +273,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-// Banner
 .home-banner {
   .content {
     padding: 1rem;
@@ -304,7 +296,6 @@ export default {
   }
 }
 
-// why3
 .why {
   padding: 7rem;
   @include media-breakpoint-down(sm) {

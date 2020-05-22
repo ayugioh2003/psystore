@@ -34,7 +34,6 @@ export default {
       context.commit('SET_ISLOADING', true, { root: true });
 
       return axios.get(API).then((res) => {
-        // console.log('Product', res);
         context.commit('GET_PRODUCT', res.data.product);
         context.commit('SET_ISLOADING', false, { root: true });
       });
@@ -44,7 +43,6 @@ export default {
       context.commit('SET_ISLOADING', true, { root: true });
 
       return axios.get(API).then((res) => {
-        // console.log('Products', res);
         context.commit('GET_PRODUCTS', res.data.products);
         context.commit('GET_PAGINATION', res.data.pagination);
         context.commit('SET_ISLOADING', false, { root: true });
@@ -55,7 +53,6 @@ export default {
       context.commit('SET_ISLOADING', true, { root: true });
 
       return axios.get(API).then((res) => {
-        // console.log('ProductsAll', res);
         context.commit('GET_PRODUCTS', res.data.products);
         context.commit('SET_ISLOADING', false, { root: true });
       });
@@ -63,10 +60,6 @@ export default {
     getFavorites(context) {
       const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
       context.commit('SET_FAVORITES', favorites);
-      // console.log(
-      //   'favoritesTitle',
-      //   favorites.map((item) => item.title),
-      // );
     },
     addToFavorites(context, product) {
       const { favorites } = context.state;

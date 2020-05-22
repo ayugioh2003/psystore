@@ -38,17 +38,14 @@ export default {
       context.commit('GET_ORDER', {});
 
       return axios.get(API).then((res) => {
-        // console.log('取得訂單資料', res);
         context.commit('GET_ORDER', res.data.order);
         return res;
       });
     },
     getOrders(context, page) {
       const API = `${process.env.VUE_APP_API}/orders?page=${page}`;
-      // context.commit('GET_ORDERS', {});
 
       return axios.get(API).then((res) => {
-        // console.log('取得訂單們資料', res);
         context.commit('GET_ORDERS', res.data.orders);
         context.commit('GET_PAGINATION', res.data.pagination);
         return res;
@@ -59,7 +56,6 @@ export default {
       context.dispatch('setIsLoading', true, { root: true });
 
       return axios.post(API).then((res) => {
-        // console.log('取得訂單付款狀態', res);
         context.dispatch('getOrder', orderId);
         context.dispatch(
           'alertMessage/updateMessage',

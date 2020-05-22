@@ -76,12 +76,10 @@ export default {
   },
   methods: {
     ...mapActions(['setIsLoading']),
-    // ...mapActions('order', ['getOrders']),
     getOrders(page = 1) {
       const vm = this;
       vm.setIsLoading(true);
       vm.$store.dispatch('order/getOrders', page).then(() => {
-        // console.log('orders change page', res);
         vm.setIsLoading(false);
       });
     },

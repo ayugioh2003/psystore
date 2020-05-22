@@ -230,9 +230,6 @@ export default {
       'removeCartItem',
       'removeCartItemNoLoading',
     ]),
-    // removeCartItem(id) {
-    //   this.removeCartItemNoLoading(id);
-    // },
   },
   mounted() {
     const vm = this;

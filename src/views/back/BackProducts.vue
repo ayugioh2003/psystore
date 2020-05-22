@@ -288,7 +288,6 @@ export default {
       const uploadedFile = vm.$refs.files.files[0];
       const API = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMPATH}/admin/upload`;
       vm.status.fileUploading = true;
-      // console.log(uploadedFile);
 
       const formData = new FormData();
       formData.append('file-to-upload', uploadedFile);
@@ -300,7 +299,6 @@ export default {
           },
         })
         .then((data) => {
-          // console.log(data);
           vm.$set(vm.tempProduct, 'imageUrl', data.data.imageUrl);
           vm.status.fileUploading = false;
         });
@@ -329,7 +327,6 @@ export default {
       vm.$store.commit('SET_ISLOADING', true);
 
       vm.$http.delete(API).then(() => {
-        // console.log(response);
         $('#delModal').modal('hide');
         vm.$store.commit('SET_ISLOADING', false);
         vm.getProductsA();

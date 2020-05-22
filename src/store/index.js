@@ -33,7 +33,6 @@ export default new Vuex.Store({
           },
         })
         .then((res) => {
-          // console.log('添加酷朋結果', res);
           context.dispatch('cart/getCart', null, { root: true });
           context.commit('SET_ISLOADING', false);
           context.dispatch('alertMessage/updateMessage', {

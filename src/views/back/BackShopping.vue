@@ -316,9 +316,6 @@ export default {
   computed: {
     ...mapGetters('product', ['products', 'pagination']),
     ...mapGetters('cart', ['cart']),
-    // ...mapGetters({
-    //   cart: 'cart/cart',
-    // }),
   },
   methods: {
     ...mapActions(['addCouponCode', 'setIsLoading']),
@@ -330,10 +327,8 @@ export default {
       vm.status.is_cartbtn_adding = true;
 
       vm.$store.dispatch('cart/addtoCart', item).then((res) => {
-        vm.status.is_cartbtn_adding = false;
         $('#productModal').modal('hide');
-
-        // console.log('message', res.data.message);
+        vm.status.is_cartbtn_adding = false;
         vm.$store.dispatch('alertMessage/updateMessage', {
           message: `${res.data.message}`,
           status: res.data.success ? 'success' : 'warning',

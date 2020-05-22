@@ -98,8 +98,6 @@ export default {
 
       vm.$store.dispatch('cart/addtoCart', item).then((res) => {
         vm.status.is_cartbtn_adding = false;
-        // console.log('after');
-        // console.log(res.data.message);
         vm.$store.dispatch('alertMessage/updateMessage', {
           message: `${res.data.message}`,
           status: res.data.success ? 'success' : 'warning',

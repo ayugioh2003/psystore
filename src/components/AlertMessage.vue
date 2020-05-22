@@ -37,16 +37,6 @@ export default {
       updateMessage: 'alertMessage/updateMessage',
     }),
   },
-  created() {
-    // this.updateMessage({
-    //   message: '是在哈佛2',
-    //   status: 'danger',
-    // });
-    // this.$store.dispatch('alertMessage/updateMessage', {
-    //   message: '是在哈哈哈佛',
-    //   status: 'primary',
-    // });
-  },
 };
 </script>
 
