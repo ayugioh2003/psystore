@@ -155,6 +155,12 @@ export default {
       );
     },
   },
+  watch: {
+    routeId() {
+      const vm = this;
+      vm.getProduct(vm.routeId);
+    },
+  },
   methods: {
     ...mapActions('product', [
       'getProduct',
@@ -174,14 +180,6 @@ export default {
           status: res.data.success ? 'success' : 'warning',
         });
       });
-    },
-    openProductDetail(item) {
-      const vm = this;
-      vm.$router.push({
-        name: 'productDetail',
-        params: { id: item.id },
-      });
-      vm.$router.replace('/refresh');
     },
   },
   mounted() {

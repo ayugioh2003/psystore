@@ -171,11 +171,6 @@ const routes = [
       },
     ],
   },
-  {
-    path: '/refresh',
-    name: 'refresh',
-    component: () => import('@/components/Refresh'),
-  },
 ];
 
 const router = new VueRouter({

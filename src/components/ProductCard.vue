@@ -106,11 +106,11 @@ export default {
     },
     openProductDetail(item) {
       const vm = this;
+
       vm.$router.push({
         name: 'productDetail',
         params: { id: item.id },
       });
-      vm.$router.push('/refresh');
     },
   },
 };
