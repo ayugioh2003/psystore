@@ -1,11 +1,5 @@
 <template>
   <div>
-    <!-- Banner -->
-    <div
-      class="banner bg-cover"
-      style="  background-image: url(https://images.unsplash.com/photo-1493932484895-752d1471eab5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1355&q=80);
-    "
-    ></div>
     <!-- product -->
     <div class="container my-5">
       <!-- Product detail -->
@@ -30,11 +24,16 @@
               <font-awesome-icon :icon="['far', 'heart']" size="lg" />
             </button>
           </div>
-          <img
-            :src="product.imageUrl || 'https://dummyimage.com/600x300/AAE.jpg'"
-            class="card-img-top"
-            alt="..."
-          />
+          <div style="height: 450px">
+            <img
+              :src="
+                product.imageUrl || 'https://dummyimage.com/600x300/AAE.jpg'
+              "
+              class="card-img-top h-100"
+              style="object-fit: cover; object-position: center"
+              alt="..."
+            />
+          </div>
         </div>
         <!-- Product data -->
         <div class="col-md-7">
