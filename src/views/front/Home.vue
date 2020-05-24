@@ -58,8 +58,12 @@
             <router-link
               to="/product/-M6_as3MyB-8b4lUf8Ys"
               class="btn btn-primary btn-lg"
-              >成為時間管理大師，獲得更多休息時間</router-link
             >
+              <font-awesome-icon
+                :icon="['far', 'hand-point-right']"
+              ></font-awesome-icon>
+              成為時間管理大師，獲得更多休息時間
+            </router-link>
           </div>
         </div>
       </div>
@@ -77,7 +81,11 @@
             <router-link
               to="/product/-M6ZTSZapd_HjKzpHJBd"
               class="btn btn-primary btn-lg"
-              >讓自己更了解自己，為自己負責與做出行動</router-link
+            >
+              <font-awesome-icon
+                :icon="['far', 'hand-point-right']"
+              ></font-awesome-icon>
+              讓自己更了解自己，為自己負責與做出行動</router-link
             >
           </div>
           <div class="col-md-5 image order-1 order-md-2">
@@ -118,8 +126,11 @@
               心理學科普部份，將以認知心理學與諮商心理學為主軸，介紹心理機制與心理學應用。
               心理學工具部份，將提供心理學測驗與相關技巧。
             </p>
-            <router-link to="/products" class="btn btn-primary btn-lg"
-              >查看更多心理學，為自己來場心智健身之旅</router-link
+            <router-link to="/products" class="btn btn-primary btn-lg">
+              <font-awesome-icon
+                :icon="['far', 'hand-point-right']"
+              ></font-awesome-icon>
+              查看更多心理學，為自己來場心智健身之旅</router-link
             >
           </div>
         </div>

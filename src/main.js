@@ -19,6 +19,7 @@ import {
 import {
   faTrashAlt,
   faHeart as farHeart,
+  faHandPointRight,
 } from '@fortawesome/free-regular-svg-icons';
 import {
   faGooglePlus,
@@ -66,6 +67,7 @@ library.add(
   faAngleDoubleDown,
   fasHeart,
   farHeart,
+  faHandPointRight,
 );
 library.add(faGooglePlus, faInstagramSquare, faFacebookSquare);
 Vue.component('font-awesome-icon', FontAwesomeIcon);
