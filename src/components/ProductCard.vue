@@ -20,7 +20,8 @@
     </div>
     <div
       class="card-image w-100"
-      :style="{height: `${imageHeight}px`}"
+      :style="{ height: `${imageHeight}px` }"
+      @click="openProductDetail(item)"
     >
       <img
         :src="item.imageUrl || 'https://dummyimage.com/600x300/AAE.jpg'"
@@ -29,7 +30,7 @@
         :alt="item.content"
       />
     </div>
-    <div class="card-body">
+    <div class="card-body" @click="openProductDetail(item)">
       <div class="d-flex justify-content-between align-item-start">
         <h5 class="card-title">{{ item.title }}</h5>
         <div>
