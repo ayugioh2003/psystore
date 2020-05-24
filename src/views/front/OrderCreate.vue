@@ -9,7 +9,7 @@
           >
         </div>
         <div class="col-md-8" v-else>
-          <div class="h2 text-center p-3 bg-light">填寫訂購人資料</div>
+          <div class="h2 text-center p-3 bg-primary text-white">填寫訂購人資料</div>
           <ValidationObserver v-slot="{ invalid }">
             <form @submit.prevent="onSubmit">
               <div class="form-group">
@@ -78,7 +78,7 @@
               <div class="text-right">
                 <button
                   type="submit"
-                  class="btn btn-primary w-100 h2 py-3"
+                  class="btn btn-secondary w-100 h2 py-3"
                   :disabled="invalid"
                 >
                   建立訂單
@@ -91,7 +91,7 @@
         <div class="col-md-4 d-none d-md-block">
           <div class=" mb-3">
             <div class="border ">
-              <div class="h2 text-center text-secondary bg-light py-3">
+              <div class="h2 text-center text-white bg-primary-light py-3">
                 訂單摘要
               </div>
               <div class="p-3">
@@ -119,7 +119,7 @@
 
           <div>
             <div class="border ">
-              <div class="h2 text-center text-secondary bg-light py-3">
+              <div class="h2 text-center text-white bg-primary-light py-3">
                 購物清單
               </div>
               <div class="p-3">

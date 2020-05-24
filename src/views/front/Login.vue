@@ -40,7 +40,7 @@
       <div class="remember custom-control custom-checkbox my-3">
         <input
           type="checkbox"
-          class="custom-control-input bg-warning"
+          class="custom-control-input bg-secondary"
           name="remember"
           id="remember"
         />
@@ -49,7 +49,7 @@
         >
       </div>
     </div>
-    <button class="btn btn-lg btn-warning w-100 text-primary">登入帳號</button>
+    <button class="btn btn-lg btn-secondary w-100 text-primary">登入帳號</button>
   </form>
 </template>
 

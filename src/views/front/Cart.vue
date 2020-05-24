@@ -9,7 +9,7 @@
       <div class="row position-relative">
         <!-- 購物清單 -->
         <div class="col-md-8">
-          <h2 class="bg-light text-center p-3">購物清單確認</h2>
+          <h2 class="bg-primary text-white text-center p-3">購物清單確認</h2>
 
           <div class="text-center" v-if="cart.carts.length === 0">
             購物清單內尚無商品，歡迎繼續
@@ -63,7 +63,7 @@
         <div class="col-md-4 ">
           <div class="sticky-top ">
             <div class="border ">
-              <div class="h2 text-center bg-light py-3">訂單摘要</div>
+              <div class="h2 text-center bg-primary-light text-white py-3">訂單摘要</div>
               <div class="p-3">
                 <table class="table" v-if="cart.total">
                   <tr>
@@ -88,7 +88,7 @@
             <router-link
               v-if="cart.carts.length > 0"
               to="/checkout/order_create"
-              class="btn btn-warning w-100 py-3 h2"
+              class="btn btn-secondary w-100 py-3 h2"
               >填寫訂購者資料</router-link
             >
             <div class="input-group mb-1" v-if="cart.carts.length > 0">
@@ -100,7 +100,7 @@
               />
               <div class="input-group-append">
                 <button
-                  class="btn btn-outline-secondary"
+                  class="btn btn-outline-primary-light"
                   type="button"
                   id="button-addon2"
                   @click="addCouponCode(code)"

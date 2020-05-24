@@ -91,7 +91,7 @@
                       <tfoot>
                         <tr>
                           <td colspan="4">
-                            <div class="text-right text-success h5">
+                            <div class="text-right h5">
                               小計 NT{{ cart.total | currency }}
                             </div>
                           </td>
@@ -161,7 +161,7 @@
               />
               <div class="input-group-append ">
                 <button
-                  class="input-group-text rounded-0 bg-accent d-inline-block"
+                  class="input-group-text rounded-0 bg-secondary d-inline-block"
                 >
                   <font-awesome-icon icon="arrow-right"></font-awesome-icon>
                 </button>

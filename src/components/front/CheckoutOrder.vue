@@ -38,7 +38,7 @@
               <tr>
                 <td>付款狀態</td>
                 <td>
-                  <div v-if="order.is_paid">付款成功</div>
+                  <div v-if="order.is_paid" class="text-success">付款成功</div>
                   <div v-else class="text-danger">
                     尚未付款
                   </div>
@@ -47,7 +47,7 @@
               <tr v-if="!order.is_paid">
                 <td></td>
                 <td>
-                  <button class="btn btn-primary" @click="payOrder">
+                  <button class="btn btn-secondary" @click="payOrder">
                     前往付款
                   </button>
                 </td>
@@ -56,7 +56,7 @@
                 <td colspan="2" class="pt-3">
                   <router-link
                     to="/products"
-                    class="btn btn-accent btn-lg btn-block"
+                    class="btn btn-secondary btn-lg btn-block"
                   >
                     繼續購物</router-link
                   >

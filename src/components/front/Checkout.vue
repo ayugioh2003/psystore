@@ -56,7 +56,7 @@ export default {
 }
 
 .active {
-  background-color: $warning !important;
+  background-color: $secondary !important;
 }
 .table td {
   border: none;

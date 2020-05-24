@@ -28,21 +28,21 @@
                   </span>
                 </div>
               </div>
-              <p class="card-text text-secondary">
+              <p class="card-text text-primary-light">
                 {{ item.description }}
               </p>
               <div class="d-flex justify-content-between">
                 <p class="card-text text-decoration-line-through">
                   <del>原價 {{ item.origin_price }}</del>
                 </p>
-                <p class="card-text h5 text-right">
+                <p class="card-text h5 text-right text-danger">
                   限時特價 {{ item.price }} 元
                 </p>
               </div>
             </div>
             <div class="card-footer d-flex justify-content-between">
               <button
-                class="btn btn-outline-secondary"
+                class="btn btn-outline-primary-light"
                 @click="openProductModal(item)"
               >
                 查看更多
@@ -97,7 +97,7 @@
             </div>
             <div class="mt-3 mb-4">
               <h5>{{ product.title }}</h5>
-              <div class="text-secondary">{{ product.description }}</div>
+              <div class="text-primary-light">{{ product.description }}</div>
             </div>
             <div class="d-flex justify-content-between">
               <div>
@@ -165,7 +165,7 @@
               <td>{{ item.qty }} 個</td>
               <td class="text-right">{{ item.total }}</td>
             </tr>
-            <tr :class="{ 'text-secondary': cart.total > cart.final_total }">
+            <tr :class="{ 'text-primary-light': cart.total > cart.final_total }">
               <td colspan="3" class="text-right ">總計</td>
               <td colspan="1" class="text-right">{{ cart.total }}</td>
             </tr>

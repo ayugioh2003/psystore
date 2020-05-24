@@ -39,9 +39,9 @@
         <!-- Product data -->
         <div class="col-md-7">
           <!-- title -->
-          <div class="d-flex product-head bg-light p-3 mb-3 mt-3 mt-md-0">
+          <div class="d-flex product-head bg-secondary-light p-3 mb-3 mt-3 mt-md-0">
             <div class="mr-3">
-              <span class="badge badge-pill badge-info">
+              <span class="badge badge-pill badge-primary-light">
                 {{ product.category }}
               </span>
             </div>
@@ -53,7 +53,7 @@
               <div class="text-decoration-line-through mr-3">
                 <del>原價 {{ product.origin_price }}</del>
               </div>
-              <div class="h5 text-success">限時特價 {{ product.price }} 元</div>
+              <div class="h5 text-danger">特價 {{ product.price }} 元</div>
             </div>
             <div class="text-right mb-5">
               小計 {{ product.price * productQty }} 元

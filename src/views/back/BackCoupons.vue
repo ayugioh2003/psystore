@@ -23,7 +23,7 @@
           <td>{{ coupon.code }}</td>
           <td>{{ coupon.percent }}</td>
           <th>{{ coupon.due_date | date }}</th>
-          <td :class="{ 'text-light': !coupon.is_enabled }">
+          <td :class="{ 'text-secondary-light': !coupon.is_enabled }">
             {{ coupon.is_enabled ? '已啟用' : '未啟用' }}
           </td>
           <td>
@@ -120,7 +120,7 @@
           <div class="modal-footer">
             <button
               type="button"
-              class="btn btn-outline-secondary"
+              class="btn btn-outline-primary-light"
               data-dismiss="modal"
             >
               取消

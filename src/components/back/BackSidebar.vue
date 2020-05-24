@@ -1,5 +1,5 @@
 <template>
-  <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+  <nav class="col-md-2 d-none d-md-block bg-secondary-light sidebar">
     <div class="sidebar-sticky">
       <!-- 管理 -->
       <h6 class="sidebar-heading  px-3 mt-4 mb-1 text-muted">

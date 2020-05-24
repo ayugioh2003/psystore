@@ -57,14 +57,14 @@
             </p>
             <router-link
               to="/product/-M6_as3MyB-8b4lUf8Ys"
-              class="btn btn-info btn-lg"
+              class="btn btn-primary btn-lg"
               >成為時間管理大師，獲得更多休息時間</router-link
             >
           </div>
         </div>
       </div>
     </div>
-    <div class="why why2 bg-light">
+    <div class="why why2 bg-secondary-light">
       <div class="container">
         <div class="row">
           <div class="col-md-7 content order-2 order-md-1">
@@ -76,7 +76,7 @@
             </p>
             <router-link
               to="/product/-M6ZTSZapd_HjKzpHJBd"
-              class="btn btn-info btn-lg"
+              class="btn btn-primary btn-lg"
               >讓自己更了解自己，為自己負責與做出行動</router-link
             >
           </div>
@@ -118,7 +118,7 @@
               心理學科普部份，將以認知心理學與諮商心理學為主軸，介紹心理機制與心理學應用。
               心理學工具部份，將提供心理學測驗與相關技巧。
             </p>
-            <router-link to="/products" class="btn btn-info btn-lg"
+            <router-link to="/products" class="btn btn-primary btn-lg"
               >查看更多心理學，為自己來場心智健身之旅</router-link
             >
           </div>
@@ -147,32 +147,32 @@
               <div class="d-flex justify-content-between align-item-start">
                 <h5 class="card-title">{{ item.title }}</h5>
                 <div>
-                  <span class="badge badge-pill badge-info">
+                  <span class="badge badge-pill badge-primary-light">
                     {{ item.category }}
                   </span>
                 </div>
               </div>
-              <p class="card-text text-secondary">
+              <p class="card-text text-primary-light">
                 {{ item.description }}
               </p>
               <div class="d-flex justify-content-between">
                 <p class="card-text text-decoration-line-through">
                   <del>原價 {{ item.origin_price }}</del>
                 </p>
-                <p class="card-text h5 text-right text-success">
+                <p class="card-text h5 text-right text-danger">
                   限時特價 {{ item.price }} 元
                 </p>
               </div>
             </div>
             <div class="card-footer d-flex justify-content-between">
               <button
-                class="btn btn-outline-secondary"
+                class="btn btn-outline-primary-light"
                 @click="openProductDetail(item)"
               >
                 查看更多
               </button>
               <button
-                class="btn btn-outline-danger"
+                class="btn btn-primary"
                 @click="addtoCart({ product_id: item.id, qty: 1 })"
                 @click.prevent="status.which_cartbtn_adding = index"
               >

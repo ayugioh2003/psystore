@@ -67,28 +67,36 @@ $colors: map-merge(
 );
 
 $primary: #4d3e3e; //#3f5d45; // $blue !default;
-$secondary: #b6a4a4; //#8da291; // $gray-600 !default;
+$primary-light: #A69F9F;
+$primary-dark: #3D3030;
+$secondary: #FFE180; //#8da291; // $gray-600 !default;
+$secondary-light: #FFF0C0;
+$secondary-dark: #FFD96D;
 $success: $green !default;
 $info: $cyan !default;
-$warning: #ffe180; // $yellow !default;
+$warning: $yellow !default;
 $danger: $red !default;
 $light: #fff3cd; //$gray-100 !default;
 $dark: $gray-800 !default;
-$accent: #FFE180;
+// $accent: #FFE180;
 
 $theme-colors: () !default;
 // stylelint-disable-next-line scss/dollar-variable-default
 $theme-colors: map-merge(
   (
     'primary': $primary,
+    'primary-light': $primary-light,
+    'primary-dark': $primary-dark,
     'secondary': $secondary,
+    'secondary-light': $secondary-light,
+    'secondary-dark': $secondary-dark,
     'success': $success,
     'info': $info,
     'warning': $warning,
     'danger': $danger,
     'light': $light,
     'dark': $dark,
-    'accent': $accent
+    // 'accent': $accent
   ),
   $theme-colors
 );

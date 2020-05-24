@@ -38,7 +38,7 @@
                 />
                 <div class="input-group-append">
                   <button
-                    class="btn btn-outline-secondary"
+                    class="btn btn-outline-primary"
                     @click="copyCoupon(item.coupon)"
                     type="button"
                   >

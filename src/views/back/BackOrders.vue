@@ -21,7 +21,7 @@
               {{ item.product.unit }}
             </div>
           </td>
-          <td :class="{ 'text-light': !order.is_paid }">
+          <td :class="{ 'text-secondary-light': !order.is_paid }">
             {{ order.is_paid ? '已付款' : '未付款' }}
           </td>
           <td>
@@ -43,8 +43,8 @@
     >
       <div class="modal-dialog" role="document">
         <div class="modal-content">
-          <div class="modal-header bg-dark text-white">
-            <h5 class="modal-title bg-dark">修改訂單</h5>
+          <div class="modal-header bg-primary-dark text-white">
+            <h5 class="modal-title bg-primary-dark">修改訂單</h5>
             <button
               type="button"
               class="close"
@@ -71,7 +71,7 @@
           <div class="modal-footer">
             <button
               type="button"
-              class="btn btn-outline-secondary"
+              class="btn btn-outline-primary-light"
               data-dismiss="modal"
             >
               取消
