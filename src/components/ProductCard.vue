@@ -47,7 +47,7 @@
           <del>原價 {{ item.origin_price }}</del>
         </p>
         <p class="card-text h5 text-right text-danger">
-          限時特價 {{ item.price }} 元
+          特價 {{ item.price }} 元
         </p>
       </div>
     </div>
