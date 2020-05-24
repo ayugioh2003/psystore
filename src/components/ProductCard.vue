@@ -18,11 +18,14 @@
         <font-awesome-icon :icon="['far', 'heart']" size="lg" />
       </button>
     </div>
-    <img
-      :src="item.imageUrl || 'https://dummyimage.com/600x300/AAE.jpg'"
-      class="card-img-top"
-      alt="..."
-    />
+    <div style="width: 100%; height: 250px;">
+      <img
+        :src="item.imageUrl || 'https://dummyimage.com/600x300/AAE.jpg'"
+        class="w-100 h-100"
+        style="object-fit: cover; object-position: center;"
+        :alt="item.content"
+      />
+    </div>
     <div class="card-body">
       <div class="d-flex justify-content-between align-item-start">
         <h5 class="card-title">{{ item.title }}</h5>
@@ -39,7 +42,9 @@
         <p class="card-text text-decoration-line-through">
           <del>原價 {{ item.origin_price }}</del>
         </p>
-        <p class="card-text h5 text-right text-danger">限時特價 {{ item.price }} 元</p>
+        <p class="card-text h5 text-right text-danger">
+          限時特價 {{ item.price }} 元
+        </p>
       </div>
     </div>
     <div class="card-footer d-flex justify-content-between">
