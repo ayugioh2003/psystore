@@ -145,60 +145,11 @@
           v-for="(item, index) in filterProducts"
           :key="item.id"
         >
-          <div class="card h-100">
-            <div style="width: 100%; height: 350px;">
-              <img
-                :src="item.imageUrl || 'https://dummyimage.com/600x300/AAE.jpg'"
-                class="w-100 h-100"
-                style="object-fit: cover; object-position: center;"
-                :alt="item.content"
-              />
-            </div>
-            <div class="card-body">
-              <div class="d-flex justify-content-between align-item-start">
-                <h5 class="card-title">{{ item.title }}</h5>
-                <div>
-                  <span class="badge badge-pill badge-primary-light">
-                    {{ item.category }}
-                  </span>
-                </div>
-              </div>
-              <p class="card-text text-primary-light">
-                {{ item.description }}
-              </p>
-              <div class="d-flex justify-content-between">
-                <p class="card-text text-decoration-line-through">
-                  <del>原價 {{ item.origin_price }}</del>
-                </p>
-                <p class="card-text h5 text-right text-danger">
-                  限時特價 {{ item.price }} 元
-                </p>
-              </div>
-            </div>
-            <div class="card-footer d-flex justify-content-between">
-              <button
-                class="btn btn-outline-primary-light"
-                @click="openProductDetail(item)"
-              >
-                查看更多
-              </button>
-              <button
-                class="btn btn-primary"
-                @click="addtoCart({ product_id: item.id, qty: 1 })"
-                @click.prevent="status.which_cartbtn_adding = index"
-              >
-                <font-awesome-icon
-                  icon="spinner"
-                  spin
-                  v-if="
-                    status.is_cartbtn_adding &&
-                      status.which_cartbtn_adding == index
-                  "
-                />
-                加到購物車
-              </button>
-            </div>
-          </div>
+          <ProductCard
+            :item="item"
+            :index="index"
+            :imageHeight="350"
+          ></ProductCard>
         </div>
       </div>
     </div>
@@ -208,8 +159,12 @@
 <script>
 // @ is an alias to /src
 import { mapGetters, mapActions } from 'vuex';
+import ProductCard from '@/components/ProductCard.vue';
 
 export default {
+  components: {
+    ProductCard,
+  },
   metaInfo: {
     title: '首頁 | PsyStore',
   },

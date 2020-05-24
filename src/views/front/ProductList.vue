@@ -39,7 +39,11 @@
               v-for="(item, index) in filterProducts"
               :key="item.id"
             >
-              <ProductCard :item="item" :index="index"></ProductCard>
+              <ProductCard
+                :item="item"
+                :index="index"
+                :imageHeight="250"
+              ></ProductCard>
             </div>
           </div>
         </div>
@@ -94,9 +98,7 @@ export default {
     },
     categories() {
       const vm = this;
-      let categories = vm.isEnabledProducts.map(
-        (product) => product.category,
-      );
+      let categories = vm.isEnabledProducts.map((product) => product.category);
       categories = [...new Set(categories)];
       categories = ['所有商品', ...categories, '我的最愛'];
       return categories;
@@ -154,5 +156,3 @@ export default {
   },
 };
 </script>
-
-<style lang="scss" scoped></style>

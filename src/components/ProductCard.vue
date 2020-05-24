@@ -18,7 +18,10 @@
         <font-awesome-icon :icon="['far', 'heart']" size="lg" />
       </button>
     </div>
-    <div style="width: 100%; height: 250px;">
+    <div
+      class="card-image w-100"
+      :style="{height: `${imageHeight}px`}"
+    >
       <img
         :src="item.imageUrl || 'https://dummyimage.com/600x300/AAE.jpg'"
         class="w-100 h-100"
@@ -79,6 +82,7 @@ export default {
   props: {
     item: Object,
     index: Number,
+    imageHeight: Number,
   },
   data() {
     return {

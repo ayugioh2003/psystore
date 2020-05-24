@@ -39,7 +39,9 @@
         <!-- Product data -->
         <div class="col-md-7">
           <!-- title -->
-          <div class="d-flex product-head bg-secondary-light p-3 mb-3 mt-3 mt-md-0">
+          <div
+            class="d-flex product-head bg-secondary-light p-3 mb-3 mt-3 mt-md-0"
+          >
             <div class="mr-3">
               <span class="badge badge-pill badge-primary-light">
                 {{ product.category }}
@@ -112,7 +114,11 @@
           v-for="(item, index) in filterProductsByCategory"
           :key="item.id"
         >
-          <ProductCard :item="item" :index="index"></ProductCard>
+          <ProductCard
+            :item="item"
+            :index="index"
+            :imageHeight="350"
+          ></ProductCard>
         </div>
       </div>
     </div>
@@ -190,5 +196,3 @@ export default {
   },
 };
 </script>
-
-<style lang="scss" scoped></style>
