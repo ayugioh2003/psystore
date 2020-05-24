@@ -125,3 +125,20 @@ export default {
   },
 };
 </script>
+
+<style lang="scss" scoped>
+.card {
+  transition: all 0.5s;
+  &:hover {
+    box-shadow: 2px 2px 5px 1px $primary-light;
+    transform: translateY(-3px);
+  }
+
+  &-image:hover {
+    cursor: pointer;
+  }
+  &-body:hover {
+    cursor: pointer;
+  }
+}
+</style>
