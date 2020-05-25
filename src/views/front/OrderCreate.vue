@@ -9,7 +9,9 @@
           >
         </div>
         <div class="col-md-8" v-else>
-          <div class="h2 text-center p-3 bg-primary text-white">填寫訂購人資料</div>
+          <div class="h2 text-center p-3 bg-primary text-white">
+            填寫訂購人資料
+          </div>
           <ValidationObserver v-slot="{ invalid }">
             <form @submit.prevent="onSubmit">
               <div class="form-group">
@@ -183,6 +185,11 @@ export default {
   },
   computed: {
     ...mapGetters('cart', ['cart']),
+    cartsLength() {
+      const vm = this;
+      if (vm.cart.carts) return vm.cart.carts.length;
+      return undefined;
+    },
   },
   methods: {
     ...mapActions(['addCouponCode', 'setIsLoading']),
@@ -196,10 +203,32 @@ export default {
         vm.$router.push(`/checkout/order_paying/${res.data.orderId}`);
       });
     },
+    cartZeroHandler(length) {
+      const vm = this;
+      if (length === 0) {
+        vm.$router.push({
+          name: 'ProductList',
+          params: {
+            category: '所有商品',
+          },
+        });
+        vm.$store.dispatch('alertMessage/updateMessage', {
+          message: '購物清單為空，重新導回商品頁面',
+          status: 'warning',
+        });
+      }
+    },
   },
+  watch: {
+    cartsLength(val) {
+      const vm = this;
+      vm.cartZeroHandler(val);
+    },
+  },
+
   mounted() {
     const vm = this;
-    vm.getCart();
+    vm.getCart().then(vm.cartZeroHandler(vm.cartsLength));
     vm.setOrderStep('create');
   },
 };

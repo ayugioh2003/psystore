@@ -143,14 +143,40 @@ export default {
   },
   computed: {
     ...mapGetters('cart', ['cart']),
+    cartsLength() {
+      const vm = this;
+      if (vm.cart.carts) return vm.cart.carts.length;
+      return undefined;
+    },
   },
   methods: {
     ...mapActions(['addCouponCode']),
     ...mapActions('cart', ['getCart', 'removeCartItem']),
+    cartZeroHandler(length) {
+      const vm = this;
+      if (length === 0) {
+        vm.$router.push({
+          name: 'ProductList',
+          params: {
+            category: '所有商品',
+          },
+        });
+        vm.$store.dispatch('alertMessage/updateMessage', {
+          message: '購物清單為空，重新導回商品頁面',
+          status: 'warning',
+        });
+      }
+    },
+  },
+  watch: {
+    cartsLength(val) {
+      const vm = this;
+      vm.cartZeroHandler(val);
+    },
   },
   mounted() {
     const vm = this;
-    vm.getCart();
+    vm.getCart().then(vm.cartZeroHandler(vm.cartsLength));
   },
 };
 </script>
