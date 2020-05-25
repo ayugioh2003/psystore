@@ -45,10 +45,17 @@
 
               <div
                 v-if="cart.carts.length == 0"
-                class="dropdown-menu p-3 dropdown-menu-right "
+                class="dropdown-menu p-3 dropdown-menu-right"
                 style="min-width: 400px"
               >
-                尚未選購商品。歡迎繼續採購 ~
+                <router-link
+                  class="btn btn-primary btn-block"
+                  :to="{
+                    name: 'ProductList',
+                    params: { category: '所有商品' },
+                  }"
+                  >尚未選購商品。歡迎繼續採購 ~</router-link
+                >
               </div>
 
               <div
