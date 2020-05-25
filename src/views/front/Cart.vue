@@ -5,7 +5,7 @@
       style="background-image: url(https://images.unsplash.com/photo-1557821552-17105176677c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1489&q=80);
       "
     ></div>
-    <div class="container my-5">
+    <div class="container my-5" v-if="cart.carts">
       <div class="row position-relative">
         <!-- 購物清單 -->
         <div class="col-md-8">
@@ -13,7 +13,14 @@
 
           <div class="text-center" v-if="cart.carts.length === 0">
             購物清單內尚無商品，歡迎繼續
-            <router-link class="" :to="{ name: 'ProductList' }"
+            <router-link
+              class=""
+              :to="{
+                name: 'ProductList',
+                params: {
+                  category: '所有商品',
+                },
+              }"
               ><u>前往採購</u></router-link
             >
           </div>
@@ -63,7 +70,9 @@
         <div class="col-md-4 ">
           <div class="sticky-top ">
             <div class="border ">
-              <div class="h2 text-center bg-primary-light text-white py-3">訂單摘要</div>
+              <div class="h2 text-center bg-primary-light text-white py-3">
+                訂單摘要
+              </div>
               <div class="p-3">
                 <table class="table" v-if="cart.total">
                   <tr>
