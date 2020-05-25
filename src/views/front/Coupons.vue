@@ -15,7 +15,17 @@
           :key="item.coupon"
         >
           <div class="card h-100">
-            <img class="card-img-top" :src="item.imageUrl" :alt="item.title" />
+            <div class="card-image w-100" style="height: 200px">
+              <img
+                class="card-img-top w-100 h-100"
+                :src="item.imageUrl"
+                :alt="item.title"
+                :style="{
+                  'object-fit': 'cover',
+                  'object-position': 'center',
+                }"
+              />
+            </div>
             <div class="card-body">
               <h5 class="card-title">{{ item.title }}</h5>
               <div class="card-text">
