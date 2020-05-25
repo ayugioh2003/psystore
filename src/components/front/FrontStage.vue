@@ -40,7 +40,7 @@
                 aria-expanded="false"
               >
                 <font-awesome-icon icon="shopping-cart" />
-                {{ cart.carts.length }}
+                {{ cart.carts.length ? cart.carts.length : '' }}
               </button>
 
               <div
