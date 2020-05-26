@@ -7,7 +7,7 @@
     ></div>
 
     <div class="container my-5">
-      <h2 class="text-center mb-5">酷朋清單</h2>
+      <h2 class="text-center mb-5">酷碰清單</h2>
       <div class="row">
         <div
           class="col-md-4 mb-3"
@@ -115,7 +115,7 @@ export default {
       copyText.setSelectionRange(0, 99999);
       document.execCommand('copy');
       vm.$store.dispatch('alertMessage/updateMessage', {
-        message: '複製酷朋成功',
+        message: '複製酷碰成功',
         status: 'success',
       });
     },
