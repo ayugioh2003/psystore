@@ -70,7 +70,8 @@
             <button
               type="button"
               class="btn btn-primary w-100"
-              :class="{ disabled: productQty === 0 }"
+              :class="{ 'not-allowed': status.is_cartbtn_adding || productQty === 0}"
+              :disabled="status.is_cartbtn_adding || productQty === 0"
               @click="addtoCart({ product_id: product.id, qty: productQty })"
             >
               <font-awesome-icon

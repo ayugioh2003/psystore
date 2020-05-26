@@ -60,6 +60,8 @@
       </button>
       <button
         class="btn btn-primary"
+        :class="{ 'not-allowed': status.is_cartbtn_adding}"
+        :disabled="status.is_cartbtn_adding"
         @click="addtoCart({ product_id: item.id, qty: 1 })"
         @click.prevent="status.which_cartbtn_adding = index"
       >
