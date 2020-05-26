@@ -120,7 +120,7 @@
             </div>
             <div class="mb-3 text-right text-danger">
               <div>全館五折特價中</div>
-              <div>輸入優惠碼：hope_disease_disappear</div>
+              <div>輸入優惠碼：TaiwanCanHelp</div>
             </div>
           </div>
         </div>
