@@ -81,6 +81,7 @@
                 <button
                   type="submit"
                   class="btn btn-secondary w-100 h2 py-3"
+                  :class="{'not-allowed': invalid}"
                   :disabled="invalid"
                 >
                   建立訂單
