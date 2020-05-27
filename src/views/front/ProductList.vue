@@ -11,7 +11,7 @@
       <div class="row ">
         <!-- Product Menu -->
         <div class="col-md-3 mb-5">
-          <div class="list-group sticky-top">
+          <div class="list-group sticky-top" style="top: 100px">
             <button
               v-for="category in categories"
               :key="category"
