@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import VueMeta from 'vue-meta';
+import vueDebounce from 'vue-debounce';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import {
@@ -15,6 +16,8 @@ import {
   faEnvelope,
   faAngleDoubleDown,
   faHeart as fasHeart,
+  faPlus,
+  faMinus,
 } from '@fortawesome/free-solid-svg-icons';
 import {
   faTrashAlt,
@@ -68,6 +71,8 @@ library.add(
   fasHeart,
   farHeart,
   faHandPointRight,
+  faPlus,
+  faMinus,
 );
 library.add(faGooglePlus, faInstagramSquare, faFacebookSquare);
 Vue.component('font-awesome-icon', FontAwesomeIcon);
@@ -94,6 +99,11 @@ Vue.component('Loading', Loading);
 
 // vue-meta
 Vue.use(VueMeta);
+
+// vue-debounce
+Vue.use(vueDebounce, {
+  defaultTime: '1000ms',
+});
 
 // NEW VUE INSTANCE
 new Vue({

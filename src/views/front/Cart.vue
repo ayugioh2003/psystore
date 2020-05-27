@@ -25,46 +25,98 @@
             >
           </div>
 
-          <table class="table table-cart-list">
-            <tbody>
-              <tr v-for="item in cart.carts" :key="item.id">
-                <td>
-                  <div
-                    class="bg-cover"
-                    :style="
-                      `
+          <div class="table-responsive">
+            <table class="table table-cart-list">
+              <tbody>
+                <tr v-for="(item, index) in cart.carts" :key="item.id">
+                  <td>
+                    <div
+                      class="bg-cover"
+                      :style="
+                        `
                       background-image: url(${item.product.imageUrl ||
                         'https://dummyimage.com/600x300/AAE.jpg'});
                       width: 100px;
                       height: 100px;
                     `
-                    "
-                  ></div>
-                </td>
-                <td class="align-middle">
-                  <div>
-                    {{ item.product.title }} |
-                    {{ item.product.price | currency }}
-                  </div>
-                </td>
-                <td class="align-middle">
-                  {{ item.qty }}
-                  {{ item.product.unit }}
-                </td>
-                <td class="align-middle text-right">
-                  {{ item.total | currency }}
-                </td>
-                <td class="align-middle">
-                  <button
-                    class="btn btn-outline-danger"
-                    @click="removeCartItem(item.id)"
-                  >
-                    <font-awesome-icon :icon="['far', 'trash-alt']" />
-                  </button>
-                </td>
-              </tr>
-            </tbody>
-          </table>
+                      "
+                    ></div>
+                  </td>
+                  <td class="align-middle">
+                    <div style="width: 250px">
+                      {{ item.product.title }} |
+                      {{ item.product.price | currency }}
+                    </div>
+                  </td>
+                  <td class="align-middle">
+                    <!-- {{ item.qty }}
+                  {{ item.product.unit }} -->
+                    <div class="input-group" style="width: 130px">
+                      <div class="input-group-prepend" id="button-addon1">
+                        <button
+                          type="button"
+                          class="btn btn-outline-primary-light"
+                          :class="{
+                            'not-allowed':
+                              item.qty <= 1 || item.qty + tempQty <= 1,
+                          }"
+                          :disabled="item.qty <= 1 || item.qty + tempQty <= 1"
+                          v-debounce:500ms="
+                            updateCart({
+                              product_id: item.product_id,
+                              qty: item.qty,
+                            })
+                          "
+                          debounce-events="click"
+                          @click="subTempQty(index)"
+                        >
+                          <font-awesome-icon :icon="['fas', 'minus']" />
+                        </button>
+                      </div>
+
+                      <div
+                        type="text"
+                        class="form-control text-center not-allowed"
+                        style="width:90px"
+                      >
+                        <span v-if="tempIndex === index">
+                          {{ item.qty + tempQty }}</span
+                        >
+                        <span v-else>{{ item.qty }}</span>
+                      </div>
+                      <div class="input-group-append" id="button-addon2">
+                        <button
+                          class="btn btn-outline-primary-light"
+                          type="button"
+                          v-debounce:500ms="
+                            updateCart({
+                              product_id: item.product_id,
+                              qty: item.qty,
+                            })
+                          "
+                          debounce-events="click"
+                          @click="addTempQty(index)"
+                        >
+                          <font-awesome-icon :icon="['fas', 'plus']" />
+                        </button>
+                      </div>
+                    </div>
+                  </td>
+                  <td class="align-middle text-right">
+                    {{ item.total | currency }}
+                  </td>
+                  <td class="align-middle">
+                    <button
+                      class="btn btn-outline-danger"
+                      @click="removeCartItem(item.id)"
+                    >
+                      <font-awesome-icon :icon="['far', 'trash-alt']" />
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
         <!-- 訂單摘要 -->
         <div class="col-md-4 ">
@@ -142,7 +194,7 @@ export default {
     title: '購物清單 | PsyStore',
   },
   computed: {
-    ...mapGetters('cart', ['cart']),
+    ...mapGetters('cart', ['cart', 'tempQty', 'tempIndex']),
     cartsLength() {
       const vm = this;
       if (vm.cart.carts) return vm.cart.carts.length;
@@ -151,7 +203,13 @@ export default {
   },
   methods: {
     ...mapActions(['addCouponCode']),
-    ...mapActions('cart', ['getCart', 'removeCartItem']),
+    ...mapActions('cart', [
+      'getCart',
+      'removeCartItem',
+      'updateCart',
+      'addTempQty',
+      'subTempQty',
+    ]),
     cartZeroHandler(length) {
       const vm = this;
       if (length === 0) {
@@ -166,6 +224,20 @@ export default {
           status: 'warning',
         });
       }
+    },
+    test(val) {
+      return () => {
+        console.log(val);
+      };
+    },
+    updateCart(payload) {
+      const vm = this;
+      return () => {
+        vm.$store.dispatch('cart/updateCart', {
+          product_id: payload.product_id,
+          qty: vm.tempQty,
+        });
+      };
     },
   },
   watch: {
