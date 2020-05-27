@@ -36,7 +36,7 @@
                       name: 'OrderPaying',
                       params: { id: order.id },
                     }"
-                    class="btn btn-danger"
+                    class="btn btn-secondary"
                     >前往付款</router-link
                   >
                 </div>
