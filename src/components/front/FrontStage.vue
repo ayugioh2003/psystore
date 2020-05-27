@@ -73,7 +73,7 @@
                           <th scope="col"></th>
                           <th scope="col">商品</th>
                           <th scope="col" width="70" class="text-center">數量</th>
-                          <th scope="col">金額</th>
+                          <th scope="col">單價</th>
                         </tr>
                       </thead>
                       <tbody>
