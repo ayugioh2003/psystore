@@ -72,7 +72,7 @@
                         <tr>
                           <th scope="col"></th>
                           <th scope="col">商品</th>
-                          <th scope="col" width="60">數量</th>
+                          <th scope="col" width="70" class="text-center">數量</th>
                           <th scope="col">金額</th>
                         </tr>
                       </thead>
@@ -87,7 +87,7 @@
                             </button>
                           </td>
                           <td>{{ item.product.title }}</td>
-                          <td class="text-right">
+                          <td class="text-center">
                             {{ item.qty }} {{ item.product.unit }}
                           </td>
                           <td class="text-right">

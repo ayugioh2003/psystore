@@ -22,10 +22,28 @@ export default {
     },
     addtoCart(context, payload) {
       const API = `${process.env.VUE_APP_API}/cart`;
-      return axios.post(API, { data: payload }).then((res) => {
-        context.dispatch('getCart');
-        return res;
-      });
+      const productId = payload.product_id;
+      const { carts } = context.state.cart;
+      const sameCarts = [
+        ...carts.filter((item) => productId === item.product_id),
+      ];
+      const sameCartsQty = sameCarts.reduce((pre, cur) => pre + cur.qty, 0);
+
+      if (sameCarts.length >= 1) {
+        for (let i = 0; i < sameCarts.length; i += 1) {
+          const item = sameCarts[i];
+          context.dispatch('removeCartItemNoAlert', item.id);
+        }
+      }
+
+      return axios
+        .post(API, {
+          data: { product_id: productId, qty: payload.qty + sameCartsQty },
+        })
+        .then((res) => {
+          context.dispatch('getCart');
+          return res;
+        });
     },
     removeCartItem(context, id) {
       const API = `${process.env.VUE_APP_API}/cart/${id}`;
@@ -58,6 +76,13 @@ export default {
           },
           { root: true },
         );
+        return res;
+      });
+    },
+    removeCartItemNoAlert(context, id) {
+      const API = `${process.env.VUE_APP_API}/cart/${id}`;
+      return axios.delete(API).then((res) => {
+        context.dispatch('getCart');
         return res;
       });
     },
