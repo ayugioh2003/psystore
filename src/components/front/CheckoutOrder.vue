@@ -45,9 +45,8 @@
                 </td>
               </tr>
               <tr v-if="!order.is_paid">
-                <td></td>
-                <td>
-                  <button class="btn btn-secondary" @click="payOrder">
+                <td colspan="2" class="pt-3">
+                  <button class="btn btn-secondary btn-lg btn-block" @click="payOrder">
                     前往付款
                   </button>
                 </td>
