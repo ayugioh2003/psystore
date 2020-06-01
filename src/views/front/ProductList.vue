@@ -67,7 +67,6 @@ export default {
   },
   data() {
     return {
-      // routeCategory: '所有商品',
       status: {
         is_cartbtn_adding: false,
         which_cartbtn_adding: 0,
