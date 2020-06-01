@@ -49,7 +49,9 @@
         >
       </div>
     </div>
-    <button class="btn btn-lg btn-secondary w-100 text-primary">登入帳號</button>
+    <button class="btn btn-lg btn-secondary w-100 text-primary">
+      登入帳號
+    </button>
   </form>
 </template>
 
@@ -90,7 +92,6 @@ export default {
         });
     },
   },
-  created() {},
 };
 </script>
 
