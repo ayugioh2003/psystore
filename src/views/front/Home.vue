@@ -225,6 +225,7 @@ export default {
   mounted() {
     const vm = this;
     vm.getNavbarAndScreenHeight();
+    window.setTimeout(vm.getNavbarAndScreenHeight, 400);
     window.addEventListener('resize', vm.getNavbarAndScreenHeight);
     vm.getProductsAll();
   },
