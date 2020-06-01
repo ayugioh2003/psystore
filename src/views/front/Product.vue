@@ -5,7 +5,7 @@
       <!-- Product detail -->
       <div class="row">
         <!-- Product picture -->
-        <div class="col-md-5 position-relative">
+        <div class="col-md-6 position-relative">
           <div class="position-absolute" style="right: 16px">
             <!-- 移出最愛 -->
             <button
@@ -36,7 +36,7 @@
           </div>
         </div>
         <!-- Product data -->
-        <div class="col-md-7">
+        <div class="col-md-6">
           <!-- title -->
           <div
             class="d-flex product-head bg-secondary-light p-3 mb-3 mt-3 mt-md-0"
