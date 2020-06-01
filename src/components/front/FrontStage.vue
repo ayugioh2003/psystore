@@ -17,7 +17,7 @@
               <span class="navbar-toggler-icon"></span>
             </button>
 
-            <router-link to="/" exact class="navbar-brand">
+            <router-link to="/" exact class="navbar-brand m-0">
               <img
                 src="@/assets/logo.png"
                 width="240"
@@ -27,7 +27,7 @@
             </router-link>
 
             <div
-              class="dropdown order-lg-1 pl-4 pr-1"
+              class="dropdown order-lg-1 pl-md-4 pr-md-1"
               v-if="cart.carts"
               style="z-index: 99999;"
             >
@@ -39,7 +39,15 @@
                 aria-haspopup="true"
                 aria-expanded="false"
               >
-                <font-awesome-icon icon="shopping-cart" />
+                <font-awesome-icon
+                  icon="shopping-cart"
+                  class="d-none d-lg-inline"
+                />
+                <font-awesome-icon
+                  icon="shopping-cart"
+                  class="d-inline d-lg-none"
+                  size="lg"
+                />
                 {{ cart.carts.length ? cart.carts.length : '' }}
               </button>
 
@@ -72,7 +80,9 @@
                         <tr>
                           <th scope="col"></th>
                           <th scope="col">商品</th>
-                          <th scope="col" width="70" class="text-center">數量</th>
+                          <th scope="col" width="70" class="text-center">
+                            數量
+                          </th>
                           <th scope="col">單價</th>
                         </tr>
                       </thead>
@@ -249,6 +259,18 @@ export default {
 html,
 body {
   scroll-behavior: smooth;
+}
+
+.navbar {
+  img {
+    width: 240px;
+    height: 60px;
+
+    @include media-breakpoint-down(md) {
+      width: 180px;
+      height: 45px;
+    }
+  }
 }
 
 .banner {
