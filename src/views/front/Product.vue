@@ -70,7 +70,9 @@
             <button
               type="button"
               class="btn btn-primary w-100"
-              :class="{ 'not-allowed': status.is_cartbtn_adding || productQty === 0}"
+              :class="{
+                'not-allowed': status.is_cartbtn_adding || productQty === 0,
+              }"
               :disabled="status.is_cartbtn_adding || productQty === 0"
               @click="addtoCart({ product_id: product.id, qty: productQty })"
             >
@@ -150,7 +152,12 @@
     <!-- another product -->
     <div class="container">
       <div class="h2 text-center mb-5">類似商品</div>
-      <div class="row">
+      <div
+        class="row"
+        :class="{
+          'justify-content-center': filterProductsByCategory.length < 3,
+        }"
+      >
         <!-- product cards -->
         <div
           class="col-md-6 col-lg-4 mb-3 mb-md-5 "
