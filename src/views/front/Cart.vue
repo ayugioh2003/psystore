@@ -225,11 +225,6 @@ export default {
         });
       }
     },
-    test(val) {
-      return () => {
-        console.log(val);
-      };
-    },
     updateCart(payload) {
       const vm = this;
       return () => {
