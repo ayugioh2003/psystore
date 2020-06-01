@@ -157,7 +157,6 @@
 </template>
 
 <script>
-// @ is an alias to /src
 import { mapGetters, mapActions } from 'vuex';
 import ProductCard from '@/components/ProductCard.vue';
 
