@@ -5,6 +5,7 @@
       class="home-banner position-relative d-flex justify-content-center align-items-center"
       :style="{
         height: `${screenHeight - navbarHeight}px`,
+        'z-index': 2,
       }"
     >
       <div

@@ -1,5 +1,8 @@
 <template>
-  <div>
+  <div class="front-stage">
+    <div class="totop" @click="toTop">
+      <font-awesome-icon icon="arrow-up"></font-awesome-icon>
+    </div>
     <!-- Navbar -->
     <Navbar></Navbar>
 
@@ -90,6 +93,12 @@ export default {
   data() {
     return {};
   },
+  methods: {
+    toTop() {
+      console.log('totop');
+      window.scrollTo({ top: 0 });
+    },
+  },
 };
 </script>
 
@@ -97,6 +106,29 @@ export default {
 html,
 body {
   scroll-behavior: smooth;
+}
+
+.totop {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 50px;
+  z-index: 1;
+  border: 1px solid $secondary;
+  font-size: 1.2rem;
+  color: $secondary-light;
+  background-color: $primary;
+  cursor: pointer;
+  transition: all 0.5s;
+  &:hover {
+  border: 1px solid $primary;
+    color: $primary-dark;
+    background-color: $secondary-dark;
+  }
 }
 
 .banner {
