@@ -4,55 +4,82 @@
       <h2 class="text-center mb-3">訂單明細</h2>
 
       <div class="row justify-content-center">
-        <div class="col-md-6">
+        <div class="col-lg-8">
           <table class="table" v-if="order.user">
             <tbody>
               <tr>
-                <td>訂單編號</td>
-                <td>{{ order.id }}</td>
-              </tr>
-              <tr>
-                <td>訂購資料</td>
-                <td>
-                  <div>姓名：{{ order.user.name }}</div>
-                  <div>信箱：{{ order.user.email }}</div>
-                  <div>電話：{{ order.user.tel }}</div>
-                  <div>地址：{{ order.user.address }}</div>
+                <td class="row">
+                  <div class="col-md-2 mb-1 mb-md-0">訂單編號</div>
+                  <div class="col-md-10 text-nowrap">{{ order.id }}</div>
                 </td>
               </tr>
               <tr>
-                <td>訂購項目</td>
-                <td>
-                  <div v-for="item in order.products" :key="item.id">
-                    {{ item.product.title }} * {{ item.qty }}
-                    {{ item.product.unit }}
+                <td class="row">
+                  <div class="col-md-2 mb-1 mb-md-0">訂購資料</div>
+                  <div class="d-none d-md-block col-md-10">
+                    <div>姓名：{{ order.user.name }}</div>
+                    <div>信箱：{{ order.user.email }}</div>
+                    <div>電話：{{ order.user.tel }}</div>
+                    <div>地址：{{ order.user.address }}</div>
                   </div>
+                  <ul class="d-block d-md-none col-md-10 ml-4">
+                    <li>姓名：{{ order.user.name }}</li>
+                    <li>信箱：{{ order.user.email }}</li>
+                    <li>電話：{{ order.user.tel }}</li>
+                    <li>地址：{{ order.user.address }}</li>
+                  </ul>
                 </td>
               </tr>
               <tr>
-                <td>結帳金額</td>
-                <td>{{ order.total }} 元</td>
+                <td class="row">
+                  <div class="col-md-2 mb-1 mb-md-0">訂購項目</div>
+                  <div class="d-none d-md-block col-md-10">
+                    <div v-for="item in order.products" :key="item.id">
+                      {{ item.product.title }} * {{ item.qty }}
+                      {{ item.product.unit }}
+                    </div>
+                  </div>
+                  <ul class="d-block d-md-none col-md-10 ml-4">
+                    <li v-for="item in order.products" :key="item.id">
+                      {{ item.product.title }} * {{ item.qty }}
+                      {{ item.product.unit }}
+                    </li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td class="row">
+                  <div class="col-md-2">結帳金額</div>
+                  <div class="col-md-10">{{ order.total }} 元</div>
+                </td>
               </tr>
             </tbody>
             <tfoot>
               <tr>
-                <td>付款狀態</td>
-                <td>
-                  <div v-if="order.is_paid" class="text-success">付款成功</div>
-                  <div v-else class="text-danger">
-                    尚未付款
+                <td class="row">
+                  <div class="col-md-2">付款狀態</div>
+                  <div class="col-md-10">
+                    <div v-if="order.is_paid" class="text-success">
+                      付款成功
+                    </div>
+                    <div v-else class="text-danger">
+                      尚未付款
+                    </div>
                   </div>
                 </td>
               </tr>
               <tr v-if="!order.is_paid">
-                <td colspan="2" class="pt-3">
-                  <button class="btn btn-secondary btn-lg btn-block" @click="payOrder">
+                <td class="pt-3">
+                  <button
+                    class="btn btn-secondary btn-lg btn-block"
+                    @click="payOrder"
+                  >
                     前往付款
                   </button>
                 </td>
               </tr>
               <tr v-else>
-                <td colspan="2" class="pt-3">
+                <td class="pt-3">
                   <router-link
                     to="/products"
                     class="btn btn-secondary btn-lg btn-block"
