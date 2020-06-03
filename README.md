@@ -103,5 +103,5 @@ npm run gh    # 佈署到 gh-pages
 
 ## 版權/授權聲明
 
-此專案為練習用途，所用素材皆符合授權。
+此專案為練習用途，非商用。有使用到之素材一一列於此。
 * [版權聲明 | PsyStore](https://ayugioh2003.github.io/psystore/#/copyright)
