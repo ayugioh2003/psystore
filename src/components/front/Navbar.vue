@@ -50,11 +50,10 @@
             />
             {{ cart.carts.length ? cart.carts.length : '' }}
           </button>
-
+          <!-- Dropdown menu -->
           <div
             v-if="cart.carts.length == 0"
             class="dropdown-menu p-3 dropdown-menu-right"
-            style="min-width: 400px"
           >
             <router-link
               class="btn btn-primary btn-block"
@@ -68,8 +67,7 @@
 
           <div
             v-if="cart.carts.length > 0"
-            class="dropdown-menu p-3 dropdown-menu-right "
-            style="min-width: 400px"
+            class="dropdown-menu p-3  dropdown-menu-right"
             aria-labelledby="dropdownMenu2"
           >
             <div class="h2 text-center mb-4">購物車清單</div>
@@ -122,6 +120,7 @@
               <font-awesome-icon icon="shopping-cart" /> 結帳去
             </router-link>
           </div>
+          <!-- Dropdown menu End -->
         </div>
 
         <!-- Toggle Lists -->
@@ -208,10 +207,35 @@ export default {
   img {
     width: 240px;
     height: 60px;
-
     @include media-breakpoint-down(md) {
       width: 180px;
       height: 45px;
+    }
+  }
+}
+
+.navbar {
+  @include media-breakpoint-down(md) {
+    position: static;
+  }
+}
+header {
+  position: relative;
+  .dropdown {
+    @include media-breakpoint-down(md) {
+      position: static;
+    }
+  }
+  .dropdown-menu {
+    margin-top: 8px;
+    width: 600px;
+    box-shadow: 2px 2px 5px 1px $primary-light;
+
+    @include media-breakpoint-down(md) {
+      width: auto;
+      left: 8px;
+      right: 8px;
+      transform: translateX(0%);
     }
   }
 }
