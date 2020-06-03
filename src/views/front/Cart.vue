@@ -25,98 +25,102 @@
             >
           </div>
 
-          <div class="table-responsive">
-            <table class="table table-cart-list">
-              <tbody>
-                <tr v-for="(item, index) in cart.carts" :key="item.id">
-                  <td>
-                    <div
-                      class="bg-cover"
-                      :style="
-                        `
-                      background-image: url(${item.product.imageUrl ||
-                        'https://dummyimage.com/600x300/AAE.jpg'});
-                      width: 100px;
-                      height: 100px;
-                    `
-                      "
-                    ></div>
-                  </td>
-                  <td class="align-middle">
-                    <div style="width: 250px">
-                      {{ item.product.title }} |
-                      {{ item.product.price | currency }}
-                    </div>
-                  </td>
-                  <td class="align-middle">
-                    <!-- {{ item.qty }}
-                  {{ item.product.unit }} -->
-                    <div class="input-group" style="width: 130px">
-                      <div class="input-group-prepend" id="button-addon1">
-                        <button
-                          type="button"
-                          class="btn btn-outline-primary-light"
-                          :class="{
-                            'not-allowed':
-                              item.qty <= 1 || item.qty + tempQty <= 1,
-                          }"
-                          :disabled="item.qty <= 1 || item.qty + tempQty <= 1"
-                          v-debounce:500ms="
-                            updateCart({
-                              product_id: item.product_id,
-                              qty: item.qty,
-                            })
-                          "
-                          debounce-events="click"
-                          @click="subTempQty(index)"
-                        >
-                          <font-awesome-icon :icon="['fas', 'minus']" />
-                        </button>
-                      </div>
-
+          <table class="table table-cart-list">
+            <tbody>
+              <tr v-for="(item, index) in cart.carts" :key="item.id">
+                <td>
+                  <div class="row">
+                    <!-- Col 1 Pic -->
+                    <div class="col-12 col-md-3">
                       <div
-                        type="text"
-                        class="form-control text-center not-allowed"
-                        style="width:90px"
-                      >
-                        <span v-if="tempIndex === index">
-                          {{ item.qty + tempQty }}</span
-                        >
-                        <span v-else>{{ item.qty }}</span>
-                      </div>
-                      <div class="input-group-append" id="button-addon2">
-                        <button
-                          class="btn btn-outline-primary-light"
-                          type="button"
-                          v-debounce:500ms="
-                            updateCart({
-                              product_id: item.product_id,
-                              qty: item.qty,
-                            })
-                          "
-                          debounce-events="click"
-                          @click="addTempQty(index)"
-                        >
-                          <font-awesome-icon :icon="['fas', 'plus']" />
-                        </button>
+                        class="bg-cover"
+                        :style="
+                          `
+                              background-image: url(${item.product.imageUrl ||
+                                'https://dummyimage.com/600x300/AAE.jpg'});
+                              width: 100%;
+                              padding-top: 100%;
+                            `
+                        "
+                      ></div>
+                    </div>
+                    <!-- Col 2 title | price, qty input, delete button-->
+                    <div class="col-12 col-md-9 mt-3 mt-md-0 mb-5 mb-md-0">
+                      <div>{{ item.product.title }}</div>
+                      <div class="d-flex mt-3 align-items-center">
+                        <!-- Price -->
+                        <div class="text-primary-light">
+                          總價 {{ item.total | currency }}
+                        </div>
+                        <!-- Input, Button -->
+                        <div class="d-flex ml-auto">
+                          <div class="input-group mr-3" style="width: 130px">
+                            <div class="input-group-prepend" id="button-addon1">
+                              <button
+                                type="button"
+                                class="btn btn-outline-primary-light"
+                                :class="{
+                                  'not-allowed':
+                                    item.qty <= 1 || item.qty + tempQty <= 1,
+                                }"
+                                :disabled="
+                                  item.qty <= 1 || item.qty + tempQty <= 1
+                                "
+                                v-debounce:500ms="
+                                  updateCart({
+                                    product_id: item.product_id,
+                                    qty: item.qty,
+                                  })
+                                "
+                                debounce-events="click"
+                                @click="subTempQty(index)"
+                              >
+                                <font-awesome-icon :icon="['fas', 'minus']" />
+                              </button>
+                            </div>
+
+                            <div
+                              type="text"
+                              class="form-control text-center not-allowed"
+                              style="width:90px"
+                            >
+                              <span v-if="tempIndex === index">
+                                {{ item.qty + tempQty }}</span
+                              >
+                              <span v-else>{{ item.qty }}</span>
+                            </div>
+                            <div class="input-group-append" id="button-addon2">
+                              <button
+                                class="btn btn-outline-primary-light"
+                                type="button"
+                                v-debounce:500ms="
+                                  updateCart({
+                                    product_id: item.product_id,
+                                    qty: item.qty,
+                                  })
+                                "
+                                debounce-events="click"
+                                @click="addTempQty(index)"
+                              >
+                                <font-awesome-icon :icon="['fas', 'plus']" />
+                              </button>
+                            </div>
+                          </div>
+                          <button
+                            class="btn btn-outline-danger"
+                            @click="removeCartItem(item.id)"
+                          >
+                            <font-awesome-icon :icon="['far', 'trash-alt']" />
+                          </button>
+                        </div>
                       </div>
                     </div>
-                  </td>
-                  <td class="align-middle text-right">
-                    {{ item.total | currency }}
-                  </td>
-                  <td class="align-middle">
-                    <button
-                      class="btn btn-outline-danger"
-                      @click="removeCartItem(item.id)"
-                    >
-                      <font-awesome-icon :icon="['far', 'trash-alt']" />
-                    </button>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
+                    <!-- Col 2 End -->
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
         </div>
         <!-- 訂單摘要 -->
         <div class="col-md-4 ">
