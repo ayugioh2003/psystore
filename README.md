@@ -48,8 +48,9 @@
 使用現代化前端框架，讓協作開發與日後擴充修改更容易，並提供更平順的瀏覽體驗
 
 * 程式相關
-  * Vue CLI: 整合 Vue 生態系的開發環境
   * Vue: 建構 SPA，前後端分離開發
+  * Vue CLI: 整合 Vue 生態系的開發環境
+  * Vue Component: 將 Web 應用元件化，方便管理、協作
   * Vue Router: 管理前端路由
   * Vuex: 管理網站狀態，跨組件溝通更方便
   * axios: 方便 API 串接
@@ -78,7 +79,7 @@
 * [popper](https://www.npmjs.com/package/popper) | 搭配 BS4
 * [vee-validate](https://www.npmjs.com/package/vee-validate) | 驗證表單
 * [vue](https://www.npmjs.com/package/vue) | 前端框架
-* [vue-headroom](https://www.npmjs.com/package/vue-headroom) | 能隨著滾動調整 navbar 的出現與否
+* [vue-headroom](https://www.npmjs.com/package/vue-headroom) | 能隨著滾動調整 navbar 的出現與否 (因為想降低複雜度，暫時移除)
 * [vue-loading-overlay](https://www.npmjs.com/package/vue-loading-overlay) | 全畫面 loading 狀態
 * [vue-meta](https://www.npmjs.com/package/vue-meta) | 在 vue 添加 meta 資訊
 * [vue-router](https://www.npmjs.com/package/vue-router) | 管理 vue 前端路由
