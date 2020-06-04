@@ -21,7 +21,7 @@
           <tbody>
             <tr v-for="order in orders" :key="order.id">
               <td>{{ order.create_at | date }}</td>
-              <td>{{ order.id }}</td>
+              <td class="text-nowrap">{{ order.id }}</td>
               <td>
                 <div v-for="item in order.products" :key="item.id">
                   {{ item.product.title }} * {{ item.qty
