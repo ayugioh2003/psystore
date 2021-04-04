@@ -75,9 +75,20 @@ export default {
 
       vm.$http
         .post(api, vm.user)
-        .then((data) => data.data.success)
+        .then((response) => {
+          const { token } = response.data;
+          const { expired } = response.data;
+          document.cookie = `hexToken=${token};expires=${new Date(expired)};`;
+          // console.log(token, expired);
+
+          return response.data.success;
+        })
         .then((success) => {
           if (success) {
+            const reg = /(?:(?:^|.*;\s*)hexToken\s*=\s*([^;]*).*$)|^.*$/;
+            const token = document.cookie.replace(reg, '$1');
+            this.$http.defaults.headers.common.Authorization = `${token}`;
+
             vm.$router.push('/admin/products');
             vm.$store.dispatch('alertMessage/updateMessage', {
               message: '登入成功',
